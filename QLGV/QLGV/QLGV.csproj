@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BBA528FD-0FF0-4DFF-930D-8A366FCE6F7C}</ProjectGuid>
+    <ProjectGuid>{990E77DC-0DF6-4ECA-9C5E-3CE8816455FB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>GiaoDienDoAn</RootNamespace>
-    <AssemblyName>GiaoDienDoAn</AssemblyName>
+    <RootNamespace>QLGV</RootNamespace>
+    <AssemblyName>QLGV</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
