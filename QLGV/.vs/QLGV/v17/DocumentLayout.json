@@ -1,10 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\CSharp\\GiaoDienDoAn\\QLGV\\",
+  "WorkspaceRootPath": "Z:\\QLGV\\QLGV\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{990E77DC-0DF6-4ECA-9C5E-3CE8816455FB}|QLGV\\QLGV.csproj|d:\\csharp\\giaodiendoan\\qlgv\\qlgv\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{990E77DC-0DF6-4ECA-9C5E-3CE8816455FB}|QLGV\\QLGV.csproj|solutionrelative:qlgv\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{990E77DC-0DF6-4ECA-9C5E-3CE8816455FB}|QLGV\\QLGV.csproj|z:\\qlgv\\qlgv\\qlgv\\model\\chucvu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{990E77DC-0DF6-4ECA-9C5E-3CE8816455FB}|QLGV\\QLGV.csproj|solutionrelative:qlgv\\model\\chucvu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{990E77DC-0DF6-4ECA-9C5E-3CE8816455FB}|QLGV\\QLGV.csproj|z:\\qlgv\\qlgv\\qlgv\\model\\bomon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{990E77DC-0DF6-4ECA-9C5E-3CE8816455FB}|QLGV\\QLGV.csproj|solutionrelative:qlgv\\model\\bomon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{990E77DC-0DF6-4ECA-9C5E-3CE8816455FB}|QLGV\\QLGV.csproj|z:\\qlgv\\qlgv\\qlgv\\model\\giaovien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{990E77DC-0DF6-4ECA-9C5E-3CE8816455FB}|QLGV\\QLGV.csproj|solutionrelative:qlgv\\model\\giaovien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{990E77DC-0DF6-4ECA-9C5E-3CE8816455FB}|QLGV\\QLGV.csproj|z:\\qlgv\\qlgv\\qlgv\\controller\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{990E77DC-0DF6-4ECA-9C5E-3CE8816455FB}|QLGV\\QLGV.csproj|solutionrelative:qlgv\\controller\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +31,54 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "D:\\CSharp\\GiaoDienDoAn\\QLGV\\QLGV\\Form1.cs",
-              "RelativeDocumentMoniker": "QLGV\\Form1.cs",
-              "ToolTip": "D:\\CSharp\\GiaoDienDoAn\\QLGV\\QLGV\\Form1.cs [Design]",
-              "RelativeToolTip": "QLGV\\Form1.cs [Design]",
+              "Title": "ChucVu.cs",
+              "DocumentMoniker": "Z:\\QLGV\\QLGV\\QLGV\\Model\\ChucVu.cs",
+              "RelativeDocumentMoniker": "QLGV\\Model\\ChucVu.cs",
+              "ToolTip": "Z:\\QLGV\\QLGV\\QLGV\\Model\\ChucVu.cs",
+              "RelativeToolTip": "QLGV\\Model\\ChucVu.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T02:41:17.331Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-11-01T03:40:49.815Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BoMon.cs",
+              "DocumentMoniker": "Z:\\QLGV\\QLGV\\QLGV\\Model\\BoMon.cs",
+              "RelativeDocumentMoniker": "QLGV\\Model\\BoMon.cs",
+              "ToolTip": "Z:\\QLGV\\QLGV\\QLGV\\Model\\BoMon.cs",
+              "RelativeToolTip": "QLGV\\Model\\BoMon.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T03:40:15.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GiaoVien.cs",
+              "DocumentMoniker": "Z:\\QLGV\\QLGV\\QLGV\\Model\\GiaoVien.cs",
+              "RelativeDocumentMoniker": "QLGV\\Model\\GiaoVien.cs",
+              "ToolTip": "Z:\\QLGV\\QLGV\\QLGV\\Model\\GiaoVien.cs",
+              "RelativeToolTip": "QLGV\\Model\\GiaoVien.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T03:38:47.806Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BaseController.cs",
+              "DocumentMoniker": "Z:\\QLGV\\QLGV\\QLGV\\Controller\\BaseController.cs",
+              "RelativeDocumentMoniker": "QLGV\\Controller\\BaseController.cs",
+              "ToolTip": "Z:\\QLGV\\QLGV\\QLGV\\Controller\\BaseController.cs",
+              "RelativeToolTip": "QLGV\\Controller\\BaseController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T03:38:35.257Z",
+              "EditorCaption": ""
             }
           ]
         }
