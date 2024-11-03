@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QLGV.Model
+namespace QLGV.Repository
 {
-    internal class ChucVu
+    internal class GiaoVienRepository: Repository
     {
-        public int Id { get; set; }
-        public string TenChucVu { get; set; }
     }
 }

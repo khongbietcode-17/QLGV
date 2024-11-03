@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace QLGV.Model
 {
-    internal class ChucVu
+    internal class ChuNhiem
     {
         public int Id { get; set; }
-        public string TenChucVu { get; set; }
+        public int GiaoVienId { get; set; }
+        public string TenLop { get; set; }
+        public string NamHoc { get; set; }
     }
 }
