@@ -1,6 +1,6 @@
-﻿namespace QLGV
+﻿namespace QLGV.View.GiaoVien
 {
-    partial class formGiaovien
+    partial class GiaoVienIndexForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,20 +34,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(217, 69);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(222, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(112, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Giáo viên";
             // 
-            // formGiaovien
+            // GiaoVienIndexForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(570, 440);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "formGiaovien";
+            this.Name = "GiaoVienIndexForm";
             this.Text = "formGiaovien";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLGV
+namespace QLGV.View.GiaoVien
 {
-    public partial class formGiaovien : Form
+    public partial class GiaoVienIndexForm : Form
     {
-        public formGiaovien()
+        public GiaoVienIndexForm()
         {
             InitializeComponent();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

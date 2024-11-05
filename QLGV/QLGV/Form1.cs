@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLGV.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,13 +13,16 @@ namespace QLGV
 {
     public partial class Form1 : Form
     {
-        formGiaovien giaovien;
+        Form giaovien;
         formLuong luong;
         formChucvu chucvu;
+        private GiaoVienController _giaoVienController;
 
         public Form1()
         {
             InitializeComponent();
+            _giaoVienController = new GiaoVienController();
+
         }
 
         bool menuExpand = true;
@@ -63,7 +67,7 @@ namespace QLGV
         {
             if (giaovien == null)
             {
-                giaovien = new formGiaovien();
+                giaovien = _giaoVienController.Index();
                 giaovien.FormClosed += Giaovien_FormClosed;
                 giaovien.MdiParent = this;
                 giaovien.Show();

@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\BaseController.cs" />
+    <Compile Include="Controller\GiaoVienController.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,12 +60,6 @@
     </Compile>
     <Compile Include="formChucvu.Designer.cs">
       <DependentUpon>formChucvu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="formGiaovien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="formGiaovien.Designer.cs">
-      <DependentUpon>formGiaovien.cs</DependentUpon>
     </Compile>
     <Compile Include="formLuong.cs">
       <SubType>Form</SubType>
@@ -83,14 +77,18 @@
     <Compile Include="Repository\Connection.cs" />
     <Compile Include="Repository\GiaoVienRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="View\GiaoVien\GiaoVienIndexForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GiaoVien\GiaoVienIndexForm.Designer.cs">
+      <DependentUpon>GiaoVienIndexForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formChucvu.resx">
       <DependentUpon>formChucvu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="formGiaovien.resx">
-      <DependentUpon>formGiaovien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formLuong.resx">
       <DependentUpon>formLuong.cs</DependentUpon>
@@ -105,6 +103,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\GiaoVien\GiaoVienIndexForm.resx">
+      <DependentUpon>GiaoVienIndexForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -121,12 +122,11 @@
   <ItemGroup>
     <None Include="Resources\menu.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repository\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="DBScript\create_db.sql" />
     <Content Include="DBScript\create_table.sql" />
+    <Content Include="DBScript\insert_data.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
