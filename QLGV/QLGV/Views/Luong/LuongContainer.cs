@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLGV
+namespace QLGV.Views.Luong
 {
-    public partial class formChucvu : Form
+    public partial class LuongContainer : Form
     {
-        public formChucvu()
+        public LuongContainer()
         {
             InitializeComponent();
         }

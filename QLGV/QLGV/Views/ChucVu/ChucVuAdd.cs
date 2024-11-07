@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLGV
+namespace QLGV.Views.ChucVu
 {
-    public partial class formGiaovien : Form
+    public partial class ChucVuAdd : Form
     {
-        public formGiaovien()
+        public ChucVuAdd()
         {
             InitializeComponent();
         }

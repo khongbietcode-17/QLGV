@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace QLGV.Model
+namespace QLGV.Factories
 {
-    internal class ChucVu
+    internal interface IFormFactory
     {
-        public int Id { get; set; }
-        public string TenChucVu { get; set; }
+        Form GetForm(string formName); 
     }
 }

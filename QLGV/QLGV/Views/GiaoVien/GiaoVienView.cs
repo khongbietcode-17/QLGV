@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLGV
+namespace QLGV.Views.GiaoVien
 {
-    public partial class formLuong : Form
+    public partial class GiaoVienView : Form
     {
-        public formLuong()
+        public GiaoVienView()
         {
             InitializeComponent();
         }

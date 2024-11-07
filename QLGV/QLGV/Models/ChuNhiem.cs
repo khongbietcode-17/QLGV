@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QLGV.Model
-{
+namespace QLGV.Models
+{ 
     internal class ChuNhiem
     {
         public int Id { get; set; }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QLGV.Model
+namespace QLGV.Models
 {
     internal class BoMon
     {
