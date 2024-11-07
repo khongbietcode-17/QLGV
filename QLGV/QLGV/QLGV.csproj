@@ -58,6 +58,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\IGiaoVienRepository.cs" />
+    <Compile Include="Repositories\InMemory\GiaoVienRepository.cs" />
     <Compile Include="Views\ChucVu\ChucVuAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,7 +92,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Connection.cs" />
-    <Compile Include="Repositories\GiaoVienRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Views\GiaoVien\GiaoVienAdd.cs">
       <SubType>Form</SubType>
@@ -117,6 +118,7 @@
       <DependentUpon>GiaoVienView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IDashboard.cs" />
+    <Compile Include="Views\IViewIndex.cs" />
     <Compile Include="Views\Luong\LuongContainer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,10 +155,14 @@
   <ItemGroup>
     <None Include="Resources\menu.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Repositories\SqlServer\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="DBScript\create_db.sql" />
     <Content Include="DBScript\create_table.sql" />
+    <Content Include="DBScript\insert_data.sql" />
     <None Include="Resources\money.png" />
     <None Include="Resources\users.png" />
   </ItemGroup>

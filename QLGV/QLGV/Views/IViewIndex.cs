@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QLGV.Repository
+namespace QLGV.Views
 {
-    internal class GiaoVienRepository: Repository
-    {
+    internal interface IViewIndex<T>
+    { 
+       void SetData(IEnumerable<T> listData);
     }
 }

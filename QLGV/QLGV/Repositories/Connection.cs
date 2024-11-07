@@ -10,7 +10,7 @@ namespace QLGV.Repository
 {
     internal class Connection
     {
-        private static string _connString;
+      private static string _connString;
       public static SqlConnection CreateConnection()
         {
             if(_connString == null)
