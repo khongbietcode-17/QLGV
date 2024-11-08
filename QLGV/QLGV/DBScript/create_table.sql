@@ -13,7 +13,7 @@ CREATE TABLE GiaoVien
   Ten nvarchar(20),
   GioiTinh tinyint,
   NgaySinh date,
-  DiaChi nvarchar,
+  DiaChi nvarchar(255),
   Email varchar(50),
   SoDienThoai varchar(12),
   BoMonId int FOREIGN KEY REFERENCES BoMon(Id),
