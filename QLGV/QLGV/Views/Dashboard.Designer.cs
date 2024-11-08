@@ -191,7 +191,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel menu;
         private System.Windows.Forms.Button giaovien;
-        private System.Windows.Forms.Button btnLuong;
         private System.Windows.Forms.Button chucvu;
         private System.Windows.Forms.Timer menuTransition;
         private System.Windows.Forms.Panel mainPanel;

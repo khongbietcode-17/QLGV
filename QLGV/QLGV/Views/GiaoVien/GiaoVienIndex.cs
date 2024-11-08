@@ -12,39 +12,16 @@ namespace QLGV.Views.GiaoVien
 {
     public partial class GiaoVienIndex : Form
     {
-        public GiaoVienIndex()
+        private IGiaoVienContainer _parentView;
+        public GiaoVienIndex(IGiaoVienContainer parentView)
         {
             InitializeComponent();
+            _parentView = parentView;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void GiaoVienIndex_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
+            _parentView.SetChildren(new GiaoVienAdd());
         }
     }
 }
