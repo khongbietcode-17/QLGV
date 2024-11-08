@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace QLGV.Views.GiaoVien
 {
-    public partial class GiaoVienContainer : Form
+    public partial class GiaoVienContainer : Form, IGiaoVienContainer
     {
         Form childrenView;
         public GiaoVienContainer()
         {
             InitializeComponent();
-            SetChildren(new GiaoVienIndex());
+            SetChildren(new GiaoVienIndex(this));
         }
 
         public void SetChildren(Form form)
@@ -30,7 +30,23 @@ namespace QLGV.Views.GiaoVien
             }
             childrenView = form;
             centerPanel.Controls.Add(childrenView);
+            ChangeLabel(nameof(childrenView));
             childrenView.Show();
+        }
+
+        public void ChangeLabel(string name)
+        {
+            string label;
+            switch(name)
+            {
+                case "GiaoVienIndex":
+                    label = "Danh sách";
+                    break;
+                case "GiaoVienAdd":
+                    label = "Thêm giáo viên";
+                    break;
+            }
+            // Change label nha ông
         }
     }
 }

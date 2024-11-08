@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace QLGV.Repository
+namespace QLGV.Views.GiaoVien
 {
-    internal class Repository
+    public interface IGiaoVienContainer
     {
+        void SetChildren(Form form);
     }
 }
