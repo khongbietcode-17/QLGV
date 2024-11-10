@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QLGV.Models
 {
-    internal class BangLuong
+    internal class BangLuongModel
     {
         public int GiaoVienId { get; set; }
         public decimal HeSoLuong { get; set; }
