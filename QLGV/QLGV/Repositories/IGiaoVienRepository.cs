@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace QLGV.Repositories
 {
-    internal interface IGiaoVienRepository
+    public interface IGiaoVienRepository
     {
-        IEnumerable<GiaoVien> Find();
+        IEnumerable<GiaoVienModel> Find();
     }
 }

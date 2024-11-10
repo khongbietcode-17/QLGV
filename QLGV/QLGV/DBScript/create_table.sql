@@ -2,13 +2,13 @@ use QLGV;
 
 CREATE TABLE BoMon 
 (
-  Id int IDENTITY(1,1) primary key,
+  BoMonId int IDENTITY(1,1) primary key,
   TenBoMon nvarchar(100),
 )
 
 CREATE TABLE GiaoVien 
 (
-  Id int IDENTITY(1,1) primary key,
+  GiaoVienId int IDENTITY(1,1) primary key,
   HoLot nvarchar(100),
   Ten nvarchar(20),
   GioiTinh tinyint,
@@ -16,19 +16,19 @@ CREATE TABLE GiaoVien
   DiaChi nvarchar(255),
   Email varchar(50),
   SoDienThoai varchar(12),
-  BoMonId int FOREIGN KEY REFERENCES BoMon(Id),
+  BoMonId int FOREIGN KEY REFERENCES BoMon(BoMonId),
 )
 
 CREATE TABLE ChucVu 
 (
-  Id int IDENTITY(1,1) primary key,
+  ChucVuId int IDENTITY(1,1) primary key,
   TenChucVu nvarchar(200)
 )
 
 CREATE TABLE GiaoVienChucVu
 (
-  GiaoVienId int FOREIGN KEY REFERENCES GiaoVien(Id),
-  ChucVuId int FOREIGN KEY REFERENCES ChucVu(Id),
+  GiaoVienId int FOREIGN KEY REFERENCES GiaoVien(GiaoVienId),
+  ChucVuId int FOREIGN KEY REFERENCES ChucVu(ChucVuId),
   PRIMARY KEY (GiaoVienId, ChucVuId)
 )
 
@@ -38,13 +38,13 @@ CREATE TABLE BangLuong
   HeSoLuong DECIMAL(3,2),
   HeSoPhuCap DECIMAL(3,2),
   Luong int,
-  CONSTRAINT FK_GiaoVienId FOREIGN KEY (GiaoVienId) REFERENCES GiaoVien(Id)
+  CONSTRAINT FK_GiaoVienId FOREIGN KEY (GiaoVienId) REFERENCES GiaoVien(GiaoVienId)
 )
 
 CREATE TABLE ChuNhiem
 (
-  Id int IDENTITY(1,1) primary key,
-  GiaoVienId int FOREIGN KEY REFERENCES GiaoVien(Id),
+  ChuNhiemId int IDENTITY(1,1) primary key,
+  GiaoVienId int FOREIGN KEY REFERENCES GiaoVien(GiaoVienId),
   TenLop varchar(5),
   NamHoc varchar(10)
 )

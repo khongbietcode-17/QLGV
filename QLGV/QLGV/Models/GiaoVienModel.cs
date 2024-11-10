@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 
 namespace QLGV.Models
 {
-    internal class GiaoVien
+    public class GiaoVienModel
     {
-        public int Id { get; set; }
+        public int GiaoVienId { get; set; }
         public string HoLot { get; set; }
         public string Ten { get; set; }
         public int GioiTinh { get; set; }
-        public string NgaySinh { get; set; }
+        public DateTime NgaySinh { get; set; }
         public string DiaChi { get; set; }
         public string Email { get; set; }
         public string SoDienThoai { get; set; }
         public int BoMonId { get; set; }
+        public BoMonModel BoMon { get; set; }
     }
 }
