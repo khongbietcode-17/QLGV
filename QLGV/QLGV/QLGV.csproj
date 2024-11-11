@@ -50,8 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\GiaoVienTableDto.cs" />
+    <Compile Include="Factories\RepositoryFactory.cs" />
     <Compile Include="Factories\DashBoardChildrenFactory.cs" />
-    <Compile Include="Factories\IFormFactory.cs" />
+    <Compile Include="Factories\IFactory.cs" />
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Presenters\DashBoardPresenter.cs" />
     <Compile Include="Presenters\GiaoVien\GiaoVienAddPresenter.cs" />
     <Compile Include="Presenters\GiaoVien\GiaoVienContainerPresenter.cs" />
@@ -62,9 +64,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\Creterias\GiaoVienCreterias.cs" />
+    <Compile Include="Repositories\Creterias\BaseFindCreterias.cs" />
+    <Compile Include="Repositories\Creterias\GiaoVienFindCreterias.cs" />
     <Compile Include="Repositories\IGiaoVienRepository.cs" />
     <Compile Include="Repositories\InMemory\GiaoVienRepository.cs" />
+    <Compile Include="Repositories\SqlServer\BaseRepository.cs" />
+    <Compile Include="Repositories\SqlServer\BoMonRepository.cs" />
+    <Compile Include="Repositories\SqlServer\ChucVuRepository.cs" />
     <Compile Include="Repositories\SqlServer\GiaoVienRepository.cs" />
     <Compile Include="Services\GiaoVienService.cs" />
     <Compile Include="Views\ChucVu\ChucVuAdd.cs">

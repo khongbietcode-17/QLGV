@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace QLGV.Repositories.Creterias
 {
-    internal class GiaoVienCreterias
+    internal class GiaoVienFindCreterias
     {
-        public static GiaoVienCreterias Empty => new GiaoVienCreterias() { };
+        public static GiaoVienFindCreterias Empty => new GiaoVienFindCreterias() { };
     }
 }

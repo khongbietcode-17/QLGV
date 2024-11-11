@@ -1,4 +1,6 @@
 ﻿using QLGV.Models;
+using QLGV.Repositories.Creterias;
+using QLGV.Repositories.SqlServer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,7 @@ namespace QLGV.Repositories
 {
     public interface IGiaoVienRepository
     {
-        IEnumerable<GiaoVienModel> Find();
+        IEnumerable<GiaoVienModel> Find(BaseFindCreterias creterias);
+        IEnumerable<GiaoVienModel> FindIncludeBoMon(BaseFindCreterias creterias);
     }
 }

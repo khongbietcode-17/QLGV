@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QLGV.Models
 {
-    public class BoMonModel
+    public class BoMonModel: BaseModel
     {
         public int BoMonId {  get; set; }
         public string TenBoMon { get; set; }

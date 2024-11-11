@@ -1,4 +1,5 @@
 ﻿using QLGV.Models;
+using QLGV.Repositories.Creterias;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace QLGV.Repositories.InMemory
 {
-    public class GiaoVienRepository : IGiaoVienRepository
+    public class GiaoVienRepository
     {
-        public IEnumerable<GiaoVienModel> Find()
+        public IEnumerable<GiaoVienModel> Find(BaseFindCreterias creterias)
         {
             List<GiaoVienModel> giaoViens = new List<GiaoVienModel>()
             {

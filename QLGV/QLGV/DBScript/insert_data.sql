@@ -101,3 +101,16 @@ VALUES (N'Phó Hiệu Trưởng');
 
 INSERT INTO ChucVu (TenChucVu)
 VALUES (N'Hiệu Trưởng');
+
+
+INSERT INTO GiaoVienChucVu(GiaoVienId, ChucVuId)
+VALUES (1,1)
+
+INSERT INTO GiaoVienChucVu(GiaoVienId, ChucVuId)
+VALUES (1,2)
+
+INSERT INTO GiaoVienChucVu(GiaoVienId, ChucVuId)
+VALUES (2,1)
+
+INSERT INTO GiaoVienChucVu(GiaoVienId, ChucVuId)
+VALUES (2,2)
