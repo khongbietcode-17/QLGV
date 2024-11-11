@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace QLGV.Factories
 {
-    public class DashBoardChildrenFactory: IFormFactory
+    public class DashBoardChildrenFactory: IFactory<Form>
     {
-        public Form GetForm(string formName)
+        public Form GetInstance(string formName)
         {
             switch (formName) 
             {

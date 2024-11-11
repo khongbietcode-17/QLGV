@@ -12,7 +12,7 @@ namespace QLGV.Presenters
     public class DashBoardPresenter
     {
         IDashboard _view;
-        IFormFactory _formFactory;
+        IFactory<Form> _formFactory;
         public DashBoardPresenter(IDashboard view) 
         {
             _view = view;
@@ -25,7 +25,7 @@ namespace QLGV.Presenters
             foreach(Button button in _view.getMenuControls())
             {
                 button.Click += (object o,EventArgs e) => {
-                    _view.SetChildren(_formFactory.GetForm(button.Name));
+                    _view.SetChildren(_formFactory.GetInstance(button.Name));
                 };
             }
         }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using QLGV.Repositories.Creterias;
 
 namespace QLGV.Services
 {
@@ -19,7 +20,7 @@ namespace QLGV.Services
 
         public IEnumerable<GiaoVienModel> GetAll()
         {
-            var giaoViens = _repository.Find();
+            var giaoViens = _repository.FindIncludeBoMon(BaseFindCreterias.Empty());
 
             return giaoViens;
         }

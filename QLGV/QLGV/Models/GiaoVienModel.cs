@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QLGV.Models
 {
-    public class GiaoVienModel
+    public class GiaoVienModel: BaseModel
     {
         public int GiaoVienId { get; set; }
         public string HoLot { get; set; }
@@ -19,5 +19,6 @@ namespace QLGV.Models
         public string SoDienThoai { get; set; }
         public int BoMonId { get; set; }
         public BoMonModel BoMon { get; set; }
+        public ICollection<ChucVuModel> ChucVu { get; set; }
     }
 }
