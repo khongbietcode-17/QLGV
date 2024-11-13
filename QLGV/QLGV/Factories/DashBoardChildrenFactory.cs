@@ -1,6 +1,8 @@
 ﻿using QLGV.Views.GiaoVien;
 using QLGV.Views.ChucVu;
 using QLGV.Views.Luong;
+using QLGV.Views.BoMon;
+using QLGV.Views.ChuNhiem;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
@@ -23,6 +25,10 @@ namespace QLGV.Factories
                     return new ChucVuContainer();
                 case "luong":
                     return new LuongContainer();
+                case "bomon":
+                    return new BoMonContainer();
+                case "chunhiem":
+                    return new ChuNhiemContainer();
                 default:
                     throw new ArgumentOutOfRangeException();
                     

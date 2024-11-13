@@ -73,6 +73,12 @@
     <Compile Include="Repositories\SqlServer\ChucVuRepository.cs" />
     <Compile Include="Repositories\SqlServer\GiaoVienRepository.cs" />
     <Compile Include="Services\GiaoVienService.cs" />
+    <Compile Include="Views\BoMon\BoMonContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BoMon\BoMonContainer.Designer.cs">
+      <DependentUpon>BoMonContainer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChucVu\ChucVuAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,12 @@
     </Compile>
     <Compile Include="Views\ChucVu\ChucVuIndex.Designer.cs">
       <DependentUpon>ChucVuIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChuNhiem\ChuNhiemContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ChuNhiem\ChuNhiemContainer.Designer.cs">
+      <DependentUpon>ChuNhiemContainer.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Dashboard.cs">
       <SubType>Form</SubType>

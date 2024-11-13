@@ -85,5 +85,11 @@ namespace QLGV.Views
             return menu.Controls.OfType<Button>();
         }
 
+        private void bomon_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

@@ -30,13 +30,13 @@ namespace QLGV.Views.GiaoVien
             }
             childrenView = form;
             centerPanel.Controls.Add(childrenView);
-            ChangeLabel(nameof(childrenView));
+            ChangeLabel(childrenView.GetType().Name);
             childrenView.Show();
         }
 
         public void ChangeLabel(string name)
         {
-            string label;
+            string label = "";
             switch(name)
             {
                 case "GiaoVienIndex":
@@ -45,8 +45,8 @@ namespace QLGV.Views.GiaoVien
                 case "GiaoVienAdd":
                     label = "Thêm giáo viên";
                     break;
-            }
-            // Change label nha ông
+            } 
+            label3.Text = label;
         }
     }
 }
