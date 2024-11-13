@@ -16,5 +16,11 @@ namespace QLGV.Views.GiaoVien
         {
             InitializeComponent();
         }
+
+
+        
+
+ 
+
     }
 }

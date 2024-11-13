@@ -149,6 +149,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\GiaoVien\GiaoVienAdd.resx">
+      <DependentUpon>GiaoVienAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\GiaoVien\GiaoVienContainer.resx">
       <DependentUpon>GiaoVienContainer.cs</DependentUpon>
     </EmbeddedResource>
