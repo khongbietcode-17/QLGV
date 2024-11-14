@@ -26,12 +26,18 @@ namespace QLGV.Services
                 ConvertAll((giaoVien) => GiaoVienTableDto.FromModel(giaoVien));
         }
 
-        public void AddOne(GiaoVienAddDto dto)
+        public GiaoVien
+
+        public bool AddOne(GiaoVienAddDto dto)
         {
             if(_addValidation.Validate(dto))
             {
                 _repository.Add(dto.ToModel());
+                return true;
+            } else {
+                return false;
             };
+            
         }
 
         public int DeleteOne(string modelId)

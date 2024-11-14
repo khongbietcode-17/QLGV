@@ -144,6 +144,12 @@
     <Compile Include="Views\GiaoVien\GiaoVienIndex.Designer.cs">
       <DependentUpon>GiaoVienIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\GiaoVien\GiaoVienEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\GiaoVien\GiaoVienEdit.Designer.cs">
+      <DependentUpon>GiaoVienEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\GiaoVien\GiaoVienView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     <EmbeddedResource Include="Views\GiaoVien\GiaoVienIndex.resx">
       <DependentUpon>GiaoVienIndex.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\GiaoVien\GiaoVienEdit.resx">
+      <DependentUpon>GiaoVienEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -195,6 +204,10 @@
     <Content Include="DBScript\create_db.sql" />
     <Content Include="DBScript\create_table.sql" />
     <Content Include="DBScript\insert_data.sql" />
+    <None Include="Resources\eye.png" />
+    <None Include="Resources\pencil.png" />
+    <None Include="Resources\trash.png" />
+    <None Include="Resources\plus.png" />
     <None Include="Resources\money.png" />
     <None Include="Resources\users.png" />
   </ItemGroup>
