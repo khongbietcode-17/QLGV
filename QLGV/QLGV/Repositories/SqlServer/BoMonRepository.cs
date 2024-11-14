@@ -1,14 +1,12 @@
 ﻿using QLGV.Models;
 using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace QLGV.Repositories.SqlServer
 {
-    internal class BoMonRepository: BaseRepository<BoMonModel>
+    internal class BoMonRepository: BaseRepository<BoMonModel>, IBoMonRepository
     {
         public override string[] ColumnList
         {
@@ -24,7 +22,17 @@ namespace QLGV.Repositories.SqlServer
             get => "BoMon";
         }
 
-        public override BoMonModel ReaderMapper(SqlDataReader reader, int offset)
+        public override string[] ColumnListAdd => new string[]
+        {
+            "TenBoMon",
+        };
+
+        public override void AddParameter(ref SqlCommand cmd, BoMonModel model)
+        {
+            cmd.Parameters.Add(new SqlParameter("@TenBoMon", SqlDbType.NVarChar)).Value = model.TenBoMon;
+        }
+
+        public override BaseModel ReaderMapper(SqlDataReader reader, int offset)
         {
             return new BoMonModel()
             {

@@ -9,6 +9,7 @@ namespace QLGV.Dtos
 {
     public class GiaoVienTableDto
     {
+        public string Id { get; set; }
         public string HoLot { get; set; }
         public string Ten { get; set; }
         public string GioiTinh { get; set; }
@@ -22,6 +23,7 @@ namespace QLGV.Dtos
         {
             return new GiaoVienTableDto()
             {
+                Id = model.GiaoVienId.ToString(),
                 HoLot = model.HoLot,
                 Ten = model.Ten,
                 GioiTinh = model.GioiTinh == 0 ? "" : model.GioiTinh == 1 ? "Nam": "Nữ",

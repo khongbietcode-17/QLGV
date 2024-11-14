@@ -11,9 +11,9 @@ namespace QLGV.Presenters
 {
     public class DashBoardPresenter
     {
-        IDashboard _view;
+        Dashboard _view;
         IFactory<Form> _formFactory;
-        public DashBoardPresenter(IDashboard view) 
+        public DashBoardPresenter(Dashboard view) 
         {
             _view = view;
             _formFactory = new DashBoardChildrenFactory();

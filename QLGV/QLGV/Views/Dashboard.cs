@@ -12,7 +12,7 @@ using QLGV.Views.GiaoVien;
 
 namespace QLGV.Views
 {
-    public partial class Dashboard : Form, IDashboard
+    public partial class Dashboard : Form
     {
         
         Form childrenView;
@@ -48,13 +48,12 @@ namespace QLGV.Views
                     menuExpand = false;
                     menuTransition.Stop();
 
-                    giaovien.Text = "";
-                    chucvu.Text = "";
-                    luong.Text = "";
+                    
                     giaovien.Width = menu.Width;
                     luong.Width = menu.Width;
                     chucvu.Width = menu.Width;
-
+                    bomon.Width = menu.Width;
+                    chunhiem.Width = menu.Width;                  
                 }
             } else { 
             menu.Width += 10;
@@ -65,9 +64,14 @@ namespace QLGV.Views
                 giaovien.Text = "  GIÁO VIÊN";
                 chucvu.Text = "  CHỨC VỤ";
                 luong.Text = "  LƯƠNG";
+                bomon.Text = "  BỘ MÔN";
+                chunhiem.Text = "  CHỦ NHIỆM";
+                label1.Text = "Digi Edu";
                 giaovien.Width = menu.Width;
                 luong.Width = menu.Width;
                 chucvu.Width = menu.Width;
+                bomon.Width = menu.Width;
+                chunhiem.Width = menu.Width;
 
                 }
             }
@@ -75,6 +79,12 @@ namespace QLGV.Views
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
+            giaovien.Text = "";
+            chucvu.Text = "";
+            luong.Text = "";
+            bomon.Text = "";
+            chunhiem.Text = "";
+            label1.Text = "";
             menuTransition.Start();
         }
        
@@ -84,12 +94,6 @@ namespace QLGV.Views
  
             return menu.Controls.OfType<Button>();
         }
-
-        private void bomon_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
     }
 }

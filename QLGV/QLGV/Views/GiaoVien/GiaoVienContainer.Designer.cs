@@ -89,6 +89,7 @@
             this.centerPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.centerPanel.Name = "centerPanel";
             this.centerPanel.Size = new System.Drawing.Size(879, 497);
+
             this.centerPanel.TabIndex = 2;
             // 
             // label3

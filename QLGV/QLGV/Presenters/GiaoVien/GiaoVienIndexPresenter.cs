@@ -7,27 +7,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using QLGV.Dtos;
+using System.Windows.Forms;
 
 namespace QLGV.Presenters.GiaoVien
 {
     public class GiaoVienIndexPresenter
     {
-        private readonly IGiaoVienIndex _view; 
+        private readonly GiaoVienIndex _view; 
         private readonly GiaoVienService _service;
 
-        public GiaoVienIndexPresenter(IGiaoVienIndex view)
+        public GiaoVienIndexPresenter(GiaoVienIndex view)
         {
             _view = view;
             _service = new GiaoVienService();
+            _view.OnDelete += OnDelete;
             InitData();
         }
 
         public void InitData()
         {
-            IEnumerable<GiaoVienModel> giaoViens = _service.GetAll();
-            _view.LoadData(giaoViens
-                .ToList().
-                ConvertAll((giaoVien) => GiaoVienTableDto.FromModel(giaoVien)));
+            List<GiaoVienTableDto> giaoViens = _service.GetAll();
+            _view.LoadData(giaoViens);
+        }
+
+        public void OnDelete(object sender, EventArgs e)
+        {
+            var rows = _view.getSelectedRow();
+            if (rows.Count == 1)
+            {
+                _service.DeleteOne(rows[0].Cells[0].Value.ToString());
+                _view.clearSelection();
+                InitData();
+            };
         }
     }
 }

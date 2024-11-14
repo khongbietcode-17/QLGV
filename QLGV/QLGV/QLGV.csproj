@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\GiaoVienAddDto.cs" />
     <Compile Include="Dtos\GiaoVienTableDto.cs" />
     <Compile Include="Factories\RepositoryFactory.cs" />
     <Compile Include="Factories\DashBoardChildrenFactory.cs" />
@@ -66,12 +67,17 @@
     </Compile>
     <Compile Include="Repositories\Creterias\BaseFindCreterias.cs" />
     <Compile Include="Repositories\Creterias\GiaoVienFindCreterias.cs" />
+    <Compile Include="Repositories\IBoMonRepository.cs" />
     <Compile Include="Repositories\IGiaoVienRepository.cs" />
     <Compile Include="Repositories\InMemory\GiaoVienRepository.cs" />
+    <Compile Include="Repositories\SqlServer\BangLuongRepository.cs" />
     <Compile Include="Repositories\SqlServer\BaseRepository.cs" />
     <Compile Include="Repositories\SqlServer\BoMonRepository.cs" />
     <Compile Include="Repositories\SqlServer\ChucVuRepository.cs" />
+    <Compile Include="Repositories\SqlServer\ChuNhiemRepository.cs" />
     <Compile Include="Repositories\SqlServer\GiaoVienRepository.cs" />
+    <Compile Include="Repositories\SqlServer\IRepository.cs" />
+    <Compile Include="Services\BoMonService.cs" />
     <Compile Include="Services\GiaoVienService.cs" />
     <Compile Include="Views\BoMon\BoMonContainer.cs">
       <SubType>Form</SubType>
@@ -79,6 +85,9 @@
     <Compile Include="Views\BoMon\BoMonContainer.Designer.cs">
       <DependentUpon>BoMonContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Validations\Common\EmailValidation.cs" />
+    <Compile Include="Validations\GiaoVienAddValidation.cs" />
+    <Compile Include="Validations\Common\PhoneNumberValidation.cs" />
     <Compile Include="Views\ChucVu\ChucVuAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,11 +150,6 @@
     <Compile Include="Views\GiaoVien\GiaoVienView.Designer.cs">
       <DependentUpon>GiaoVienView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\GiaoVien\IGiaoVienAdd.cs" />
-    <Compile Include="Views\GiaoVien\IGiaoVienContainer.cs" />
-    <Compile Include="Views\GiaoVien\IGiaoVienIndex.cs" />
-    <Compile Include="Views\GiaoVien\IGiaoVienView.cs" />
-    <Compile Include="Views\IDashboard.cs" />
     <Compile Include="Views\IViewIndex.cs" />
     <Compile Include="Views\Luong\LuongContainer.cs">
       <SubType>Form</SubType>

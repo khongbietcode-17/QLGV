@@ -35,7 +35,7 @@
             this.txtHolot = new System.Windows.Forms.TextBox();
             this.txtTen = new System.Windows.Forms.TextBox();
             this.txtDiachi = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioNu = new System.Windows.Forms.RadioButton();
             this.radioNam = new System.Windows.Forms.RadioButton();
@@ -44,7 +44,7 @@
             this.txtSdt = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxBoMon = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -106,12 +106,12 @@
             this.txtDiachi.Size = new System.Drawing.Size(140, 20);
             this.txtDiachi.TabIndex = 7;
             // 
-            // dateTimePicker1
+            // dateTimePickerNgaySinh
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(290, 17);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(140, 20);
-            this.dateTimePicker1.TabIndex = 8;
+            this.dateTimePickerNgaySinh.Location = new System.Drawing.Point(290, 17);
+            this.dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
+            this.dateTimePickerNgaySinh.Size = new System.Drawing.Size(140, 20);
+            this.dateTimePickerNgaySinh.TabIndex = 8;
             // 
             // groupBox1
             // 
@@ -127,6 +127,7 @@
             // radioNu
             // 
             this.radioNu.AutoSize = true;
+            this.radioNu.Checked = true;
             this.radioNu.Location = new System.Drawing.Point(108, 19);
             this.radioNu.Name = "radioNu";
             this.radioNu.Size = new System.Drawing.Size(39, 17);
@@ -142,7 +143,6 @@
             this.radioNam.Name = "radioNam";
             this.radioNam.Size = new System.Drawing.Size(47, 17);
             this.radioNam.TabIndex = 0;
-            this.radioNam.TabStop = true;
             this.radioNam.Text = "Nam";
             this.radioNam.UseVisualStyleBackColor = true;
             // 
@@ -187,13 +187,13 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "Bộ Môn :";
             // 
-            // comboBox1
+            // comboBoxBoMon
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(81, 122);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(120, 21);
-            this.comboBox1.TabIndex = 15;
+            this.comboBoxBoMon.FormattingEnabled = true;
+            this.comboBoxBoMon.Location = new System.Drawing.Point(81, 122);
+            this.comboBoxBoMon.Name = "comboBoxBoMon";
+            this.comboBoxBoMon.Size = new System.Drawing.Size(120, 21);
+            this.comboBoxBoMon.TabIndex = 15;
             // 
             // button1
             // 
@@ -210,14 +210,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(447, 191);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxBoMon);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtSdt);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimePickerNgaySinh);
             this.Controls.Add(this.txtDiachi);
             this.Controls.Add(this.txtTen);
             this.Controls.Add(this.txtHolot);
@@ -244,7 +244,7 @@
         private System.Windows.Forms.TextBox txtHolot;
         private System.Windows.Forms.TextBox txtTen;
         private System.Windows.Forms.TextBox txtDiachi;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerNgaySinh;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioNu;
         private System.Windows.Forms.RadioButton radioNam;
@@ -253,7 +253,7 @@
         private System.Windows.Forms.TextBox txtSdt;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxBoMon;
         private System.Windows.Forms.Button button1;
     }
 }

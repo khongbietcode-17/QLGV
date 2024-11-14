@@ -1,10 +1,7 @@
 ﻿using QLGV.Models;
-using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace QLGV.Repositories.SqlServer
 {
@@ -18,12 +15,22 @@ namespace QLGV.Repositories.SqlServer
         public override string[] ColumnList
         {
             get => new string[] {
-                "GiaoVienId",
+                "ChucVuId",
                 "TenChucVu"
             };
         }
 
-        public override ChucVuModel ReaderMapper(SqlDataReader reader, int offset)
+        public override string[] ColumnListAdd => new string[]
+        {
+            "TenChucVu"
+        };
+
+        public override void AddParameter(ref SqlCommand cmd, ChucVuModel model)
+        {
+            cmd.Parameters.Add(new SqlParameter("@TenChucVu", SqlDbType.NVarChar)).Value = model.TenChucVu;
+        }
+
+        public override BaseModel ReaderMapper(SqlDataReader reader, int offset)
         {
             return new ChucVuModel()
             {

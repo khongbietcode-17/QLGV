@@ -9,8 +9,21 @@ using System.Windows.Forms;
 
 namespace QLGV.Factories
 {
-    public class RepositoryFactory
+    public class RepositoryFactory: IFactory<IRepository>
     {
-        
+        public IRepository GetInstance(string modelName)
+        {
+            switch (modelName)
+            {
+                case "GiaoVienModel":
+                    return new GiaoVienRepository();
+                case "BoMonModel":
+                    return new BoMonRepository();
+                case "ChucVuModel":
+                    return new ChucVuRepository();
+                default:
+                    throw new NotImplementedException();
+            }
+        }
     }
 }
