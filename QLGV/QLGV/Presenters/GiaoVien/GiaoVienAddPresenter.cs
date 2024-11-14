@@ -14,11 +14,11 @@ namespace QLGV.Presenters.GiaoVien
 {
     public class GiaoVienAddPresenter
     {
-        private IGiaoVienAdd _child;
+        private GiaoVienAdd _child;
         private readonly GiaoVienService _service;
         private readonly BoMonService _bomonService;
       
-        public GiaoVienAddPresenter(IGiaoVienAdd child) 
+        public GiaoVienAddPresenter(GiaoVienAdd child) 
         {
             this._service = new GiaoVienService();
             this._bomonService = new BoMonService();

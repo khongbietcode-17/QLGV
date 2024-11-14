@@ -33,5 +33,11 @@ namespace QLGV.Services
                 _repository.Add(dto.ToModel());
             };
         }
+
+        public int DeleteOne(string modelId)
+        {
+            int id = int.Parse(modelId);
+            return _repository.Delete(id);
+        }
     }
 }

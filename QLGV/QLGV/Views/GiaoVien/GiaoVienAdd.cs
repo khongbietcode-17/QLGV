@@ -12,8 +12,8 @@ using System.Windows.Forms;
 
 namespace QLGV.Views.GiaoVien
 {
-    public partial class GiaoVienAdd : Form, IGiaoVienAdd
-    {
+    public partial class GiaoVienAdd : Form
+    { 
         public event EventHandler Add;
         public GiaoVienAdd()
         {

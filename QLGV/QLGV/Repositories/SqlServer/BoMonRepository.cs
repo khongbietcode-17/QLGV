@@ -22,6 +22,11 @@ namespace QLGV.Repositories.SqlServer
             get => "BoMon";
         }
 
+        public override string[] ColumnListAdd => new string[]
+        {
+            "TenBoMon",
+        };
+
         public override void AddParameter(ref SqlCommand cmd, BoMonModel model)
         {
             cmd.Parameters.Add(new SqlParameter("@TenBoMon", SqlDbType.NVarChar)).Value = model.TenBoMon;

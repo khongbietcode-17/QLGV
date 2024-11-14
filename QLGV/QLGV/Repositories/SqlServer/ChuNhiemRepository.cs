@@ -21,6 +21,13 @@ namespace QLGV.Repositories.SqlServer
             "NamHoc",
         };
 
+        public override string[] ColumnListAdd => new string[]
+        {
+            "GiaoVienId",
+            "TenLop",
+            "NamHoc",
+        };
+
         public override void AddParameter(ref SqlCommand cmd, ChuNhiemModel model)
         {
             cmd.Parameters.Add(new SqlParameter("@GiaoVienId", SqlDbType.Int)).Value = model.GiaoVienId;

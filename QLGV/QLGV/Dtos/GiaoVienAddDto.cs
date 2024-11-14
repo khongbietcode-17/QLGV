@@ -19,7 +19,7 @@ namespace QLGV.Dtos
         public string SoDienThoai { get; set; }
         public BoMonModel BoMon { get; set; }
 
-        public static GiaoVienAddDto FromView(IGiaoVienAdd view)
+        public static GiaoVienAddDto FromView(GiaoVienAdd view)
         {
             return new GiaoVienAddDto()
             {

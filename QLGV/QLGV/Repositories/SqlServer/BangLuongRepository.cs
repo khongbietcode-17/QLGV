@@ -23,7 +23,14 @@ namespace QLGV.Repositories.SqlServer
 
         public override string TableName => "BangLuong";
 
-        protected override bool IsAutoIncreasementKey => false;
+        public override string[] ColumnListAdd => new string[]
+        {
+            "GiaoVienId",
+            "HeSoLuong",
+            "HeSoPhuCap",
+            "Luong"
+        };
+
 
         public override void AddParameter(ref SqlCommand cmd, BangLuongModel model)
         {

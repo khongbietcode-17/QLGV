@@ -23,6 +23,18 @@ namespace QLGV.Repositories.SqlServer
             "BoMonId",
         };
 
+        public override string[] ColumnListAdd => new string[]
+        {
+            "HoLot",
+            "Ten",
+            "GioiTinh",
+            "NgaySinh",
+            "DiaChi",
+            "Email",
+            "SoDienThoai",
+            "BoMonId",
+        };
+
         public override BaseModel ReaderMapper(SqlDataReader reader, int offset)
         {
             return new GiaoVienModel()
@@ -43,7 +55,7 @@ namespace QLGV.Repositories.SqlServer
         {
             cmd.Parameters.Add(new SqlParameter("@HoLot", SqlDbType.NVarChar)).Value = model.HoLot;
             cmd.Parameters.Add(new SqlParameter("@Ten", SqlDbType.NVarChar)).Value = model.Ten;
-            cmd.Parameters.Add(new SqlParameter("@GioTinh", SqlDbType.TinyInt)).Value = model.GioiTinh;
+            cmd.Parameters.Add(new SqlParameter("@GioiTinh", SqlDbType.TinyInt)).Value = model.GioiTinh;
             cmd.Parameters.Add(new SqlParameter("@NgaySinh", SqlDbType.DateTime)).Value = model.NgaySinh;
             cmd.Parameters.Add(new SqlParameter("@DiaChi", SqlDbType.NVarChar)).Value = model.DiaChi;
             cmd.Parameters.Add(new SqlParameter("@Email", SqlDbType.NVarChar)).Value = model.Email;

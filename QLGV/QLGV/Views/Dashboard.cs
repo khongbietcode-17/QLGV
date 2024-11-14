@@ -12,7 +12,7 @@ using QLGV.Views.GiaoVien;
 
 namespace QLGV.Views
 {
-    public partial class Dashboard : Form, IDashboard
+    public partial class Dashboard : Form
     {
         
         Form childrenView;

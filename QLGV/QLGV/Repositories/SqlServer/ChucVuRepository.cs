@@ -20,6 +20,11 @@ namespace QLGV.Repositories.SqlServer
             };
         }
 
+        public override string[] ColumnListAdd => new string[]
+        {
+            "TenChucVu"
+        };
+
         public override void AddParameter(ref SqlCommand cmd, ChucVuModel model)
         {
             cmd.Parameters.Add(new SqlParameter("@TenChucVu", SqlDbType.NVarChar)).Value = model.TenChucVu;

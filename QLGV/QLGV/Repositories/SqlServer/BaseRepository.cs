@@ -15,8 +15,6 @@ namespace QLGV.Repositories.SqlServer
     public abstract class BaseRepository<T>: IRepository where T : BaseModel
     {
         private readonly IFactory<IRepository> _factory;
-
-        protected virtual bool IsAutoIncreasementKey => true;
         
         abstract public string TableName { get; }
 
@@ -26,6 +24,8 @@ namespace QLGV.Repositories.SqlServer
         }
         abstract public string[] ColumnList { get; }
 
+        abstract public string[] ColumnListAdd { get; }
+
         public string AllColumnString
         {
             get => string.Join(", ", ColumnList.Select(i => string.Format("{0}.{1}",TableName,i)));
@@ -33,23 +33,12 @@ namespace QLGV.Repositories.SqlServer
 
         public string ColumnAddString
         {
-            get
-            {
-                if (IsAutoIncreasementKey)
-                {
-                   return "(" + string.Join(", ", ColumnList.Select(i => i == PrimaryKey ? "" : string.Format("@{0}", i))) + ")";
-                } 
-                else
-                {
-                    return "(" + string.Join(", ", ColumnList.Select(i => string.Format("@{0}", i))) + ")";
-                } 
-
-            }
+            get => "(" + string.Join(", ", ColumnListAdd.Select(i => string.Format("@{0}", i))) + ")";           
         }
 
         public string ColumnUpdateString
         {
-            get => string.Join(", ", ColumnList.Select(i => i == PrimaryKey ? "" : string.Format("{0} = @{0}", i))) + " WHERE " + PrimaryKey + " =  @" + PrimaryKey;
+            get => string.Join(", ", ColumnListAdd.Select(i => string.Format("{0} = @{0}", i))) + " WHERE " + PrimaryKey + " =  @" + PrimaryKey;
         }
 
         public abstract BaseModel ReaderMapper(SqlDataReader reader, int offset);
@@ -175,9 +164,13 @@ namespace QLGV.Repositories.SqlServer
                     sql.Append(" VALUES ");
                     sql.Append(ColumnAddString);
                  
-                    cmd.CommandText = sql.ToString();   
+                    cmd.CommandText = sql.ToString();
+
+
                     
                     AddParameter(ref cmd, model);
+                    //Console.WriteLine(sql.ToString());
+
 
                     if (cmd.ExecuteNonQuery() > 0)
                     {
@@ -190,14 +183,16 @@ namespace QLGV.Repositories.SqlServer
                 };
 
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
                 MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!", "Error");
+                Console.WriteLine(e.ToString());
                 return null;
             }
             catch (Exception e)
             {
                 MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.ToString());
+                Console.WriteLine(e.ToString());
                 return null;
             }
         }

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace QLGV.Views.GiaoVien
 {
-    public partial class GiaoVienContainer : Form, IGiaoVienContainer
+    public partial class GiaoVienContainer : Form
     {
         Form childrenView;
         public GiaoVienContainer()
