@@ -85,33 +85,21 @@
             // centerPanel
             // 
             this.centerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-<<<<<<< Updated upstream
             this.centerPanel.Location = new System.Drawing.Point(0, 49);
             this.centerPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.centerPanel.Name = "centerPanel";
             this.centerPanel.Size = new System.Drawing.Size(879, 497);
-=======
-            this.centerPanel.Location = new System.Drawing.Point(0, 32);
-            this.centerPanel.Name = "centerPanel";
-            this.centerPanel.Size = new System.Drawing.Size(586, 323);
->>>>>>> Stashed changes
+
             this.centerPanel.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-<<<<<<< Updated upstream
             this.label3.Location = new System.Drawing.Point(127, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 20);
             this.label3.TabIndex = 3;
             this.label3.Text = "label3";
-=======
-            this.label3.Location = new System.Drawing.Point(90, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 13);
-            this.label3.TabIndex = 3;
->>>>>>> Stashed changes
             // 
             // GiaoVienContainer
             // 

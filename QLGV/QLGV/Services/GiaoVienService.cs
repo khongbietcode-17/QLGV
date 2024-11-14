@@ -30,7 +30,7 @@ namespace QLGV.Services
         {
             if(_addValidation.Validate(dto))
             {
-                //_repository.Add(dto.ToModel());
+                _repository.Add(dto.ToModel());
             };
         }
     }
