@@ -48,9 +48,7 @@ namespace QLGV.Views
                     menuExpand = false;
                     menuTransition.Stop();
 
-                    giaovien.Text = "";
-                    chucvu.Text = "";
-                    luong.Text = "";
+                    
                     giaovien.Width = menu.Width;
                     luong.Width = menu.Width;
                     chucvu.Width = menu.Width;
@@ -75,6 +73,9 @@ namespace QLGV.Views
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
+            giaovien.Text = "";
+            chucvu.Text = "";
+            luong.Text = "";
             menuTransition.Start();
         }
        

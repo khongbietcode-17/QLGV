@@ -75,10 +75,16 @@
             // 
             this.btnMenu.BackColor = System.Drawing.Color.SteelBlue;
             this.btnMenu.Image = global::QLGV.Properties.Resources.menu;
+<<<<<<< Updated upstream
             this.btnMenu.Location = new System.Drawing.Point(9, 8);
             this.btnMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnMenu.Name = "btnMenu";
             this.btnMenu.Size = new System.Drawing.Size(42, 43);
+=======
+            this.btnMenu.Location = new System.Drawing.Point(6, 5);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(28, 28);
+>>>>>>> Stashed changes
             this.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMenu.TabIndex = 1;
             this.btnMenu.TabStop = false;
@@ -86,7 +92,7 @@
             // 
             // menu
             // 
-            this.menu.BackColor = System.Drawing.Color.CadetBlue;
+            this.menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(46)))));
             this.menu.Controls.Add(this.giaovien);
             this.menu.Controls.Add(this.chucvu);
             this.menu.Controls.Add(this.luong);
@@ -102,8 +108,9 @@
             // 
             // giaovien
             // 
-            this.giaovien.BackColor = System.Drawing.Color.CadetBlue;
+            this.giaovien.BackColor = System.Drawing.Color.Transparent;
             this.giaovien.FlatAppearance.BorderSize = 0;
+            this.giaovien.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(140)))), ((int)(((byte)(247)))));
             this.giaovien.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.giaovien.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.giaovien.ForeColor = System.Drawing.Color.White;
@@ -123,7 +130,7 @@
             // 
             // chucvu
             // 
-            this.chucvu.BackColor = System.Drawing.Color.CadetBlue;
+            this.chucvu.BackColor = System.Drawing.Color.Transparent;
             this.chucvu.FlatAppearance.BorderSize = 0;
             this.chucvu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chucvu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -143,7 +150,7 @@
             // 
             // luong
             // 
-            this.luong.BackColor = System.Drawing.Color.CadetBlue;
+            this.luong.BackColor = System.Drawing.Color.Transparent;
             this.luong.FlatAppearance.BorderSize = 0;
             this.luong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.luong.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -161,6 +168,7 @@
             this.luong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.luong.UseVisualStyleBackColor = false;
             // 
+<<<<<<< Updated upstream
             // bomon
             // 
             this.bomon.BackColor = System.Drawing.Color.CadetBlue;
@@ -204,16 +212,26 @@
             // 
             // menuTransition
             // 
+=======
+            // menuTransition
+            // 
+>>>>>>> Stashed changes
             this.menuTransition.Interval = 10;
             this.menuTransition.Tick += new System.EventHandler(this.menuTransition_Tick);
             // 
             // mainPanel
             // 
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< Updated upstream
             this.mainPanel.Location = new System.Drawing.Point(255, 62);
             this.mainPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(855, 676);
+=======
+            this.mainPanel.Location = new System.Drawing.Point(170, 40);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(570, 440);
+>>>>>>> Stashed changes
             this.mainPanel.TabIndex = 3;
             // 
             // Dashboard

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QLGV.Models
 {
-    public class ChucVuModel
+    public class ChucVuModel: BaseModel
     {
         public int ChucVuId { get; set; }
         public string TenChucVu { get; set; }

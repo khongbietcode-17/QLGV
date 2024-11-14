@@ -13,5 +13,6 @@ namespace QLGV.Repositories
     {
         IEnumerable<GiaoVienModel> Find(BaseFindCreterias creterias);
         IEnumerable<GiaoVienModel> FindIncludeBoMon(BaseFindCreterias creterias);
+        GiaoVienModel Add(GiaoVienModel model);
     }
 }

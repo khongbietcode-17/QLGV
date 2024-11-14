@@ -24,10 +24,8 @@ namespace QLGV.Presenters.GiaoVien
 
         public void InitData()
         {
-            IEnumerable<GiaoVienModel> giaoViens = _service.GetAll();
-            _view.LoadData(giaoViens
-                .ToList().
-                ConvertAll((giaoVien) => GiaoVienTableDto.FromModel(giaoVien)));
+            List<GiaoVienTableDto> giaoViens = _service.GetAll();
+            _view.LoadData(giaoViens);
         }
     }
 }
