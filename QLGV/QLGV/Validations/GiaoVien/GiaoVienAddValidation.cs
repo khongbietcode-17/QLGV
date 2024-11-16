@@ -1,4 +1,4 @@
-﻿using QLGV.Dtos;
+﻿using QLGV.Dtos.GiaoVien;
 using QLGV.Views.GiaoVien;
 using System;
 using System.Collections.Generic;

@@ -15,5 +15,9 @@ namespace QLGV.Repositories
         IEnumerable<GiaoVienModel> FindIncludeBoMon(BaseFindCreterias creterias);
         GiaoVienModel Add(GiaoVienModel model);
         int Delete(int id);
+        int Update(GiaoVienModel model);
+
+        GiaoVienModel FindById(int id);
+        GiaoVienModel FindByIdIncludeOne<BoMonModel>(int id);
     }
 }

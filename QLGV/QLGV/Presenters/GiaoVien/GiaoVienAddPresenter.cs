@@ -1,6 +1,6 @@
 ﻿using QLGV.Views.GiaoVien;
 using QLGV.Models;
-using QLGV.Dtos;
+using QLGV.Dtos.GiaoVien;
 using QLGV.Validations;
 using System;
 using System.Collections.Generic;
@@ -14,22 +14,25 @@ namespace QLGV.Presenters.GiaoVien
 {
     public class GiaoVienAddPresenter
     {
-        private GiaoVienAdd _child;
+        private readonly GiaoVienAdd _view;
         private readonly GiaoVienService _service;
         private readonly BoMonService _bomonService;
       
-        public GiaoVienAddPresenter(GiaoVienAdd child) 
+        public GiaoVienAddPresenter(GiaoVienAdd view) 
         {
             this._service = new GiaoVienService();
             this._bomonService = new BoMonService();
-            this._child = child;
-            _child.SetDataSourceBoMon(GetBoMon());
-            _child.Add += AddGiaoVien;
+            this._view = view;
+            this._view.SetDataSourceBoMon(GetBoMon());
+            this._view.Add += AddGiaoVien;
         }
 
         public void AddGiaoVien(object o, EventArgs e)
         {
-            _service.AddOne(GiaoVienAddDto.FromView(_child));      
+            if(_service.AddOne(GiaoVienAddDto.FromView(_view)))
+            {
+                _view.ResetForm();
+            };   
         }
         public IEnumerable<BoMonModel> GetBoMon()
         {

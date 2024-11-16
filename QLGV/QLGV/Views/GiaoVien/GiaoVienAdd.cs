@@ -15,17 +15,47 @@ namespace QLGV.Views.GiaoVien
     public partial class GiaoVienAdd : Form
     { 
         public event EventHandler Add;
-        public GiaoVienAdd()
+        private GiaoVienContainer _parentView;
+        public GiaoVienAdd(GiaoVienContainer parentView)
         {
             InitializeComponent();
+            _parentView = parentView;
             new GiaoVienAddPresenter(this);
             RaiseEvents();
         }
 
         private void RaiseEvents()
         {
-            button1.Click += (o, e) => { Add?.Invoke(this, EventArgs.Empty); };
-            this.KeyDown += (o, e) =>
+            button1.Click += (o, e) => { Add?.Invoke(this, EventArgs.Empty);};
+            txtHolot.KeyDown += (o, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    txtTen.Focus();
+                }
+            };
+            txtTen.KeyDown += (o, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    txtDiachi.Focus();
+                }
+            };
+            txtDiachi.KeyDown += (o, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    txtEmail.Focus();
+                }
+            };
+            txtEmail.KeyDown += (o, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    txtSdt.Focus();
+                }
+            };
+            txtSdt.KeyDown += (o, e) =>
             {
                 if (e.KeyCode == Keys.Enter) 
                 {
@@ -37,9 +67,22 @@ namespace QLGV.Views.GiaoVien
 
         public void SetDataSourceBoMon(IEnumerable<BoMonModel> bomon)
         {
-            this.comboBoxBoMon.ValueMember = null;
+            comboBoxBoMon.ValueMember = null;
             comboBoxBoMon.DisplayMember = "TenBoMon";
             comboBoxBoMon.DataSource = bomon;
+        }
+
+        public void ResetForm()
+        {
+            txtHolot.Clear();
+            txtTen.Clear();
+            radioNam.Checked = false;
+            radioNu.Checked = true;
+            comboBoxBoMon.SelectedItem = null;
+            dateTimePickerNgaySinh.Value = DateTime.Now;
+            txtDiachi.Clear();
+            txtEmail.Clear();
+            txtSdt.Clear();
         }
 
         public string HoLot { get => txtHolot.Text; }
@@ -51,6 +94,11 @@ namespace QLGV.Views.GiaoVien
         public string DiaChi {  get => txtDiachi.Text; }
         public string Email { get => txtEmail.Text; }
         public string SoDienThoai { get => txtSdt.Text; }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _parentView.SetChildren(new GiaoVienIndex(_parentView));
+        }
     }
 
 }

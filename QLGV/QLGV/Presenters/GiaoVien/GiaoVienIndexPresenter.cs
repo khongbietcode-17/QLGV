@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using QLGV.Dtos;
+using QLGV.Dtos.GiaoVien;
 using System.Windows.Forms;
 
 namespace QLGV.Presenters.GiaoVien
@@ -32,7 +32,7 @@ namespace QLGV.Presenters.GiaoVien
 
         public void OnDelete(object sender, EventArgs e)
         {
-            var rows = _view.getSelectedRow();
+            var rows = _view.GetSelectedRow();
             if (rows.Count == 1)
             {
                 _service.DeleteOne(rows[0].Cells[0].Value.ToString());

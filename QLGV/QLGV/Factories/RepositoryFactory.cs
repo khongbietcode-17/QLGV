@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace QLGV.Factories
 {
-    public class RepositoryFactory: IFactory<IRepository>
+    public class RepositoryFactory: IFactory<ITable>
     {
-        public IRepository GetInstance(string modelName)
+        public ITable GetInstance(string modelName)
         {
             switch (modelName)
             {
