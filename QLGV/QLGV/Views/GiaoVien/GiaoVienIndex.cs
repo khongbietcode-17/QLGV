@@ -123,5 +123,6 @@ namespace QLGV.Views.GiaoVien
         {
             _parentView.SetChildren(new GiaoVienEdit(this, _parentView));
         }
+
     }
 }
