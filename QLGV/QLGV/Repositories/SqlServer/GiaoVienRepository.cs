@@ -53,6 +53,7 @@ namespace QLGV.Repositories.SqlServer
 
         public override void AddParameter(ref SqlCommand cmd, GiaoVienModel model)
         {
+            cmd.Parameters.Add(new SqlParameter("@GiaoVienId", SqlDbType.Int)).Value = model.GiaoVienId;
             cmd.Parameters.Add(new SqlParameter("@HoLot", SqlDbType.NVarChar)).Value = model.HoLot;
             cmd.Parameters.Add(new SqlParameter("@Ten", SqlDbType.NVarChar)).Value = model.Ten;
             cmd.Parameters.Add(new SqlParameter("@GioiTinh", SqlDbType.TinyInt)).Value = model.GioiTinh;

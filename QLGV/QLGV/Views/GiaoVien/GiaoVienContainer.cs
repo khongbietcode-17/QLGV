@@ -45,6 +45,9 @@ namespace QLGV.Views.GiaoVien
                 case "GiaoVienAdd":
                     label = "Thêm giáo viên";
                     break;
+                case "GiaoVienEdit":
+                    label = "Chỉnh sửa";
+                    break;
             } 
             label3.Text = label;
         }

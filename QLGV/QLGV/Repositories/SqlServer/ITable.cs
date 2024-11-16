@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace QLGV.Repositories.SqlServer
 {
-    public interface IRepository
+    public interface ITable
     {
         string TableName { get; }
 

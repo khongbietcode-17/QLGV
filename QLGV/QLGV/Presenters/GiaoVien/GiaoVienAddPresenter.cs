@@ -1,6 +1,6 @@
 ﻿using QLGV.Views.GiaoVien;
 using QLGV.Models;
-using QLGV.Dtos;
+using QLGV.Dtos.GiaoVien;
 using QLGV.Validations;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace QLGV.Presenters.GiaoVien
 {
     public class GiaoVienAddPresenter
     {
-        private GiaoVienAdd _view;
+        private readonly GiaoVienAdd _view;
         private readonly GiaoVienService _service;
         private readonly BoMonService _bomonService;
       

@@ -67,7 +67,7 @@ namespace QLGV.Views.GiaoVien
 
         public void SetDataSourceBoMon(IEnumerable<BoMonModel> bomon)
         {
-            this.comboBoxBoMon.ValueMember = null;
+            comboBoxBoMon.ValueMember = null;
             comboBoxBoMon.DisplayMember = "TenBoMon";
             comboBoxBoMon.DataSource = bomon;
         }

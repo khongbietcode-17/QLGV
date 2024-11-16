@@ -47,6 +47,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +59,7 @@
             this.button2.TabIndex = 34;
             this.button2.Text = "Trở về";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -67,6 +69,7 @@
             this.button1.TabIndex = 33;
             this.button1.Text = "Cập nhật";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // comboBoxBoMon
             // 
@@ -152,6 +155,8 @@
             // 
             // dateTimePickerNgaySinh
             // 
+            this.dateTimePickerNgaySinh.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePickerNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerNgaySinh.Location = new System.Drawing.Point(295, 24);
             this.dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
             this.dateTimePickerNgaySinh.Size = new System.Drawing.Size(140, 20);
@@ -214,11 +219,20 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Họ lót :";
             // 
-            // GiaoVienUpdate
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(313, 139);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(30, 20);
+            this.txtId.TabIndex = 35;
+            this.txtId.Visible = false;
+            // 
+            // GiaoVienEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(493, 246);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBoxBoMon);
@@ -237,7 +251,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "GiaoVienUpdate";
+            this.Name = "GiaoVienEdit";
             this.Text = "GiaoVienUpdate";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -267,5 +281,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtId;
     }
 }

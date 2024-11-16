@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace QLGV.Repositories.SqlServer
 {
-    public abstract class BaseRepository<T>: IRepository where T : BaseModel
+    public abstract class BaseRepository<T>: ITable where T : BaseModel
     {
-        private readonly IFactory<IRepository> _factory;
+        private readonly IFactory<ITable> _factory;
         
         abstract public string TableName { get; }
 
@@ -38,7 +38,7 @@ namespace QLGV.Repositories.SqlServer
 
         public string ColumnUpdateString
         {
-            get => string.Join(", ", ColumnListAdd.Select(i => string.Format("{0} = @{0}", i))) + " WHERE " + PrimaryKey + " =  @" + PrimaryKey;
+            get => string.Join(", ", ColumnListAdd.Select(i => string.Format("{0} = @{0}", i)));
         }
 
         public abstract BaseModel ReaderMapper(SqlDataReader reader, int offset);
@@ -150,6 +150,50 @@ namespace QLGV.Repositories.SqlServer
                 return null;
             }
         }
+        public T FindByIdIncludeOne<M>(int id)
+        {
+            ITable relationshipRepo = _factory.GetInstance(typeof(M).Name);
+            try
+            {
+
+                T model = null;
+                using (SqlConnection conn = Connection.CreateConnection())
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = conn.CreateCommand();
+                    StringBuilder sql = new StringBuilder("SELECT ");
+                    // select top
+                    sql.Append($"{AllColumnString}, {relationshipRepo.AllColumnString} FROM {TableName}");
+                    sql.Append($" LEFT JOIN {relationshipRepo.TableName} ON {this.TableName}.{relationshipRepo.PrimaryKey} = {relationshipRepo.TableName}.{relationshipRepo.PrimaryKey} WHERE {this.TableName}.{this.PrimaryKey} = {id}");
+
+
+                    cmd.CommandText = sql.ToString();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader != null && reader.Read())
+                        {
+                            
+                                model = (T)ReaderMapper(reader, 0);
+                                model.GetType().GetProperty(relationshipRepo.TableName).SetValue(model, relationshipRepo.ReaderMapper(reader, this.ColumnList.Length));                              
+                        }
+                    }
+                };
+                return model;
+
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!", "Error");
+                return null;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.ToString());
+                return null;
+            }
+        }
         public T Add(T model)
         {
             try
@@ -183,16 +227,14 @@ namespace QLGV.Repositories.SqlServer
                 };
 
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!", "Error");
-                Console.WriteLine(e.ToString());
                 return null;
             }
             catch (Exception e)
             {
                 MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.ToString());
-                Console.WriteLine(e.ToString());
                 return null;
             }
         }
@@ -206,12 +248,10 @@ namespace QLGV.Repositories.SqlServer
                     conn.Open();
 
                     SqlCommand cmd = conn.CreateCommand();
-                    StringBuilder sql = new StringBuilder("UPDATE ");
-                    sql.Append(TableName);
-                    sql.Append(" SET ");
-                    sql.Append(ColumnUpdateString);
+                   
+                    string sql = $"UPDATE {TableName} SET {ColumnUpdateString} WHERE {PrimaryKey} = @{PrimaryKey}"; 
 
-                    cmd.CommandText = sql.ToString();
+                    cmd.CommandText = sql;
 
                     AddParameter(ref cmd, model);
 
@@ -306,7 +346,7 @@ namespace QLGV.Repositories.SqlServer
 
         public IEnumerable<T> FindIncludeOne<M>(BaseFindCreterias creterias) where M : BaseModel
         {
-            IRepository relationshipRepo = _factory.GetInstance(typeof(M).Name);
+            ITable relationshipRepo = _factory.GetInstance(typeof(M).Name);
             List<T> listOfModel = new List<T>();
             try
             {
