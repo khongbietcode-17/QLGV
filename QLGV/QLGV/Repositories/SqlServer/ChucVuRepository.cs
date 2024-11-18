@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace QLGV.Repositories.SqlServer
 {
-    public class ChucVuRepository: BaseRepository<ChucVuModel>
+    public class ChucVuRepository: BaseRepository<ChucVuModel>, IChucVuRepository
     {
         public override string TableName
         {

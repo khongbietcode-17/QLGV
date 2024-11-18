@@ -3,6 +3,7 @@ using QLGV.Repositories.Creterias;
 using System.Data;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 
 namespace QLGV.Repositories.SqlServer
@@ -35,6 +36,8 @@ namespace QLGV.Repositories.SqlServer
             "BoMonId",
         };
 
+        public override string PivotTable => "PhanCong";
+
         public override BaseModel ReaderMapper(SqlDataReader reader, int offset)
         {
             return new GiaoVienModel()
@@ -64,12 +67,26 @@ namespace QLGV.Repositories.SqlServer
             cmd.Parameters.Add(new SqlParameter("@BoMonId", SqlDbType.Int)).Value = model.BoMonId;
         }
 
-        public IEnumerable<GiaoVienModel> FindIncludeBoMon(BaseFindCreterias creterias)
+        //public IEnumerable<GiaoVienModel> FindIncludeBoMon(BaseFindCreterias creterias)
+        //{
+        //    //var test = FindIncludeMany<ChucVuModel>(creterias, "GiaoVienChucVu");
+        //    return FindIncludeOne<BoMonModel>(creterias);
+        //}
+
+        //public IEnumerable<GiaoVienModel> FindIncludeChucVu(BaseFindCreterias creterias)
+        //{
+        //    return FindIncludeManyHavePivot<ChucVuModel>(creterias);
+        //}
+
+        public IEnumerable<GiaoVienModel> IncludeBoMon(IEnumerable<GiaoVienModel> giaoVien)
         {
-            //var test = FindIncludeMany<ChucVuModel>(creterias, "GiaoVienChucVu");
-            return FindIncludeOne<BoMonModel>(creterias);
+            return IncludeOne<BoMonModel>(giaoVien, giaoVien.Select(item => item.GiaoVienId).ToArray());
         }
 
-        
+        public IEnumerable<GiaoVienModel> IncludeChucVu(IEnumerable<GiaoVienModel> giaoVien)
+        {
+            return IncludeManyWithPivot<ChucVuModel>(giaoVien, giaoVien.Select(item => item.GiaoVienId).ToArray());
+        }
+
     }
 }

@@ -22,6 +22,12 @@ namespace QLGV.Repositories.SqlServer
         {
             get => TableName + "Id";
         }
+
+        public virtual string PivotTable
+        {
+            get => "";
+        }
+
         abstract public string[] ColumnList { get; }
 
         abstract public string[] ColumnListAdd { get; }
@@ -165,18 +171,19 @@ namespace QLGV.Repositories.SqlServer
                     StringBuilder sql = new StringBuilder("SELECT ");
                     // select top
                     sql.Append($"{AllColumnString}, {relationshipRepo.AllColumnString} FROM {TableName}");
-                    sql.Append($" LEFT JOIN {relationshipRepo.TableName} ON {this.TableName}.{relationshipRepo.PrimaryKey} = {relationshipRepo.TableName}.{relationshipRepo.PrimaryKey} WHERE {this.TableName}.{this.PrimaryKey} = {id}");
-
+                    sql.Append($" LEFT JOIN {relationshipRepo.TableName} ON {TableName}.{relationshipRepo.PrimaryKey} = {relationshipRepo.TableName}.{relationshipRepo.PrimaryKey} WHERE {TableName}.{PrimaryKey} = @{PrimaryKey}");
 
                     cmd.CommandText = sql.ToString();
+
+                    cmd.Parameters.Add(new SqlParameter("@" + PrimaryKey, System.Data.SqlDbType.Int)).Value = id;
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader != null && reader.Read())
                         {
-                            
-                                model = (T)ReaderMapper(reader, 0);
-                                model.GetType().GetProperty(relationshipRepo.TableName).SetValue(model, relationshipRepo.ReaderMapper(reader, this.ColumnList.Length));                              
+
+                            model = (T)ReaderMapper(reader, 0);
+                            model.GetType().GetProperty(relationshipRepo.TableName).SetValue(model, relationshipRepo.ReaderMapper(reader, this.ColumnList.Length));
                         }
                     }
                 };
@@ -193,6 +200,148 @@ namespace QLGV.Repositories.SqlServer
                 MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.ToString());
                 return null;
             }
+        }
+
+        public IEnumerable<T> IncludeOne<M>(IEnumerable<T> listOfModel, int[] ids) where M: BaseModel
+        {
+            string idsString = string.Join(", ", ids);
+
+            ITable relationshipRepo = _factory.GetInstance(typeof(M).Name);
+            List<M> list = new List<M>();
+            try
+            {
+                using (SqlConnection conn = Connection.CreateConnection())
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = conn.CreateCommand();
+
+                    string sql = $"SELECT {relationshipRepo.AllColumnString} FROM {relationshipRepo.TableName} JOIN {TableName} ON {relationshipRepo.TableName}.{relationshipRepo.PrimaryKey} = {TableName}.{relationshipRepo.PrimaryKey} WHERE  {TableName}.{PrimaryKey} IN ({idsString})";
+                    //Console.WriteLine(sql);
+                    cmd.CommandText = sql;
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader != null)
+                        {
+                            while (reader.Read())
+                            {
+
+                                M model = (M)relationshipRepo.ReaderMapper(reader, 0);
+                                list.Add(model);
+                            }
+                        }
+                    }
+                };
+                 
+                int i = 0;
+                foreach(T model in listOfModel)
+                {
+                    model.GetType().GetProperty(relationshipRepo.TableName).SetValue(model, list[i++]);                
+                }
+                return listOfModel;
+
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!", "Error");
+                return null;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.ToString());
+                return null;
+            }
+        }
+
+        public IEnumerable<T> IncludeManyWithPivot<M>(IEnumerable<T> listOfModel, int[] ids) where M: BaseModel
+        {
+            string idsString = string.Join(", ", ids);
+            ITable relationshipRepo = _factory.GetInstance(typeof(M).Name);
+            List<List<M>> list = new List<List<M>>();
+            try
+            {
+
+                using (SqlConnection conn = Connection.CreateConnection())
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = conn.CreateCommand();
+                   
+                    // select top
+
+                    string sql = $"SELECT {TableName}.{PrimaryKey}, {relationshipRepo.AllColumnString} FROM {PivotTable} " +
+                        $"JOIN {relationshipRepo.TableName} ON {relationshipRepo.TableName}.{relationshipRepo.PrimaryKey} = {PivotTable}.{relationshipRepo.PrimaryKey} " +
+                        $"RIGHT JOIN {TableName} ON {TableName}.{PrimaryKey} = {PivotTable}.{PrimaryKey} " +
+                        $"WHERE {TableName}.{PrimaryKey} IN ({idsString})";
+
+                    //Console.WriteLine(sql);
+                    cmd.CommandText = sql;
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader != null && reader.Read())
+                        {
+                            List<M> listRelation = new List<M>();
+                            int baseId = reader.GetInt32(0);
+                            if(!reader.IsDBNull(1))
+                            {
+                                listRelation.Add((M) relationshipRepo.ReaderMapper(reader, 1));
+                            }
+
+                            while (reader.Read())
+                            {
+                                int id = reader.GetInt32(0);
+
+                                if (reader.IsDBNull(1))
+                                {
+                                    list.Add(listRelation);
+                                    listRelation = new List<M>();
+                                    list.Add(new List<M>());
+                                    continue;
+                                }
+
+                                if (id != baseId)
+                                {
+                                    list.Add(listRelation);
+                                    baseId = id;
+                                    listRelation = new List<M>();
+                                    M model = (M) relationshipRepo.ReaderMapper(reader, 1);
+                                    listRelation.Add(model);
+                                }
+                                else
+                                {
+
+                                    M model = (M) relationshipRepo.ReaderMapper(reader, 1);
+                                    listRelation.Add(model);
+
+                                }
+                            }
+                            list.Add(listRelation);
+                        }
+                    }
+                };
+
+                int i = 0;
+                foreach (T model in listOfModel)
+                {
+                    model.GetType().GetProperty(relationshipRepo.TableName).SetValue(model, list[i++]);
+                }
+
+                return listOfModel;
+
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!", "Error");
+                return listOfModel;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.ToString());
+                return listOfModel;
+            }
+
         }
         public T Add(T model)
         {
@@ -309,98 +458,94 @@ namespace QLGV.Repositories.SqlServer
             }
         }
 
-        //public int Delete(int[] id)
-        //{
-        //    try
-        //    {
-        //        using (SqlConnection conn = Connection.CreateConnection())
-        //        {
-        //            conn.Open();
-
-        //            SqlCommand cmd = conn.CreateCommand();
-        //            StringBuilder sql = new StringBuilder("DELETE FROM ");
-        //            sql.Append(TableName);
-        //            sql.Append(" WHERE ");
-        //            sql.Append(PrimaryKey);
-        //            sql.Append(" IN ");
-        //            sql.Append("(" + string.Join(", ", id) + ")");
-
-        //            cmd.CommandText = sql.ToString();
-
-        //            return cmd.ExecuteNonQuery();
-
-        //        };
-
-        //    }
-        //    catch (SqlException)
-        //    {
-        //        MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!", "Error");
-        //        return 0;
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.ToString());
-        //        return 0;
-        //    }
-        //}
-
-        public IEnumerable<T> FindIncludeOne<M>(BaseFindCreterias creterias) where M : BaseModel
+        //WARNING: sql injection 
+        public int Delete(int[] id)
         {
-            ITable relationshipRepo = _factory.GetInstance(typeof(M).Name);
-            List<T> listOfModel = new List<T>();
             try
             {
-
                 using (SqlConnection conn = Connection.CreateConnection())
                 {
                     conn.Open();
 
                     SqlCommand cmd = conn.CreateCommand();
-                    StringBuilder sql = new StringBuilder("SELECT ");
-                    // select top
-                    sql.Append($"{AllColumnString}, {relationshipRepo.AllColumnString} FROM {TableName}");
-                    sql.Append($" LEFT JOIN {relationshipRepo.TableName} ON {this.TableName}.{relationshipRepo.PrimaryKey} = {relationshipRepo.TableName}.{relationshipRepo.PrimaryKey} WHERE (1=1)");
+                    string sql = $"DELETE FROM {TableName} WHERE {PrimaryKey} IN ({string.Join(",", id)})";
+                    Console.WriteLine(sql);
+                    cmd.CommandText = sql;
 
-                    if (creterias.Ids.Length != 0)
-                    {
-                        sql.Append($" AND {PrimaryKey} IN (");
-                        sql.Append(string.Join(", ", creterias.Ids.Select(id => $"'{id}'")));
-                        sql.Append(')');
-                    }
+                    return cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = sql.ToString();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader != null)
-                        {
-                            while (reader.Read())
-                            {
-                                T model = (T) ReaderMapper(reader, 0);
-                                model.GetType().GetProperty(relationshipRepo.TableName).SetValue(model, relationshipRepo.ReaderMapper(reader, this.ColumnList.Length));
-                                listOfModel.Add(model);
-                            }
-                        }
-                    }
                 };
-                return listOfModel;
 
             }
             catch (SqlException)
             {
                 MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!", "Error");
-                return listOfModel;
+                return 0;
             }
             catch (Exception e)
             {
                 MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.ToString());
-                return listOfModel;
+                return 0;
             }
         }
 
-        //public IEnumerable<T> FindIncludeMany<M>(BaseFindCreterias creterias, string pivotTable) where M : BaseModel
+        //public IEnumerable<T> FindIncludeOne<M>(BaseFindCreterias creterias) where M : BaseModel
         //{
-        //    IRepository relationshipRepo = _factory.GetInstance(typeof(M).Name);
+        //    ITable relationshipRepo = _factory.GetInstance(typeof(M).Name);
+        //    List<T> listOfModel = new List<T>();
+        //    try
+        //    {
+
+        //        using (SqlConnection conn = Connection.CreateConnection())
+        //        {
+        //            conn.Open();
+
+        //            SqlCommand cmd = conn.CreateCommand();
+        //            StringBuilder sql = new StringBuilder("SELECT ");
+        //            // select top
+        //            sql.Append($"{AllColumnString}, {relationshipRepo.AllColumnString} FROM {TableName}");
+        //            sql.Append($" LEFT JOIN {relationshipRepo.TableName} ON {this.TableName}.{relationshipRepo.PrimaryKey} = {relationshipRepo.TableName}.{relationshipRepo.PrimaryKey} WHERE (1=1)");
+
+        //            if (creterias.Ids.Length != 0)
+        //            {
+        //                sql.Append($" AND {PrimaryKey} IN (");
+        //                sql.Append(string.Join(", ", creterias.Ids.Select(id => $"'{id}'")));
+        //                sql.Append(')');
+        //            }
+
+        //            cmd.CommandText = sql.ToString();
+
+        //            using (SqlDataReader reader = cmd.ExecuteReader())
+        //            {
+        //                if (reader != null)
+        //                {
+        //                    while (reader.Read())
+        //                    {
+        //                        T model = (T) ReaderMapper(reader, 0);
+        //                        model.GetType().GetProperty(relationshipRepo.TableName).SetValue(model, relationshipRepo.ReaderMapper(reader, this.ColumnList.Length));
+        //                        listOfModel.Add(model);
+        //                    }
+        //                }
+        //            }
+        //        };
+        //        return listOfModel;
+
+        //    }
+        //    catch (SqlException)
+        //    {
+        //        MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!", "Error");
+        //        return listOfModel;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.ToString());
+        //        return listOfModel;
+        //    }
+        //}
+
+        //public IEnumerable<T> FindIncludeManyHavePivot<M>(BaseFindCreterias creterias) where M : BaseModel
+        //{
+        //    ITable relationshipRepo = _factory.GetInstance(typeof(M).Name);
         //    List<T> listOfModel = new List<T>();
         //    try
         //    {
@@ -420,9 +565,9 @@ namespace QLGV.Repositories.SqlServer
 
         //            sql.Append($" FROM {TableName}");
 
-        //            sql.Append($" LEFT JOIN {pivotTable} ON {pivotTable}.{this.PrimaryKey} = {this.TableName}.{this.PrimaryKey}");
+        //            sql.Append($" LEFT JOIN {PivotTable} ON {PivotTable}.{this.PrimaryKey} = {this.TableName}.{this.PrimaryKey}");
 
-        //            sql.Append($" LEFT JOIN {relationshipRepo.TableName} ON {pivotTable}.{relationshipRepo.PrimaryKey} = {relationshipRepo.TableName}.{relationshipRepo.PrimaryKey} WHERE(1 = 1)");
+        //            sql.Append($" LEFT JOIN {relationshipRepo.TableName} ON {PivotTable}.{relationshipRepo.PrimaryKey} = {relationshipRepo.TableName}.{relationshipRepo.PrimaryKey} WHERE(1 = 1)");
 
         //            if (creterias.Ids.Length != 0)
         //            {
@@ -437,22 +582,31 @@ namespace QLGV.Repositories.SqlServer
         //            using (SqlDataReader reader = cmd.ExecuteReader())
         //            {
         //                if (reader != null && reader.Read())
-        //                {
-        //                    int index = 0;
+        //                {                           
+        //                    List<M> listRelation = new List<M>();
         //                    T currentModel = (T) ReaderMapper(reader, 0);
-        //                    List<M> list = new List<M>();
+        //                    int index = reader.GetInt32(0);
+        //                    M model = (M) relationshipRepo.ReaderMapper(reader, this.ColumnList.Length);
+        //                    listRelation.Add(model);
+
         //                    while (reader.Read())
         //                    {
         //                        int id = reader.GetInt32(0);
-        //                        if(id != index)
+                                
+        //                        if (id != index)
         //                        {
-        //                            T model = (T) ReaderMapper(reader, 0);
-
-        //                            model.GetType().GetProperty(relationshipRepo.TableName).SetValue(model, relationshipRepo.ReaderMapper(reader, this.ColumnList.Length));
-        //                            listOfModel.Add(model);
+        //                            currentModel.GetType().GetProperty(relationshipRepo.TableName).SetValue(currentModel, listRelation);
+        //                            listRelation.Clear();
+        //                            listOfModel.Add(currentModel);
+        //                            currentModel = (T) ReaderMapper(reader, 0);
         //                            index = id;
-        //                        } esle {
-
+        //                        }
+        //                        else 
+        //                        {
+                                 
+        //                            M relationModel = (M) relationshipRepo.ReaderMapper(reader, this.ColumnList.Length);
+        //                            listRelation.Add(relationModel);
+                                    
         //                        }
         //                    }
         //                }

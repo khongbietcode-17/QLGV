@@ -19,6 +19,6 @@ namespace QLGV.Models
         public string SoDienThoai { get; set; }
         public int BoMonId { get; set; }
         public BoMonModel BoMon { get; set; }
-        public ICollection<ChucVuModel> ChucVu { get; set; }
+        public List<ChucVuModel> ChucVu { get; set; }
     }
 }

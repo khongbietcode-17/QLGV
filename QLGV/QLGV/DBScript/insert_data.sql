@@ -103,14 +103,32 @@ INSERT INTO ChucVu (TenChucVu)
 VALUES (N'Hiệu Trưởng');
 
 
-INSERT INTO GiaoVienChucVu(GiaoVienId, ChucVuId)
+INSERT INTO PhanCong(GiaoVienId, ChucVuId)
 VALUES (1,1)
 
-INSERT INTO GiaoVienChucVu(GiaoVienId, ChucVuId)
+INSERT INTO PhanCong(GiaoVienId, ChucVuId)
 VALUES (1,2)
 
-INSERT INTO GiaoVienChucVu(GiaoVienId, ChucVuId)
+INSERT INTO PhanCong(GiaoVienId, ChucVuId)
 VALUES (2,1)
 
-INSERT INTO GiaoVienChucVu(GiaoVienId, ChucVuId)
+INSERT INTO PhanCong(GiaoVienId, ChucVuId)
 VALUES (2,2)
+
+INSERT INTO PhanCong(GiaoVienId, ChucVuId)
+VALUES (3,4)
+
+INSERT INTO PhanCong(GiaoVienId, ChucVuId)
+VALUES (4,5)
+
+INSERT INTO PhanCong(GiaoVienId, ChucVuId)
+VALUES (4,6)
+
+INSERT INTO PhanCong(GiaoVienId, ChucVuId)
+VALUES (4,1)
+
+INSERT INTO PhanCong(GiaoVienId, ChucVuId)
+VALUES (5,1)
+
+INSERT INTO PhanCong(GiaoVienId, ChucVuId)
+VALUES (6,1)

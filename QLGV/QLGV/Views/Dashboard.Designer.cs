@@ -81,9 +81,9 @@
             this.menu.Controls.Add(this.panel1);
             this.menu.Controls.Add(this.giaovien);
             this.menu.Controls.Add(this.chucvu);
-            this.menu.Controls.Add(this.luong);
             this.menu.Controls.Add(this.bomon);
             this.menu.Controls.Add(this.chunhiem);
+            this.menu.Controls.Add(this.luong);
             this.menu.Dock = System.Windows.Forms.DockStyle.Left;
             this.menu.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.menu.Location = new System.Drawing.Point(0, 0);
@@ -166,7 +166,7 @@
             this.luong.ForeColor = System.Drawing.Color.White;
             this.luong.Image = global::QLGV.Properties.Resources.money;
             this.luong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.luong.Location = new System.Drawing.Point(0, 144);
+            this.luong.Location = new System.Drawing.Point(0, 238);
             this.luong.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.luong.Name = "luong";
             this.luong.Padding = new System.Windows.Forms.Padding(10, 2, 10, 2);
@@ -188,7 +188,7 @@
             this.bomon.ForeColor = System.Drawing.Color.White;
             this.bomon.Image = ((System.Drawing.Image)(resources.GetObject("bomon.Image")));
             this.bomon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bomon.Location = new System.Drawing.Point(0, 191);
+            this.bomon.Location = new System.Drawing.Point(0, 144);
             this.bomon.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.bomon.Name = "bomon";
             this.bomon.Padding = new System.Windows.Forms.Padding(10, 2, 10, 2);
@@ -210,7 +210,7 @@
             this.chunhiem.ForeColor = System.Drawing.Color.White;
             this.chunhiem.Image = ((System.Drawing.Image)(resources.GetObject("chunhiem.Image")));
             this.chunhiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.chunhiem.Location = new System.Drawing.Point(0, 238);
+            this.chunhiem.Location = new System.Drawing.Point(0, 191);
             this.chunhiem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.chunhiem.Name = "chunhiem";
             this.chunhiem.Padding = new System.Windows.Forms.Padding(10, 2, 10, 2);
@@ -256,7 +256,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
             this.Name = "Dashboard";
-            this.Text = "Form1";
+            this.Text = "DigiEdu";
             this.header.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).EndInit();
             this.menu.ResumeLayout(false);

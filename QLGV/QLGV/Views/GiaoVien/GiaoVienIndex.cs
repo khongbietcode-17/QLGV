@@ -38,7 +38,8 @@ namespace QLGV.Views.GiaoVien
                     giaoVien.DiaChi,
                     giaoVien.Email,
                     giaoVien.SoDienThoai,
-                    giaoVien.TenBoMon
+                    giaoVien.TenBoMon,
+                    giaoVien.ChucVu
                 );
             }
         }

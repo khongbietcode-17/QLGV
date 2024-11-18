@@ -1,5 +1,6 @@
 ﻿using QLGV.Dtos.ChucVu;
 using QLGV.Models;
+using QLGV.Repositories;
 using QLGV.Repositories.Creterias;
 using QLGV.Repositories.SqlServer;
 using System;
@@ -12,18 +13,16 @@ namespace QLGV.Services
 {
     public class ChucVuService
     {
-        private ChucVuRepository _repository;
+        private IChucVuRepository _repository;
 
         public ChucVuService()
         {
             _repository = new ChucVuRepository();
         }
 
-        public List<ChucVuTableDto> GetAll()
+        public IEnumerable<ChucVuModel> GetAll()
         {
-            IEnumerable<ChucVuModel> chucVuList = _repository.Find(BaseFindCreterias.Empty());
-            return chucVuList.ToList()
-                .ConvertAll(chuVu => ChucVuTableDto.FromModel(chuVu));
+            return _repository.Find(BaseFindCreterias.Empty());
         }
     }
 }

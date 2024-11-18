@@ -26,8 +26,8 @@ namespace QLGV.Presenters.GiaoVien
 
         public void InitData()
         {
-            List<GiaoVienTableDto> giaoViens = _service.GetAll();
-            _view.LoadData(giaoViens);
+            var giaoViens = _service.GetAll();
+            _view.LoadData(giaoViens.ToList().ConvertAll(item => GiaoVienTableDto.FromModel(item)));
         }
 
         public void OnDelete(object sender, EventArgs e)
@@ -38,7 +38,18 @@ namespace QLGV.Presenters.GiaoVien
                 _service.DeleteOne(rows[0].Cells[0].Value.ToString());
                 _view.clearSelection();
                 InitData();
-            };
+            } else if (rows.Count > 1) { }
+            {
+                int[] ids = new int[rows.Count];
+                for (int i = 0; i < rows.Count; i++)
+                {
+                    ids[i] = int.Parse(rows[i].Cells[0].Value.ToString());
+                }
+                _service.DeleteMany(ids);
+                _view.clearSelection();
+                InitData();
+            }
+            ;
         }
     }
 }
