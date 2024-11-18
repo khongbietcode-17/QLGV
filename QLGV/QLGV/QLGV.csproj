@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\BoMon\BoMonTableDto.cs" />
+    <Compile Include="Dtos\ChucVu\ChucVuTableDto.cs" />
     <Compile Include="Dtos\GiaoVien\GiaoVienAddDto.cs" />
     <Compile Include="Dtos\GiaoVien\GiaoVienTableDto.cs" />
     <Compile Include="Dtos\GiaoVien\GiaoVienUpdateDto.cs" />
@@ -56,6 +58,9 @@
     <Compile Include="Factories\DashBoardChildrenFactory.cs" />
     <Compile Include="Factories\IFactory.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\PhanCongModel.cs" />
+    <Compile Include="Presenters\BoMon\BoMonIndexPresenter.cs" />
+    <Compile Include="Presenters\ChucVu\ChucVuIndexPresenter.cs" />
     <Compile Include="Presenters\DashBoardPresenter.cs" />
     <Compile Include="Presenters\GiaoVien\GiaoVienAddPresenter.cs" />
     <Compile Include="Presenters\GiaoVien\GiaoVienContainerPresenter.cs" />
@@ -70,8 +75,10 @@
     <Compile Include="Repositories\Creterias\BaseFindCreterias.cs" />
     <Compile Include="Repositories\Creterias\GiaoVienFindCreterias.cs" />
     <Compile Include="Repositories\IBoMonRepository.cs" />
+    <Compile Include="Repositories\IChucVuRepository.cs" />
     <Compile Include="Repositories\IGiaoVienRepository.cs" />
     <Compile Include="Repositories\InMemory\GiaoVienRepository.cs" />
+    <Compile Include="Repositories\IPhanCongRepository.cs" />
     <Compile Include="Repositories\SqlServer\BangLuongRepository.cs" />
     <Compile Include="Repositories\SqlServer\BaseRepository.cs" />
     <Compile Include="Repositories\SqlServer\BoMonRepository.cs" />
@@ -79,7 +86,10 @@
     <Compile Include="Repositories\SqlServer\ChuNhiemRepository.cs" />
     <Compile Include="Repositories\SqlServer\GiaoVienRepository.cs" />
     <Compile Include="Repositories\SqlServer\ITable.cs" />
+    <Compile Include="Repositories\SqlServer\PhanCongRepository.cs" />
+    <Compile Include="Repositories\UnitOfWork\DeleteGiaoVienUnitOfWork.cs" />
     <Compile Include="Services\BoMonService.cs" />
+    <Compile Include="Services\ChucVuService.cs" />
     <Compile Include="Services\GiaoVienService.cs" />
     <Compile Include="Validations\GiaoVien\GiaoVienAddValidation.cs" />
     <Compile Include="Views\BoMon\BoMonAdd.cs">
@@ -133,6 +143,12 @@
     <Compile Include="Views\ChuNhiem\ChuNhiemContainer.Designer.cs">
       <DependentUpon>ChuNhiemContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ChuNhiem\ChuNhiemIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ChuNhiem\ChuNhiemIndex.Designer.cs">
+      <DependentUpon>ChuNhiemIndex.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,14 +193,38 @@
     <Compile Include="Views\GiaoVien\GiaoVienView.Designer.cs">
       <DependentUpon>GiaoVienView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Luong\LuongContainer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Luong\LuongContainer.Designer.cs">
       <DependentUpon>LuongContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Luong\LuongIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Luong\LuongIndex.Designer.cs">
+      <DependentUpon>LuongIndex.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\BoMon\BoMonContainer.resx">
       <DependentUpon>BoMonContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BoMon\BoMonIndex.resx">
+      <DependentUpon>BoMonIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ChucVu\ChucVuContainer.resx">
+      <DependentUpon>ChucVuContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ChucVu\ChucVuIndex.resx">
+      <DependentUpon>ChucVuIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ChuNhiem\ChuNhiemContainer.resx">
+      <DependentUpon>ChuNhiemContainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
@@ -203,6 +243,12 @@
     <EmbeddedResource Include="Views\GiaoVien\GiaoVienEdit.resx">
       <DependentUpon>GiaoVienEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\GiaoVien\GiaoVienIndex.resx">
+      <DependentUpon>GiaoVienIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Luong\LuongContainer.resx">
+      <DependentUpon>LuongContainer.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -219,9 +265,7 @@
   <ItemGroup>
     <None Include="Resources\menu.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\UnitOfWork\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="DBScript\create_db.sql" />
     <Content Include="DBScript\create_table.sql" />

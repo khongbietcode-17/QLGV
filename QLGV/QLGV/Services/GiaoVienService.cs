@@ -1,5 +1,6 @@
 ﻿using QLGV.Repositories;
 using QLGV.Repositories.SqlServer;
+using QLGV.Repositories.UnitOfWork;
 using System.Collections.Generic;
 using System.Linq;
 using QLGV.Repositories.Creterias;
@@ -12,6 +13,7 @@ namespace QLGV.Services
     public class GiaoVienService
     {
         private readonly IGiaoVienRepository _repository;
+        private readonly DeleteGiaoVienUnitOfWork _deleteUnitOfWork;
         private readonly GiaoVienAddValidation _addValidation;
         private readonly GiaoVienUpdateValidation _updateValidation;
         public GiaoVienService()
@@ -19,14 +21,15 @@ namespace QLGV.Services
             _repository = new GiaoVienRepository();
             _addValidation = new GiaoVienAddValidation();
             _updateValidation  = new GiaoVienUpdateValidation();
+            _deleteUnitOfWork = new DeleteGiaoVienUnitOfWork();
         }
 
-        public List<GiaoVienTableDto> GetAll()
+        public IEnumerable<GiaoVienModel> GetAll()
         {
-            var giaoViens = _repository.FindIncludeBoMon(BaseFindCreterias.Empty());
-
-            return giaoViens.ToList().
-                ConvertAll((giaoVien) => GiaoVienTableDto.FromModel(giaoVien));
+            IEnumerable<GiaoVienModel> giaoVien = _repository.Find(BaseFindCreterias.Empty());
+            _repository.IncludeBoMon(giaoVien);
+            _repository.IncludeChucVu(giaoVien);
+            return giaoVien;    
         }
 
         public GiaoVienModel GetOne(int id)
@@ -52,6 +55,11 @@ namespace QLGV.Services
         {
             int id = int.Parse(modelId);
             return _repository.Delete(id);
+        }
+
+        public int DeleteMany(int[] ids) 
+        {
+            return _deleteUnitOfWork.Delete(ids);
         }
 
         public bool UpdateOne(GiaoVienUpdateDto dto)

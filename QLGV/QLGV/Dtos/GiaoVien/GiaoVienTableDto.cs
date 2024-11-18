@@ -19,6 +19,8 @@ namespace QLGV.Dtos.GiaoVien
         public string SoDienThoai { get; set; }
         public string TenBoMon { get; set; }
 
+        public string ChucVu { get; set; }
+
         public static GiaoVienTableDto FromModel(GiaoVienModel model)
         {
             return new GiaoVienTableDto()
@@ -32,6 +34,7 @@ namespace QLGV.Dtos.GiaoVien
                 Email = model.Email,
                 SoDienThoai = model.SoDienThoai,
                 TenBoMon = model.BoMon != null ? model.BoMon.TenBoMon : "",
+                ChucVu = model.ChucVu != null ? string.Join(", ", model.ChucVu.ConvertAll(item => item.TenChucVu)) : ""
             };
         }
 

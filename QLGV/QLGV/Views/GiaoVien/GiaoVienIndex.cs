@@ -38,7 +38,8 @@ namespace QLGV.Views.GiaoVien
                     giaoVien.DiaChi,
                     giaoVien.Email,
                     giaoVien.SoDienThoai,
-                    giaoVien.TenBoMon
+                    giaoVien.TenBoMon,
+                    giaoVien.ChucVu
                 );
             }
         }
@@ -123,5 +124,6 @@ namespace QLGV.Views.GiaoVien
         {
             _parentView.SetChildren(new GiaoVienEdit(this, _parentView));
         }
+
     }
 }

@@ -25,7 +25,7 @@ CREATE TABLE ChucVu
   TenChucVu nvarchar(200)
 )
 
-CREATE TABLE GiaoVienChucVu
+CREATE TABLE PhanCong
 (
   GiaoVienId int FOREIGN KEY REFERENCES GiaoVien(GiaoVienId),
   ChucVuId int FOREIGN KEY REFERENCES ChucVu(ChucVuId),

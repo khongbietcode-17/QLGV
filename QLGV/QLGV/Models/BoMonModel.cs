@@ -9,6 +9,7 @@ namespace QLGV.Models
 {
     public class BoMonModel: BaseModel
     {
+    
         public int BoMonId {  get; set; }
         public string TenBoMon { get; set; }
         
