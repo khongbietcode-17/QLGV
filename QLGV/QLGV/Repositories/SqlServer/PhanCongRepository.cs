@@ -1,6 +1,7 @@
 ﻿using QLGV.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,8 @@ namespace QLGV.Repositories.SqlServer
 
         public override void AddParameter(ref SqlCommand cmd, PhanCongModel model)
         {
-            throw new NotImplementedException();
+            cmd.Parameters.Add(new SqlParameter("@GiaoVienId", SqlDbType.Int)).Value = model.GiaoVienId;
+            cmd.Parameters.Add(new SqlParameter("@ChucVuId", SqlDbType.Int)).Value = model.ChucVuId;
         }
 
         public override BaseModel ReaderMapper(SqlDataReader reader, int offset)

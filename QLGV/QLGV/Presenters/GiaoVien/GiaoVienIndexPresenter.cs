@@ -33,23 +33,14 @@ namespace QLGV.Presenters.GiaoVien
         public void OnDelete(object sender, EventArgs e)
         {
             var rows = _view.GetSelectedRow();
-            if (rows.Count == 1)
+            int[] ids = new int[rows.Count];
+            for (int i = 0; i < rows.Count; i++)
             {
-                _service.DeleteOne(rows[0].Cells[0].Value.ToString());
-                _view.clearSelection();
-                InitData();
-            } else if (rows.Count > 1) { }
-            {
-                int[] ids = new int[rows.Count];
-                for (int i = 0; i < rows.Count; i++)
-                {
-                    ids[i] = int.Parse(rows[i].Cells[0].Value.ToString());
-                }
-                _service.DeleteMany(ids);
-                _view.clearSelection();
-                InitData();
+                ids[i] = int.Parse(rows[i].Cells[0].Value.ToString());
             }
-            ;
+            _service.DeleteMany(ids);
+            _view.clearSelection();
+            InitData();          
         }
     }
 }

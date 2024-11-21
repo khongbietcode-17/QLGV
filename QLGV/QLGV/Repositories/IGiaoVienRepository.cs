@@ -12,8 +12,8 @@ namespace QLGV.Repositories
     public interface IGiaoVienRepository
     {
         IEnumerable<GiaoVienModel> Find(BaseFindCreterias creterias);
-        //IEnumerable<GiaoVienModel> FindIncludeBoMon(BaseFindCreterias creterias);
-        GiaoVienModel Add(GiaoVienModel model);
+        
+        int Add(GiaoVienModel model);
         int Delete(int id);
         int Delete(int[] id);
         int Update(GiaoVienModel model);
@@ -22,8 +22,7 @@ namespace QLGV.Repositories
         GiaoVienModel FindByIdIncludeOne<BoMonModel>(int id);
 
         IEnumerable<GiaoVienModel> IncludeBoMon(IEnumerable<GiaoVienModel> giaoVien);
+        GiaoVienModel IncludeBoMon(GiaoVienModel model);
         IEnumerable<GiaoVienModel> IncludeChucVu(IEnumerable<GiaoVienModel> giaoVien);
-
-        //IEnumerable<GiaoVienModel> FindIncludeChucVu(BaseFindCreterias creterias);
     }
 }

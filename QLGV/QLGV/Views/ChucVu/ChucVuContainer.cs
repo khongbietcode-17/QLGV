@@ -16,7 +16,7 @@ namespace QLGV.Views.ChucVu
         public ChucVuContainer()
         {
             InitializeComponent();
-            SetChildren(new ChucVuIndex());
+            SetChildren(new ChucVuIndex(this));
         }
 
         public void SetChildren(Form form)

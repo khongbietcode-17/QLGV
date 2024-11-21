@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QLGV.Presenters.GiaoVien
+namespace QLGV.Dtos.ChucVu
 {
-    internal class GiaoVienContainerPresenter
+    internal class ChucVuAdđto
     {
     }
 }

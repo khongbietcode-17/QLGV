@@ -1,4 +1,4 @@
-﻿namespace QLGV.Views.Luong
+﻿namespace QLGV.Views.BangLuong
 {
     partial class LuongContainer
     {

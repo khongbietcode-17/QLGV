@@ -13,7 +13,7 @@ using System.Windows.Forms;
 namespace QLGV.Views.GiaoVien
 {
     public partial class GiaoVienAdd : Form
-    { 
+    {
         public event EventHandler Add;
         private GiaoVienContainer _parentView;
         public GiaoVienAdd(GiaoVienContainer parentView)
@@ -21,12 +21,12 @@ namespace QLGV.Views.GiaoVien
             InitializeComponent();
             _parentView = parentView;
             new GiaoVienAddPresenter(this);
-            RaiseEvents();
+            InitEvents();
         }
 
-        private void RaiseEvents()
+        private void InitEvents()
         {
-            button1.Click += (o, e) => { Add?.Invoke(this, EventArgs.Empty);};
+            button1.Click += (o, e) => { Add?.Invoke(this, EventArgs.Empty); };
             txtHolot.KeyDown += (o, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
@@ -57,7 +57,7 @@ namespace QLGV.Views.GiaoVien
             };
             txtSdt.KeyDown += (o, e) =>
             {
-                if (e.KeyCode == Keys.Enter) 
+                if (e.KeyCode == Keys.Enter)
                 {
                     Add?.Invoke(this, EventArgs.Empty);
                     e.SuppressKeyPress = true;
@@ -70,6 +70,13 @@ namespace QLGV.Views.GiaoVien
             comboBoxBoMon.ValueMember = null;
             comboBoxBoMon.DisplayMember = "TenBoMon";
             comboBoxBoMon.DataSource = bomon;
+        }
+
+        public void SetDataSourceChucVu(IEnumerable<ChucVuModel> chucVu)
+        {
+            checkedListBox1.ValueMember = null;
+            checkedListBox1.DataSource = chucVu;
+            checkedListBox1.DisplayMember = "TenChucVu";
         }
 
         public void ResetForm()
@@ -89,11 +96,24 @@ namespace QLGV.Views.GiaoVien
         public string Ten { get => txtTen.Text; }
         public bool RadioNam { get => radioNam.Checked; }
         public bool RadioNu { get => radioNu.Checked; }
-        public BoMonModel BoMon { get => (BoMonModel) comboBoxBoMon.SelectedItem; }
-        public DateTime NgaySinh { get => dateTimePickerNgaySinh.Value; }       
-        public string DiaChi {  get => txtDiachi.Text; }
+        public BoMonModel BoMon { get => (BoMonModel)comboBoxBoMon.SelectedItem; }
+        public DateTime NgaySinh { get => dateTimePickerNgaySinh.Value; }
+        public string DiaChi { get => txtDiachi.Text; }
         public string Email { get => txtEmail.Text; }
         public string SoDienThoai { get => txtSdt.Text; }
+
+        public List<ChucVuModel> ChucVu  { 
+            get {
+                List<ChucVuModel> chucVu = new List<ChucVuModel>();
+
+                foreach(var item in checkedListBox1.CheckedItems)
+                {
+                        chucVu.Add((ChucVuModel)item);
+                }
+
+                return chucVu;
+            }
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {

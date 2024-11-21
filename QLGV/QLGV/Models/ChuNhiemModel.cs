@@ -12,5 +12,6 @@ namespace QLGV.Models
         public int GiaoVienId { get; set; }
         public string TenLop { get; set; }
         public string NamHoc { get; set; }
+        public GiaoVienModel GiaoVien { get; set; }
     }
 }

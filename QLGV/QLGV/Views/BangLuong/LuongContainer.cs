@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLGV.Views.Luong
+namespace QLGV.Views.BangLuong
 {
     public partial class LuongContainer : Form
     {

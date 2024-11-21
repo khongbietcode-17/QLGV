@@ -70,10 +70,10 @@ INSERT INTO GiaoVien (HoLot, Ten, GioiTinh, NgaySinh, DiaChi, Email, SoDienThoai
 VALUES (N'Phan', N'Nguyen Mai', 2, '1984-11-05', N'Hải Dương', 'phan.nguyenmai@outlook.com', '0982345678', 4);
 
 INSERT INTO GiaoVien (HoLot, Ten, GioiTinh, NgaySinh, DiaChi, Email, SoDienThoai, BoMonId) 
-VALUES (N'Hoang', N'Thi Thuy', 2, '1992-09-28', N'Lạng Sơn', 'hoang.thithuy@gmail.com', '0978765432', 5);
+VALUES (N'Hoang', N'Thi Thuy', 2, '1992-09-28', N'Lạng Sơn', 'hoang.thithuy@gmail.com', '0978765432', NULL);
 
 INSERT INTO GiaoVien (HoLot, Ten, GioiTinh, NgaySinh, DiaChi, Email, SoDienThoai, BoMonId) 
-VALUES (N'Truong', N'Khai An', 1, '1980-05-19', N'Hà Nội', 'truong.khaian@gmail.com', '0932233445', 3);
+VALUES (N'Truong', N'Khai An', 1, '1980-05-19', N'Hà Nội', 'truong.khaian@gmail.com', '0932233445', NULL);
 
 INSERT INTO GiaoVien (HoLot, Ten, GioiTinh, NgaySinh, DiaChi, Email, SoDienThoai, BoMonId) 
 VALUES (N'Vũ', N'Hồng Quang', 1, '1989-10-02', N'Hồ Chí Minh', 'vu.hongquang@gmail.com', '0909786543', 2);
@@ -132,3 +132,77 @@ VALUES (5,1)
 
 INSERT INTO PhanCong(GiaoVienId, ChucVuId)
 VALUES (6,1)
+
+
+
+INSERT INTO ChuNhiem(GiaoVienId, TenLop, NamHoc)
+VALUES (1,'12A1','2024-2025')
+
+INSERT INTO ChuNhiem(GiaoVienId, TenLop, NamHoc)
+VALUES (2,'12A2','2024-2025')
+
+INSERT INTO ChuNhiem(GiaoVienId, TenLop, NamHoc)
+VALUES (4,'12A3','2024-2025')
+
+INSERT INTO ChuNhiem(GiaoVienId, TenLop, NamHoc)
+VALUES (5,'12A4','2024-2025')
+
+INSERT INTO ChuNhiem(GiaoVienId, TenLop, NamHoc)
+VALUES (6,'12A5','2024-2025')
+
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (1, 4.4, 0, 10296000)
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (2, 4.4, 0, 10296000)
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (3, 4.4, 0, 10296000)
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (4, 4.4, 0, 10296000)
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (5, 4.4, 0, 10296000)
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (6, 4.4, 0, 10296000)
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (7, 4.4, 0, 10296000)
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (8, 4.4, 0, 10296000)
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (9, 4.4, 0, 10296000)
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (10, 4.4, 0, 10296000)
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (11, 4.4, 0, 10296000)
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (12, 4.4, 0, 10296000)
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (13, 4.4, 0, 10296000)
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (14, 4.4, 0, 10296000)
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (15, 4.4, 0, 10296000)
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (16, 4.4, 0, 10296000)
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (17, 4.4, 0, 10296000)
+
+INSERT INTO BangLuong(GiaoVienId, HeSoLuong, HeSoPhuCap, Luong)
+VALUES (18, 4.4, 0, 10296000)
+
+

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace QLGV.Repositories.SqlServer
 {
-    public class BangLuongRepository: BaseRepository<BangLuongModel>
+    public class BangLuongRepository: BaseRepository<BangLuongModel>, IBangLuongRepository
     {
         public override string[] ColumnList => new string[]
         {
@@ -40,6 +40,11 @@ namespace QLGV.Repositories.SqlServer
             cmd.Parameters.Add(new SqlParameter("@Luong", SqlDbType.Int)).Value = model.Luong;
         }
 
+        public IEnumerable<BangLuongModel> IncludeGiaoVien(IEnumerable<BangLuongModel> bangLuongs)
+        {
+            return IncludeOne<GiaoVienModel>(bangLuongs, bangLuongs.Select(item => item.GiaoVienId).ToArray());
+        }
+
         public override BaseModel ReaderMapper(SqlDataReader reader, int offset)
         {
             return new BangLuongModel()
@@ -50,5 +55,19 @@ namespace QLGV.Repositories.SqlServer
                 Luong = reader.GetInt32(offset)
             };
         }
+
+        public BangLuongModel AddEmpty(int id)
+        {
+            BangLuongModel model = new BangLuongModel
+            {
+                GiaoVienId = id,
+                HeSoLuong = 0,
+                HeSoPhuCap = 0,
+                Luong = 0
+            };
+            Add(model);
+            return model;
+        }
+
     }
 }
