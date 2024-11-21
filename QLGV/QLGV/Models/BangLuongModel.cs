@@ -12,5 +12,6 @@ namespace QLGV.Models
         public decimal HeSoLuong { get; set; }
         public decimal HeSoPhuCap { get; set; }
         public int Luong { get; set; }
+        public GiaoVienModel GiaoVien { get; set; } 
     }
 }

@@ -48,3 +48,11 @@ CREATE TABLE ChuNhiem
   TenLop varchar(5),
   NamHoc varchar(10)
 )
+
+CREATE TABLE LuongCoSo
+(
+  LuongCoSoId int IDENTITY(1,1) primary key,
+  LuongCoSo int,
+  UpdateAt datetime
+)
+

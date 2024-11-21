@@ -34,7 +34,9 @@ namespace QLGV.Services
 
         public GiaoVienModel GetOne(int id)
         {
-            return _repository.FindByIdIncludeOne<BoMonModel>(id);
+            GiaoVienModel model = _repository.FindById(id);
+            _repository.IncludeBoMon(model);
+            return model;
         }
 
         public bool AddOne(GiaoVienAddDto dto)

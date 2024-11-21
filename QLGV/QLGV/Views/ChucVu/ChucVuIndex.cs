@@ -35,7 +35,8 @@ namespace QLGV.Views.ChucVu
                 );
             }
         }
-        public void clearSelection()
+
+        public void ClearSelection()
         {
             dataGridView1.ClearSelection();
         }
@@ -97,5 +98,6 @@ namespace QLGV.Views.ChucVu
                 DisableDeleteBtn();
             }
         }
+
     }
 }

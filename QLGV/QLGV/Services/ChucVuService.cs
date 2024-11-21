@@ -13,7 +13,7 @@ namespace QLGV.Services
 {
     public class ChucVuService
     {
-        private IChucVuRepository _repository;
+        private readonly IChucVuRepository _repository;
 
         public ChucVuService()
         {

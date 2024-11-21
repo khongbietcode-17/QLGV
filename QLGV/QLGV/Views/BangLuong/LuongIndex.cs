@@ -1,35 +1,40 @@
-﻿using QLGV.Dtos.ChuNhiem;
-using QLGV.Presenters.ChuNhiem;
-using QLGV.Views.GiaoVien;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using QLGV.Dtos.Luong;
+using QLGV.Models;
+using QLGV.Presenters.Luong;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLGV.Views.ChuNhiem
+namespace QLGV.Views.BangLuong
 {
-    public partial class ChuNhiemIndex : Form
+    public partial class LuongIndex : Form
     {
-        
-        public ChuNhiemIndex()
+        public LuongIndex()
         {
             InitializeComponent();
-            new ChuNhiemIndexPresenter(this);
+            new LuongIndexPresenter(this); 
             DisableEditBtn();
             DisableViewBtn();
             DisableDeleteBtn();
         }
 
-        public void LoadData(IEnumerable<ChuNhiemTableDto> chuNhiems)
+        public void LoadData(IEnumerable<LuongTableDto> bangLuong)
         {
             dataGridView1.Rows.Clear();
-            foreach (ChuNhiemTableDto chuNhiem in chuNhiems)
+            foreach (LuongTableDto luong in bangLuong)
             {
                 dataGridView1.Rows.Add(
-                    chuNhiem.Id,
-                    chuNhiem.TenGiaoVien,
-                    chuNhiem.TenLop,
-                    chuNhiem.NamHoc
+                    luong.Id,
+                    luong.TenGiaoVien,
+                    luong.HeSoLuong,
+                    luong.HeSoPhuCap,
+                    luong.Luong
                 );
             }
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QLGV.Presenters.GiaoVien
 {
-    internal class GiaoVienContainerPresenter
+    public class GiaoVienContainerPresenter
     {
     }
 }

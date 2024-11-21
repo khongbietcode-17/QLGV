@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace QLGV.Repositories.SqlServer
 {
-    public class BangLuongRepository: BaseRepository<BangLuongModel>
+    public class BangLuongRepository: BaseRepository<BangLuongModel>, IBangLuongRepository
     {
         public override string[] ColumnList => new string[]
         {
@@ -38,6 +38,11 @@ namespace QLGV.Repositories.SqlServer
             cmd.Parameters.Add(new SqlParameter("@HeSoLuong", SqlDbType.Float)).Value = model.HeSoLuong;
             cmd.Parameters.Add(new SqlParameter("@HeSoPhuCap", SqlDbType.Float)).Value = model.HeSoPhuCap;
             cmd.Parameters.Add(new SqlParameter("@Luong", SqlDbType.Int)).Value = model.Luong;
+        }
+
+        public IEnumerable<BangLuongModel> IncludeGiaoVien(IEnumerable<BangLuongModel> bangLuongs)
+        {
+            return IncludeOne<GiaoVienModel>(bangLuongs, bangLuongs.Select(item => item.GiaoVienId).ToArray());
         }
 
         public override BaseModel ReaderMapper(SqlDataReader reader, int offset)

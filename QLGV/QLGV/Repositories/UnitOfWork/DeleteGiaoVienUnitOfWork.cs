@@ -1,17 +1,12 @@
 ﻿using QLGV.Repositories.SqlServer;
-using System;
-using System.Collections.Generic;
-using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace QLGV.Repositories.UnitOfWork
 {
     public class DeleteGiaoVienUnitOfWork
     {
-        private IPhanCongRepository _phanCongRepository;
-        private IGiaoVienRepository _giaoVienRepository;
+        private readonly IPhanCongRepository _phanCongRepository;
+        private readonly IGiaoVienRepository _giaoVienRepository;
         public DeleteGiaoVienUnitOfWork() 
         {
             _phanCongRepository = new PhanCongRepository();
