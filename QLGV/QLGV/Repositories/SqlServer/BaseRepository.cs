@@ -387,7 +387,7 @@ namespace QLGV.Repositories.SqlServer
                         $"RIGHT JOIN {TableName} ON {TableName}.{PrimaryKey} = {PivotTable}.{PrimaryKey} " +
                         $"WHERE {TableName}.{PrimaryKey} IN ({idsString})";
 
-                    Console.WriteLine(sql);
+                    //Console.WriteLine(sql);
                     cmd.CommandText = sql;
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -395,44 +395,43 @@ namespace QLGV.Repositories.SqlServer
                         if (reader != null && reader.Read())
                         {
                             List<M> listRelation = new List<M>();
-                            int baseId = reader.GetInt32(0);
+                            int previousId = reader.GetInt32(0);
                             if(!reader.IsDBNull(1))
                             {
-                                listRelation.Add((M) relationshipRepo.ReaderMapper(reader, 1));
+                                M model = (M)relationshipRepo.ReaderMapper(reader, 1);
+                                listRelation.Add(model);
                             }
-
                             while (reader.Read())
                             {
                                 int id = reader.GetInt32(0);
 
-                                if (reader.IsDBNull(1))
+                                if(reader.IsDBNull(1))
                                 {
                                     list.Add(listRelation);
                                     listRelation = new List<M>();
-                                    list.Add(new List<M>());
+                                    previousId = id;
                                     continue;
                                 }
-
-                                if (id != baseId)
+                                if (id != previousId)
                                 {
                                     list.Add(listRelation);
-                                    baseId = id;
                                     listRelation = new List<M>();
-                                    M model = (M) relationshipRepo.ReaderMapper(reader, 1);
+                                    M model = (M)relationshipRepo.ReaderMapper(reader, 1);
                                     listRelation.Add(model);
+                                    previousId = id;
                                 }
                                 else
                                 {
-
-                                    M model = (M) relationshipRepo.ReaderMapper(reader, 1);
+                                    M model = (M)relationshipRepo.ReaderMapper(reader, 1);
                                     listRelation.Add(model);
-
                                 }
                             }
                             list.Add(listRelation);
                         }
                     }
                 };
+
+                //Console.WriteLine(list.Count());
 
                 int i = 0;
                 foreach (T model in listOfModel)

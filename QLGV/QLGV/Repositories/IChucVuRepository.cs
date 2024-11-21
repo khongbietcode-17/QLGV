@@ -11,5 +11,7 @@ namespace QLGV.Repositories
     public interface IChucVuRepository
     {
         IEnumerable<ChucVuModel> Find(BaseFindCreterias creterias);
+
+        int Add(ChucVuModel model);
     }
 }

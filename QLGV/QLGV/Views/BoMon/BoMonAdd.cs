@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLGV.Presenters.BoMon;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,39 @@ namespace QLGV.Views.BoMon
 {
     public partial class BoMonAdd : Form
     {
-        public BoMonAdd()
+        public event EventHandler Add;
+        private readonly BoMonContainer _parentView;
+        public string TenBoMon { get => txtTenBoMon.Text; }
+        public BoMonAdd(BoMonContainer parentView)
         {
             InitializeComponent();
+            _parentView = parentView;
+            new BoMonAddPresenter(this);
+            InitEvents();
+        }
+
+        private void InitEvents()
+        {
+            btnAdd.Click += (o, e) => { Add?.Invoke(this, EventArgs.Empty); };            
+            txtTenBoMon.KeyDown += (o, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    Add?.Invoke(this, EventArgs.Empty);
+                }
+            };
+        }
+
+       
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            _parentView.SetChildren(new BoMonIndex(_parentView));
+        }
+
+        public void ResetForm()
+        {
+            txtTenBoMon.Clear();
         }
     }
 }

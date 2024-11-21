@@ -131,6 +131,7 @@
             this.btnAdd.Size = new System.Drawing.Size(31, 30);
             this.btnAdd.TabIndex = 9;
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dataGridView1
             // 

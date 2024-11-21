@@ -11,5 +11,7 @@ namespace QLGV.Repositories
     public interface IBoMonRepository
     {
         IEnumerable<BoMonModel> Find(BaseFindCreterias creterias);
+
+        int Add(BoMonModel model);
     }
 }

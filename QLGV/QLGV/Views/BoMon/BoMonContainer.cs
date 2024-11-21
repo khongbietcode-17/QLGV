@@ -17,7 +17,7 @@ namespace QLGV.Views.BoMon
         public BoMonContainer()
         {
             InitializeComponent();
-            SetChildren(new BoMonIndex());
+            SetChildren(new BoMonIndex(this));
         }
         
 

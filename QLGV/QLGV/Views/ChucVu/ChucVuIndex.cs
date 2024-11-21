@@ -15,13 +15,15 @@ namespace QLGV.Views.ChucVu
 {
     public partial class ChucVuIndex : Form
     {
-        public ChucVuIndex()
+        private ChucVuContainer _parentView;
+        public ChucVuIndex(ChucVuContainer parentView)
         {
             InitializeComponent();
             new ChucVuIndexPresenter(this);
             DisableDeleteBtn();
             DisableEditBtn();
             DisableViewBtn();
+            _parentView = parentView;
         }
 
         public void LoadData(IEnumerable<ChucVuTableDto> chucVuList)
@@ -99,5 +101,9 @@ namespace QLGV.Views.ChucVu
             }
         }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            _parentView.SetChildren(new ChucVuAdd(_parentView));
+        }
     }
 }

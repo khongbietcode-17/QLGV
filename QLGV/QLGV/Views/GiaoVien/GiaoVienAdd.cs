@@ -21,10 +21,10 @@ namespace QLGV.Views.GiaoVien
             InitializeComponent();
             _parentView = parentView;
             new GiaoVienAddPresenter(this);
-            RaiseEvents();
+            InitEvents();
         }
 
-        private void RaiseEvents()
+        private void InitEvents()
         {
             button1.Click += (o, e) => { Add?.Invoke(this, EventArgs.Empty); };
             txtHolot.KeyDown += (o, e) =>

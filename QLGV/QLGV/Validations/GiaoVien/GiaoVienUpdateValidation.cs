@@ -1,4 +1,5 @@
 ﻿using QLGV.Dtos.GiaoVien;
+using QLGV.Validations.Common;
 using QLGV.Views.GiaoVien;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Windows.Forms;
 
 namespace QLGV.Validations
 {
-    public class GiaoVienUpdateValidation
+    public class GiaoVienUpdateValidation: BaseValidation
     {
         public bool Validate(GiaoVienUpdateDto dto)
         {
@@ -43,12 +44,6 @@ namespace QLGV.Validations
             }
 
             return true;
-        }
-
-        private bool HandleError(string message)
-        {
-            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return false;
         }
     }
 }

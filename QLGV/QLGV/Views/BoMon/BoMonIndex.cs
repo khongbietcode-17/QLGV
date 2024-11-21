@@ -15,9 +15,11 @@ namespace QLGV.Views.BoMon
 {
     public partial class BoMonIndex : Form
     {
-        public BoMonIndex()
+        private readonly BoMonContainer _parentView;
+        public BoMonIndex(BoMonContainer parentView)
         {
             InitializeComponent();
+            _parentView = parentView;
             new BoMonIndexPresenter(this);
             DisableDeleteBtn();
             DisableEditBtn();
@@ -96,6 +98,11 @@ namespace QLGV.Views.BoMon
                 DisableEditBtn();
                 DisableDeleteBtn();
             }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            _parentView.SetChildren(new BoMonAdd(_parentView));
         }
     }
 }

@@ -11,8 +11,8 @@ namespace QLGV.Presenters.BoMon
 {
     public class BoMonIndexPresenter
     {
-        private BoMonIndex _view;
-        private BoMonService _service;
+        private readonly BoMonIndex _view;
+        private readonly BoMonService _service;
         public BoMonIndexPresenter(BoMonIndex view) 
         { 
             _view = view;
