@@ -13,7 +13,7 @@ namespace QLGV.Repositories
     {
         IEnumerable<GiaoVienModel> Find(BaseFindCreterias creterias);
         
-        GiaoVienModel Add(GiaoVienModel model);
+        int Add(GiaoVienModel model);
         int Delete(int id);
         int Delete(int[] id);
         int Update(GiaoVienModel model);

@@ -18,6 +18,7 @@ namespace QLGV.Dtos.GiaoVien
         public string Email { get; set; }
         public string SoDienThoai { get; set; }
         public BoMonModel BoMon { get; set; }
+        public List<ChucVuModel> ChucVu { get; set; }
 
         public static GiaoVienAddDto FromView(GiaoVienAdd view)
         {
@@ -31,6 +32,7 @@ namespace QLGV.Dtos.GiaoVien
                 Email = view.Email.Trim(),
                 SoDienThoai = view.SoDienThoai.Trim(),
                 BoMon = view.BoMon,
+                ChucVu = view.ChucVu,
             };
         }
 
@@ -46,6 +48,7 @@ namespace QLGV.Dtos.GiaoVien
                 Email = Email,
                 SoDienThoai = SoDienThoai,
                 BoMonId = BoMon.BoMonId,
+                ChucVu = ChucVu
             };
         }
     }

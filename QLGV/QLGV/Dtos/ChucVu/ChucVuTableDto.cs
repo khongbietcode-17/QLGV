@@ -11,14 +11,14 @@ namespace QLGV.Dtos.ChucVu
     public class ChucVuTableDto
     {
         public string Id { get; set; }
-        public string TenChuVu { get; set; }
+        public string TenChucVu { get; set; }
 
         public static ChucVuTableDto FromModel(ChucVuModel model)
         {
             return new ChucVuTableDto()
             {
                 Id = model.ChucVuId.ToString(),
-                TenChuVu = model.TenChucVu,               
+                TenChucVu = model.TenChucVu,               
             };
         }
     }

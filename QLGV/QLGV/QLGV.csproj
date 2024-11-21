@@ -95,6 +95,7 @@
     <Compile Include="Repositories\SqlServer\ITable.cs" />
     <Compile Include="Repositories\SqlServer\LuongCoSoRepository.cs" />
     <Compile Include="Repositories\SqlServer\PhanCongRepository.cs" />
+    <Compile Include="Repositories\UnitOfWork\CreateGiaoVienUnitOfWork.cs" />
     <Compile Include="Repositories\UnitOfWork\DeleteGiaoVienUnitOfWork.cs" />
     <Compile Include="Services\BangLuongService.cs" />
     <Compile Include="Services\BoMonService.cs" />

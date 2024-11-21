@@ -31,7 +31,7 @@ namespace QLGV.Views.ChucVu
             {
                 dataGridView1.Rows.Add(
                    chucVu.Id,
-                   chucVu.TenChuVu
+                   chucVu.TenChucVu
                 );
             }
         }

@@ -17,14 +17,17 @@ namespace QLGV.Presenters.GiaoVien
         private readonly GiaoVienAdd _view;
         private readonly GiaoVienService _service;
         private readonly BoMonService _bomonService;
+        private readonly ChucVuService _chucvuService;
       
         public GiaoVienAddPresenter(GiaoVienAdd view) 
         {
-            this._service = new GiaoVienService();
-            this._bomonService = new BoMonService();
-            this._view = view;
-            this._view.SetDataSourceBoMon(GetBoMon());
-            this._view.Add += AddGiaoVien;
+            _service = new GiaoVienService();
+            _bomonService = new BoMonService();
+            _chucvuService = new ChucVuService();
+            _view = view;
+            _view.SetDataSourceBoMon(GetBoMon());
+            _view.SetDataSourceChucVu(GetChucVu());
+            _view.Add += AddGiaoVien;
         }
 
         public void AddGiaoVien(object o, EventArgs e)
@@ -37,6 +40,11 @@ namespace QLGV.Presenters.GiaoVien
         public IEnumerable<BoMonModel> GetBoMon()
         {
             return _bomonService.GetAll();
+        }
+
+        public IEnumerable<ChucVuModel> GetChucVu()
+        {
+            return _chucvuService.GetAll();
         }
 
     }

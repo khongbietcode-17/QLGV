@@ -352,12 +352,12 @@ namespace QLGV.Repositories.SqlServer
             }
             catch (SqlException e)
             {
-                MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!" + e.ToString(), "Error");
+                MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!" + e.Message, "Error");
                 return null;
             }
             catch (Exception e)
             {
-                MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.ToString());
+                MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.Message);
                 return null;
             }
         }
@@ -387,7 +387,7 @@ namespace QLGV.Repositories.SqlServer
                         $"RIGHT JOIN {TableName} ON {TableName}.{PrimaryKey} = {PivotTable}.{PrimaryKey} " +
                         $"WHERE {TableName}.{PrimaryKey} IN ({idsString})";
 
-                    //Console.WriteLine(sql);
+                    Console.WriteLine(sql);
                     cmd.CommandText = sql;
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -455,7 +455,7 @@ namespace QLGV.Repositories.SqlServer
             }
 
         }
-        public T Add(T model)
+        public int Add(T model)
         {
             try
             {
@@ -464,39 +464,27 @@ namespace QLGV.Repositories.SqlServer
                     conn.Open();
 
                     SqlCommand cmd = conn.CreateCommand();
-                    StringBuilder sql = new StringBuilder("INSERT INTO ");
-                    sql.Append(TableName);
-                    sql.Append(" VALUES ");
-                    sql.Append(ColumnAddString);
-                 
-                    cmd.CommandText = sql.ToString();
-
-
+                    string sql = $"INSERT INTO {TableName}  output INSERTED.{PrimaryKey} VALUES {ColumnAddString}";
+                                   
+                    cmd.CommandText = sql;
                     
                     AddParameter(ref cmd, model);
                     //Console.WriteLine(sql.ToString());
+                    int id = (int) cmd.ExecuteScalar();
 
-
-                    if (cmd.ExecuteNonQuery() > 0)
-                    {
-                        return model;
-                    }
-                    else
-                    {
-                        return null;
-                    }
+                    return id;
                 };
 
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
-                MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!", "Error");
-                return null;
+                MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong! " + e.Message, "Error");
+                return 0;
             }
             catch (Exception e)
             {
-                MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.ToString());
-                return null;
+                MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.Message);
+                return 0;
             }
         }
 
@@ -558,9 +546,9 @@ namespace QLGV.Repositories.SqlServer
                 };
 
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
-                MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!", "Error");
+                MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!" + e.Message, "Error");
                 return 0;
             }
             catch (Exception e)

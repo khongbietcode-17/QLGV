@@ -55,5 +55,19 @@ namespace QLGV.Repositories.SqlServer
                 Luong = reader.GetInt32(offset)
             };
         }
+
+        public BangLuongModel AddEmpty(int id)
+        {
+            BangLuongModel model = new BangLuongModel
+            {
+                GiaoVienId = id,
+                HeSoLuong = 0,
+                HeSoPhuCap = 0,
+                Luong = 0
+            };
+            Add(model);
+            return model;
+        }
+
     }
 }
