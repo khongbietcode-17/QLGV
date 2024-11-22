@@ -43,10 +43,14 @@ namespace QLGV.Views.GiaoVien
                 );
             }
         }
-
         public DataGridViewSelectedRowCollection GetSelectedRow()
         {
             return dataGridView1.SelectedRows;
+        }
+        public int GetSelectedRowId()
+        {
+            var row = dataGridView1.SelectedRows;
+            return int.Parse(row[0].Cells[0].Value.ToString());
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -122,7 +126,7 @@ namespace QLGV.Views.GiaoVien
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            _parentView.SetChildren(new GiaoVienEdit(this, _parentView));
+            _parentView.SetChildren(new GiaoVienEdit(GetSelectedRowId(), _parentView));
         }
 
     }

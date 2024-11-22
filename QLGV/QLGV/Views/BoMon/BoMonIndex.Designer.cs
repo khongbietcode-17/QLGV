@@ -100,6 +100,7 @@
             this.btnEdit.Size = new System.Drawing.Size(30, 30);
             this.btnEdit.TabIndex = 11;
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 

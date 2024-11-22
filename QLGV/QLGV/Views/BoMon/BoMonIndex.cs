@@ -99,10 +99,20 @@ namespace QLGV.Views.BoMon
                 DisableDeleteBtn();
             }
         }
+        public int GetSelectedRowId()
+        {
+            var row = dataGridView1.SelectedRows;
+            return int.Parse(row[0].Cells[0].Value.ToString());
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             _parentView.SetChildren(new BoMonAdd(_parentView));
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            _parentView.SetChildren(new BoMonEdit(GetSelectedRowId(), _parentView));
         }
     }
 }

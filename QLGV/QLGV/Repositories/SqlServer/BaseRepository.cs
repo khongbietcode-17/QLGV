@@ -508,9 +508,9 @@ namespace QLGV.Repositories.SqlServer
                 };
 
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
-                MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!", "Error");
+                MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!" + e.Message, "Error");
                 return 0;
             }
             catch (Exception e)

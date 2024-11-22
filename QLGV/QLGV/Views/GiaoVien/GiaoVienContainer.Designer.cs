@@ -39,6 +39,7 @@
             // 
             // label1
             // 
+            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
@@ -47,6 +48,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Giáo Viên";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel1
             // 

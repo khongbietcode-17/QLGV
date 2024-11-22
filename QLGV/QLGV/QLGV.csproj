@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Dtos\BoMon\BoMonAddDto.cs" />
     <Compile Include="Dtos\BoMon\BoMonTableDto.cs" />
+    <Compile Include="Dtos\BoMon\BoMonUpdateDto.cs" />
     <Compile Include="Dtos\ChucVu\ChucVuAddDto.cs" />
     <Compile Include="Dtos\ChucVu\ChucVuTableDto.cs" />
     <Compile Include="Dtos\ChuNhiem\ChuNhiemTableDto.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Models\LuongCoSoModel.cs" />
     <Compile Include="Models\PhanCongModel.cs" />
     <Compile Include="Presenters\BoMon\BoMonAddPresenter.cs" />
+    <Compile Include="Presenters\BoMon\BoMonEditPresenter.cs" />
     <Compile Include="Presenters\BoMon\BoMonIndexPresenter.cs" />
     <Compile Include="Presenters\ChucVu\ChucVuAddPresenter.cs" />
     <Compile Include="Presenters\ChucVu\ChucVuIndexPresenter.cs" />
@@ -105,10 +107,10 @@
     <Compile Include="Services\ChucVuService.cs" />
     <Compile Include="Services\ChuNhiemService.cs" />
     <Compile Include="Services\GiaoVienService.cs" />
-    <Compile Include="Validations\BoMon\BoMonAddValidation.cs" />
+    <Compile Include="Validations\BoMon\BoMonValidation.cs" />
     <Compile Include="Validations\ChucVu\ChucVuAddValidation.cs" />
     <Compile Include="Validations\Common\BaseValidation.cs" />
-    <Compile Include="Validations\GiaoVien\GiaoVienAddValidation.cs" />
+    <Compile Include="Validations\GiaoVien\GiaoVienValidation.cs" />
     <Compile Include="Views\BoMon\BoMonAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,7 +124,6 @@
       <DependentUpon>BoMonContainer.cs</DependentUpon>
     </Compile>
     <Compile Include="Validations\Common\EmailValidation.cs" />
-    <Compile Include="Validations\GiaoVien\GiaoVienUpdateValidation.cs" />
     <Compile Include="Validations\Common\PhoneNumberValidation.cs" />
     <Compile Include="Views\BoMon\BoMonEdit.cs">
       <SubType>Form</SubType>
@@ -233,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\BoMon\BoMonContainer.resx">
       <DependentUpon>BoMonContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BoMon\BoMonEdit.resx">
+      <DependentUpon>BoMonEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\BoMon\BoMonIndex.resx">
       <DependentUpon>BoMonIndex.cs</DependentUpon>
