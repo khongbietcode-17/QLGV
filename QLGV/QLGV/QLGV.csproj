@@ -55,7 +55,9 @@
     <Compile Include="Dtos\ChucVu\ChucVuAddDto.cs" />
     <Compile Include="Dtos\ChucVu\ChucVuTableDto.cs" />
     <Compile Include="Dtos\ChucVu\ChucVuUpdateDto.cs" />
+    <Compile Include="Dtos\ChuNhiem\ChuNhiemAddDto.cs" />
     <Compile Include="Dtos\ChuNhiem\ChuNhiemTableDto.cs" />
+    <Compile Include="Dtos\ChuNhiem\ChuNhiemUpdateDto.cs" />
     <Compile Include="Dtos\GiaoVien\GiaoVienAddDto.cs" />
     <Compile Include="Dtos\GiaoVien\GiaoVienSearchDto.cs" />
     <Compile Include="Dtos\GiaoVien\GiaoVienTableDto.cs" />
@@ -76,6 +78,8 @@
     <Compile Include="Presenters\ChucVu\ChucVuAddPresenter.cs" />
     <Compile Include="Presenters\ChucVu\ChucVuEditPresenter.cs" />
     <Compile Include="Presenters\ChucVu\ChucVuIndexPresenter.cs" />
+    <Compile Include="Presenters\ChuNhiem\ChuNhiemAddPresenter.cs" />
+    <Compile Include="Presenters\ChuNhiem\ChuNhiemEditPresenter.cs" />
     <Compile Include="Presenters\ChuNhiem\ChuNhiemIndexPresenter.cs" />
     <Compile Include="Presenters\DashBoardPresenter.cs" />
     <Compile Include="Presenters\GiaoVien\GiaoVienAddPresenter.cs" />
@@ -120,6 +124,7 @@
     <Compile Include="Services\LuongCoSoService.cs" />
     <Compile Include="Validations\BoMonValidation.cs" />
     <Compile Include="Validations\ChucVuValidation.cs" />
+    <Compile Include="Validations\ChuNhiemValidation.cs" />
     <Compile Include="Validations\Common\BaseValidation.cs" />
     <Compile Include="Validations\GiaoVienValidation.cs" />
     <Compile Include="Validations\LuongValidation.cs" />
@@ -185,11 +190,23 @@
     <Compile Include="Views\ChucVu\ChucVuIndex.Designer.cs">
       <DependentUpon>ChucVuIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ChuNhiem\ChuNhiemAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ChuNhiem\ChuNhiemAdd.Designer.cs">
+      <DependentUpon>ChuNhiemAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChuNhiem\ChuNhiemContainer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\ChuNhiem\ChuNhiemContainer.Designer.cs">
       <DependentUpon>ChuNhiemContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChuNhiem\ChuNhiemEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ChuNhiem\ChuNhiemEdit.Designer.cs">
+      <DependentUpon>ChuNhiemEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ChuNhiem\ChuNhiemIndex.cs">
       <SubType>Form</SubType>
@@ -289,8 +306,14 @@
     <EmbeddedResource Include="Views\ChucVu\ChucVuIndex.resx">
       <DependentUpon>ChucVuIndex.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ChuNhiem\ChuNhiemAdd.resx">
+      <DependentUpon>ChuNhiemAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ChuNhiem\ChuNhiemContainer.resx">
       <DependentUpon>ChuNhiemContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ChuNhiem\ChuNhiemEdit.resx">
+      <DependentUpon>ChuNhiemEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ChuNhiem\ChuNhiemIndex.resx">
       <DependentUpon>ChuNhiemIndex.cs</DependentUpon>

@@ -10,10 +10,13 @@ namespace QLGV.Views.ChuNhiem
 {
     public partial class ChuNhiemIndex : Form
     {
+        private ChuNhiemContainer _parent;
+        public event EventHandler OnDelete;
         
-        public ChuNhiemIndex()
+        public ChuNhiemIndex(ChuNhiemContainer parent)
         {
             InitializeComponent();
+            _parent = parent;   
             new ChuNhiemIndexPresenter(this);
             DisableEditBtn();
             DisableViewBtn();
@@ -38,11 +41,12 @@ namespace QLGV.Views.ChuNhiem
         {
             return dataGridView1.SelectedRows;
         }
-
-        //private void btnAdd_Click(object sender, EventArgs e)
-        //{
-        //    _parentView.SetChildren(new GiaoVienAdd(_parentView));
-        //}
+      
+        public int GetSelectedRowId()
+        {
+            var row = dataGridView1.SelectedRows;
+            return int.Parse(row[0].Cells[0].Value.ToString());
+        }
 
         public void clearSelection()
         {
@@ -103,6 +107,21 @@ namespace QLGV.Views.ChuNhiem
                 DisableEditBtn();
                 DisableDeleteBtn();
             }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            _parent.SetChildren(new ChuNhiemAdd(_parent));
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            _parent.SetChildren(new ChuNhiemEdit(GetSelectedRowId(), _parent));
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            OnDelete?.Invoke(this, EventArgs.Empty);
         }
     }
 }

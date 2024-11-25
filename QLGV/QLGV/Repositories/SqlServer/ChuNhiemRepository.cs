@@ -30,6 +30,7 @@ namespace QLGV.Repositories.SqlServer
 
         public override void AddParameter(ref SqlCommand cmd, ChuNhiemModel model)
         {
+            cmd.Parameters.Add(new SqlParameter("@ChuNhiemId", SqlDbType.Int)).Value = model.ChuNhiemId;
             cmd.Parameters.Add(new SqlParameter("@GiaoVienId", SqlDbType.Int)).Value = model.GiaoVienId;
             cmd.Parameters.Add(new SqlParameter("@TenLop", SqlDbType.NVarChar)).Value = model.TenLop;
             cmd.Parameters.Add(new SqlParameter("@NamHoc", SqlDbType.NVarChar)).Value = model.NamHoc;
@@ -38,6 +39,11 @@ namespace QLGV.Repositories.SqlServer
         public IEnumerable<ChuNhiemModel> IncludeGiaoVien(IEnumerable<ChuNhiemModel> chuNhiem)
         {
             return IncludeOne<GiaoVienModel>(chuNhiem, chuNhiem.Select(item => item.ChuNhiemId).ToArray());
+        }
+
+        public ChuNhiemModel IncludeGiaoVien(ChuNhiemModel chuNhiem)
+        {
+            return IncludeOne<GiaoVienModel>(chuNhiem, chuNhiem.ChuNhiemId);
         }
 
         public override BaseModel ReaderMapper(SqlDataReader reader, int offset)
