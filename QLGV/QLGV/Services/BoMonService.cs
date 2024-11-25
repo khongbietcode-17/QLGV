@@ -55,6 +55,11 @@ namespace QLGV.Services
 
         }
 
+        public int Count()
+        {
+            return _repository.Count();
+        }
+
         public bool UpdateOne(BoMonUpdateDto dto)
         {
             if (_validation.Validate(dto))

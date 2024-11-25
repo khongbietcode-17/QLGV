@@ -61,6 +61,15 @@ namespace QLGV.Services
             return _deleteUnitOfWork.Delete(ids);
         }
 
+        public int Count()
+        {
+            return _repository.Count();
+        }
+        public int CountWithBoMon(int BoMonId)
+        {
+            return _repository.Count("BoMonId", BoMonId.ToString());
+        }
+
         public bool UpdateOne(GiaoVienUpdateDto dto)
         {
             if (_validation.Validate(dto))

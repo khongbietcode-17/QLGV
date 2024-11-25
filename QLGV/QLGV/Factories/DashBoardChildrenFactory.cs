@@ -3,6 +3,7 @@ using QLGV.Views.ChucVu;
 using QLGV.Views.BangLuong;
 using QLGV.Views.BoMon;
 using QLGV.Views.ChuNhiem;
+using QLGV.Views;
 using System;
 using System.Windows.Forms;
 
@@ -24,6 +25,8 @@ namespace QLGV.Factories
                     return new BoMonContainer();
                 case "chunhiem":
                     return new ChuNhiemContainer();
+                case "home":
+                    return new Home();
                 default:
                     throw new ArgumentOutOfRangeException();
                     

@@ -630,5 +630,82 @@ namespace QLGV.Repositories.SqlServer
             }
         }
 
+        public int Count()
+        {
+            try
+            {
+                using (SqlConnection conn = Connection.CreateConnection())
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = conn.CreateCommand();
+
+                    string sql = $"SELECT COUNT(*) FROM {TableName}";
+                    cmd.CommandText = sql;
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader != null && reader.Read())
+                        {
+                            return reader.GetInt32(0);
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                };
+
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!", "Error");
+                return 0;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.ToString());
+                return 0;
+            }
+        }
+
+        public int Count(string column, string value)
+        {
+            try
+            {
+                using (SqlConnection conn = Connection.CreateConnection())
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = conn.CreateCommand();
+
+                    string sql = $"SELECT COUNT(*) FROM {TableName} WHERE {column} = {value}";
+                    cmd.CommandText = sql;
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader != null && reader.Read())
+                        {
+                            return reader.GetInt32(0);
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                };
+
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!", "Error");
+                return 0;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.ToString());
+                return 0;
+            }
+        }
     }
 }

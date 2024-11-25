@@ -23,7 +23,6 @@ namespace QLGV.Views.ChucVu
             new ChucVuIndexPresenter(this);
             DisableDeleteBtn();
             DisableEditBtn();
-            DisableViewBtn();
             _parentView = parentView;
         }
 
@@ -66,19 +65,6 @@ namespace QLGV.Views.ChucVu
             btnEdit.BackColor = Color.FromArgb(247, 155, 56);
         }
 
-        private void DisableViewBtn()
-        {
-            btnView.Enabled = false;
-            btnView.BackColor = Color.FromArgb(40, 34, 148, 38);
-        }
-        private void EnableViewBtn()
-        {
-            btnView.Enabled = true;
-            btnView.BackColor = Color.FromArgb(34, 148, 38);
-        }
-
-
-
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             int numOfRowSelected = dataGridView1.SelectedRows.Count;
@@ -86,17 +72,14 @@ namespace QLGV.Views.ChucVu
             {
                 EnableDeleteBtn();
                 DisableEditBtn();
-                DisableViewBtn();
             }
             else if (numOfRowSelected == 1)
             {
                 EnableDeleteBtn();
                 EnableEditBtn();
-                EnableViewBtn();
             }
             else
             {
-                DisableViewBtn();
                 DisableEditBtn();
                 DisableDeleteBtn();
             }

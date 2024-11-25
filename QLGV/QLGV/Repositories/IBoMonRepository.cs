@@ -18,5 +18,7 @@ namespace QLGV.Repositories
         int Update(BoMonModel model);
 
         int Delete(int[] ids);
+
+        int Count();
     }
 }

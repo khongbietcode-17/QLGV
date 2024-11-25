@@ -24,7 +24,6 @@ namespace QLGV.Views.BoMon
             new BoMonIndexPresenter(this);
             DisableDeleteBtn();
             DisableEditBtn();
-            DisableViewBtn();
         }
 
         public void LoadData(IEnumerable<BoMonTableDto> list)
@@ -65,18 +64,6 @@ namespace QLGV.Views.BoMon
             btnEdit.BackColor = Color.FromArgb(247, 155, 56);
         }
 
-        private void DisableViewBtn()
-        {
-            btnView.Enabled = false;
-            btnView.BackColor = Color.FromArgb(40, 34, 148, 38);
-        }
-        private void EnableViewBtn()
-        {
-            btnView.Enabled = true;
-            btnView.BackColor = Color.FromArgb(34, 148, 38);
-        }
-
-
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
@@ -85,17 +72,14 @@ namespace QLGV.Views.BoMon
             {
                 EnableDeleteBtn();
                 DisableEditBtn();
-                DisableViewBtn();
             }
             else if (numOfRowSelected == 1)
             {
                 EnableDeleteBtn();
                 EnableEditBtn();
-                EnableViewBtn();
             }
             else
             {
-                DisableViewBtn();
                 DisableEditBtn();
                 DisableDeleteBtn();
             }

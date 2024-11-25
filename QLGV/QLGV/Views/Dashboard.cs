@@ -22,7 +22,7 @@ namespace QLGV.Views
         {
             InitializeComponent();
             new DashBoardPresenter(this);
-            SetChildren(new GiaoVienContainer());
+            SetChildren(new Home());
         }
 
         public void SetChildren(Form form)
@@ -48,7 +48,7 @@ namespace QLGV.Views
                     menuExpand = false;
                     menuTransition.Stop();
 
-                    
+                    home.Width = menu.Width;
                     giaovien.Width = menu.Width;
                     luong.Width = menu.Width;
                     chucvu.Width = menu.Width;
@@ -61,12 +61,14 @@ namespace QLGV.Views
                 menuExpand= true;
                 menuTransition.Stop();
 
+                home.Text = "  HOME";
                 giaovien.Text = "  GIÁO VIÊN";
                 chucvu.Text = "  CHỨC VỤ";
                 luong.Text = "  LƯƠNG";
                 bomon.Text = "  BỘ MÔN";
                 chunhiem.Text = "  CHỦ NHIỆM";
                 label1.Text = "Digi Edu";
+                    home.Width = menu.Width;
                 giaovien.Width = menu.Width;
                 luong.Width = menu.Width;
                 chucvu.Width = menu.Width;
@@ -79,6 +81,7 @@ namespace QLGV.Views
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
+            home.Text = "";
             giaovien.Text = "";
             chucvu.Text = "";
             luong.Text = "";

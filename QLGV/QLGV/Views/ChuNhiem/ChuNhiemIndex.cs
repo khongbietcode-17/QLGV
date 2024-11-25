@@ -19,7 +19,6 @@ namespace QLGV.Views.ChuNhiem
             _parent = parent;   
             new ChuNhiemIndexPresenter(this);
             DisableEditBtn();
-            DisableViewBtn();
             DisableDeleteBtn();
         }
 
@@ -75,17 +74,6 @@ namespace QLGV.Views.ChuNhiem
             btnEdit.BackColor = Color.FromArgb(247, 155, 56);
         }
 
-        private void DisableViewBtn()
-        {
-            btnView.Enabled = false;
-            btnView.BackColor = Color.FromArgb(40, 34, 148, 38);
-        }
-        private void EnableViewBtn()
-        {
-            btnView.Enabled = true;
-            btnView.BackColor = Color.FromArgb(34, 148, 38);
-        }
-
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             int numOfRowSelected = dataGridView1.SelectedRows.Count;
@@ -93,17 +81,14 @@ namespace QLGV.Views.ChuNhiem
             {
                 EnableDeleteBtn();
                 DisableEditBtn();
-                DisableViewBtn();
             }
             else if (numOfRowSelected == 1)
             {
                 EnableDeleteBtn();
                 EnableEditBtn();
-                EnableViewBtn();
             }
             else
             {
-                DisableViewBtn();
                 DisableEditBtn();
                 DisableDeleteBtn();
             }
