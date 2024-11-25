@@ -10,7 +10,7 @@ namespace QLGV.Dtos.GiaoVien
 {
      public class GiaoVienUpdateDto
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string HoLot { get; set; }
         public string Ten { get; set; }
         public int GioiTinh { get; set; }
@@ -24,7 +24,7 @@ namespace QLGV.Dtos.GiaoVien
         {
             return new GiaoVienUpdateDto()
             {
-                Id = view.Id,
+                Id = view.InitId,
                 HoLot = view.HoLot.Trim(),
                 Ten = view.Ten.Trim(),
                 GioiTinh = view.RadioNam ? 1 : 2,
@@ -40,7 +40,7 @@ namespace QLGV.Dtos.GiaoVien
         {
             return new GiaoVienModel()
             {
-                GiaoVienId = int.Parse(Id),
+                GiaoVienId = Id,
                 HoLot = HoLot,
                 Ten = Ten,
                 GioiTinh = GioiTinh,

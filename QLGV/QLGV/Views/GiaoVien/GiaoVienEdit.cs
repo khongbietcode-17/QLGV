@@ -39,7 +39,6 @@ namespace QLGV.Views.GiaoVien
 
         public void InitData(GiaoVienModel model, IEnumerable<BoMonModel> bomon)
         {
-            txtId.Text = model.GiaoVienId.ToString();
             txtHolot.Text = model.HoLot;
             txtTen.Text = model.Ten;
             txtDiachi.Text = model.DiaChi;
@@ -67,7 +66,6 @@ namespace QLGV.Views.GiaoVien
         {
             OnUpdate?.Invoke(this, EventArgs.Empty);
         }
-        public string Id { get => txtId.Text;  }
         public string HoLot { get => txtHolot.Text; }
         public string Ten { get => txtTen.Text; }
         public bool RadioNam { get => radioNam.Checked; }

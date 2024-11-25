@@ -19,11 +19,10 @@ namespace QLGV.Views.BoMon
             _parent = parent;
             new BoMonEditPresenter(this);
         }
-        public string Id { get => txtId.Text; }
+        public string Id { get => InitId.ToString(); }
         public string TenBoMon { get => txtTenBoMon.Text;}
         public void InitData(BoMonModel model)
         {
-            txtId.Text = model.BoMonId.ToString();
             txtTenBoMon.Text = model.TenBoMon;
         }
         private void btnUpdate_Click(object sender, EventArgs e)

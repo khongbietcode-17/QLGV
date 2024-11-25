@@ -5,9 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLGV.Repositories.SqlServer
@@ -180,7 +178,6 @@ namespace QLGV.Repositories.SqlServer
                     sql.Append("@" + PrimaryKey);
 
                    
-                    Console.WriteLine(sql.ToString());
                     cmd.CommandText = sql.ToString();
 
                     cmd.Parameters.Add(new SqlParameter("@" + PrimaryKey, System.Data.SqlDbType.Int)).Value = id;
@@ -547,6 +544,11 @@ namespace QLGV.Repositories.SqlServer
             }
             catch (SqlException e)
             {
+                if (e.Number == 547)
+                {
+                    MessageBox.Show("Không thể xoá do liên kết với bảng khác", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 0;
+                }
                 MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!" + e.Message, "Error");
                 return 0;
             }
@@ -568,7 +570,7 @@ namespace QLGV.Repositories.SqlServer
 
                     SqlCommand cmd = conn.CreateCommand();
                     string sql = $"DELETE FROM {TableName} WHERE {PrimaryKey} IN ({string.Join(",", id)})";
-                    Console.WriteLine(sql);
+
                     cmd.CommandText = sql;
 
                     return cmd.ExecuteNonQuery();
@@ -576,8 +578,48 @@ namespace QLGV.Repositories.SqlServer
                 };
 
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
+                if(e.Number == 547)
+                {
+                    MessageBox.Show("Không thể xoá do liên kết với bảng khác", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 0;
+                }
+                MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!" + e.Message, "Error");
+                return 0;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.ToString());
+                return 0;
+            }
+        }
+
+        public int Delete(int[] id, string byColumn)
+        {
+            try
+            {
+                using (SqlConnection conn = Connection.CreateConnection())
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = conn.CreateCommand();
+                    string sql = $"DELETE FROM {TableName} WHERE {byColumn} IN ({string.Join(",", id)})";
+
+                    cmd.CommandText = sql;
+
+                    return cmd.ExecuteNonQuery();
+
+                };
+
+            }
+            catch (SqlException e)
+            {
+                if (e.Number == 547)
+                {
+                    MessageBox.Show("Không thể xoá do liên kết với bảng khác", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 0;
+                }
                 MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!", "Error");
                 return 0;
             }

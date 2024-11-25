@@ -1,4 +1,5 @@
 ﻿using QLGV.Models;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -27,6 +28,7 @@ namespace QLGV.Repositories.SqlServer
 
         public override void AddParameter(ref SqlCommand cmd, ChucVuModel model)
         {
+            cmd.Parameters.Add(new SqlParameter("@ChucVuId", SqlDbType.Int)).Value = model.ChucVuId;
             cmd.Parameters.Add(new SqlParameter("@TenChucVu", SqlDbType.NVarChar)).Value = model.TenChucVu;
         }
 

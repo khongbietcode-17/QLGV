@@ -69,5 +69,9 @@ namespace QLGV.Repositories.SqlServer
             return model;
         }
 
+        public BangLuongModel IncludeGiaoVien(BangLuongModel bangLuongs)
+        {
+            return IncludeOne<GiaoVienModel>(bangLuongs, bangLuongs.GiaoVienId);
+        }
     }
 }

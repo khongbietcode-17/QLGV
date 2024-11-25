@@ -58,8 +58,6 @@ namespace QLGV.Views.GiaoVien
             _parentView.SetChildren(new GiaoVienAdd(_parentView));
         }
 
-
-
         public void clearSelection()
         {
             dataGridView1.ClearSelection();

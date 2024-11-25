@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace QLGV.Repositories.SqlServer
 {
-    public class LuongCoSoRepository : BaseRepository<LuongCoSoModel>
+    public class LuongCoSoRepository : BaseRepository<LuongCoSoModel>, ILuongCoSoRepository
     {
         public override string TableName => "LuongCoSo";
 

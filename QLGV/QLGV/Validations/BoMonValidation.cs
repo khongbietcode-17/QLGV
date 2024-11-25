@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QLGV.Validations.BoMon
+namespace QLGV.Validations
 {
     public class BoMonValidation: BaseValidation
     {

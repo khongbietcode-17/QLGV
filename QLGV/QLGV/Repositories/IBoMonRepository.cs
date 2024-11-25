@@ -16,5 +16,7 @@ namespace QLGV.Repositories
         int Add(BoMonModel model);
 
         int Update(BoMonModel model);
+
+        int Delete(int[] ids);
     }
 }

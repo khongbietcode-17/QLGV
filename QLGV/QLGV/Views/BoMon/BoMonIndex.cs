@@ -16,6 +16,7 @@ namespace QLGV.Views.BoMon
     public partial class BoMonIndex : Form
     {
         private readonly BoMonContainer _parentView;
+        public event EventHandler OnDelete;
         public BoMonIndex(BoMonContainer parentView)
         {
             InitializeComponent();
@@ -109,10 +110,19 @@ namespace QLGV.Views.BoMon
         {
             _parentView.SetChildren(new BoMonAdd(_parentView));
         }
+        public DataGridViewSelectedRowCollection GetSelectedRow()
+        {
+            return dataGridView1.SelectedRows;
+        }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             _parentView.SetChildren(new BoMonEdit(GetSelectedRowId(), _parentView));
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            OnDelete?.Invoke(sender, EventArgs.Empty);
         }
     }
 }

@@ -6,11 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QLGV.Validations.ChucVu
+namespace QLGV.Validations
 {
-    public class ChucVuAddValidation: BaseValidation
+    public class ChucVuValidation: BaseValidation
     {
         public bool Validate(ChucVuAddDto dto)
+        {
+            if (string.IsNullOrEmpty(dto.TenChucVu))
+            {
+                return HandleError("Vui lòng nhập Tên Chức Vụ");
+            }
+            return true;
+        }
+
+        public bool Validate(ChucVuUpdateDto dto)
         {
             if (string.IsNullOrEmpty(dto.TenChucVu))
             {

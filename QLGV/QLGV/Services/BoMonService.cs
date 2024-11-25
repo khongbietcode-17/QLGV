@@ -5,7 +5,7 @@ using QLGV.Repositories;
 using QLGV.Repositories.Creterias;
 using QLGV.Repositories.SqlServer;
 using QLGV.Repositories.UnitOfWork;
-using QLGV.Validations.BoMon;
+using QLGV.Validations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +34,11 @@ namespace QLGV.Services
         public BoMonModel GetOne(int id)
         {
             return _repository.FindById(id);
+        }
+
+        public int DeleteMany(int[] ids)
+        {
+            return _repository.Delete(ids);
         }
 
         public bool AddOne(BoMonAddDto dto)

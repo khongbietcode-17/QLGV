@@ -16,6 +16,7 @@ namespace QLGV.Views.ChucVu
     public partial class ChucVuIndex : Form
     {
         private ChucVuContainer _parentView;
+        public event EventHandler OnDelete;
         public ChucVuIndex(ChucVuContainer parentView)
         {
             InitializeComponent();
@@ -100,10 +101,33 @@ namespace QLGV.Views.ChucVu
                 DisableDeleteBtn();
             }
         }
+        public int GetSelectedRowId()
+        {
+            var row = dataGridView1.SelectedRows;
+            return int.Parse(row[0].Cells[0].Value.ToString());
+        }
+        public DataGridViewSelectedRowCollection GetSelectedRow()
+        {
+            return dataGridView1.SelectedRows;
+        }
+        public void clearSelection()
+        {
+            dataGridView1.ClearSelection();
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             _parentView.SetChildren(new ChucVuAdd(_parentView));
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            _parentView.SetChildren(new ChucVuEdit(GetSelectedRowId(), _parentView));
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            OnDelete?.Invoke(this, EventArgs.Empty);
         }
     }
 }

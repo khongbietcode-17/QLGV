@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace QLGV.Repositories
 {
-    internal interface IPhanCongRepository
+    public interface ILuongCoSoRepository
     {
-        int Delete(int[] ids);
-        int Delete(int[] ids, string byColumn);
-        int Add(PhanCongModel model);
+        LuongCoSoModel FindById(int id);
     }
 }

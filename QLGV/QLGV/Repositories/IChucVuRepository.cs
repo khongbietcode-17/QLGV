@@ -13,5 +13,8 @@ namespace QLGV.Repositories
         IEnumerable<ChucVuModel> Find(BaseFindCreterias creterias);
 
         int Add(ChucVuModel model);
+        ChucVuModel FindById(int id);
+        int Update(ChucVuModel model);
+        int Delete(int[] ids);
     }
 }
