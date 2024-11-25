@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Deployment.Internal;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,23 +16,18 @@ namespace QLGV.Views.GiaoVien
 {
     public partial class GiaoVienEdit : Form
     {
-        private readonly GiaoVienIndex _indexView;
         private readonly GiaoVienContainer _containerView;
 
+        public int InitId { get; set; } 
+
         public event EventHandler OnUpdate; 
-        public GiaoVienEdit(GiaoVienIndex indexView, GiaoVienContainer containerView)
+        public GiaoVienEdit(int id, GiaoVienContainer containerView)
         {
-            _indexView = indexView;
-            _containerView = containerView;
             InitializeComponent();
+            InitId = id;
+            _containerView = containerView;
             new GiaoVienEditPresenter(this);
          
-        }
-
-        public int GetIdModel()
-        {
-            var rows = _indexView.GetSelectedRow();
-            return int.Parse(rows[0].Cells[0].Value.ToString());
         }
 
         public void SetDataSourceBoMon(IEnumerable<BoMonModel> bomon)
@@ -43,7 +39,6 @@ namespace QLGV.Views.GiaoVien
 
         public void InitData(GiaoVienModel model, IEnumerable<BoMonModel> bomon)
         {
-            txtId.Text = model.GiaoVienId.ToString();
             txtHolot.Text = model.HoLot;
             txtTen.Text = model.Ten;
             txtDiachi.Text = model.DiaChi;
@@ -71,7 +66,6 @@ namespace QLGV.Views.GiaoVien
         {
             OnUpdate?.Invoke(this, EventArgs.Empty);
         }
-        public string Id { get => txtId.Text;  }
         public string HoLot { get => txtHolot.Text; }
         public string Ten { get => txtTen.Text; }
         public bool RadioNam { get => radioNam.Checked; }

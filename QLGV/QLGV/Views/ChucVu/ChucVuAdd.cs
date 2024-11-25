@@ -39,6 +39,7 @@ namespace QLGV.Views.ChucVu
         public void ResetForm()
         {
             txtTenChucVu.Clear();
+            txtTenChucVu.Focus();
         }
 
         private void btnBack_Click(object sender, EventArgs e)

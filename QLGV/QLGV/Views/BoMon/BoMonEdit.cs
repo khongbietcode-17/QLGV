@@ -1,20 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using QLGV.Models;
+using QLGV.Presenters.BoMon;
+using System;
 using System.Windows.Forms;
 
 namespace QLGV.Views.BoMon
 {
     public partial class BoMonEdit : Form
     {
-        public BoMonEdit()
+        public event EventHandler OnUpdate;
+        public int InitId { get; set; }
+
+        private BoMonContainer _parent;
+        
+        public BoMonEdit(int initId, BoMonContainer parent)
         {
             InitializeComponent();
+            InitId = initId;
+            _parent = parent;
+            new BoMonEditPresenter(this);
+        }
+        public string Id { get => InitId.ToString(); }
+        public string TenBoMon { get => txtTenBoMon.Text;}
+        public void InitData(BoMonModel model)
+        {
+            txtTenBoMon.Text = model.TenBoMon;
+        }
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            OnUpdate?.Invoke(this, EventArgs.Empty);
         }
     }
 }

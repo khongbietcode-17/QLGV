@@ -43,7 +43,7 @@ namespace QLGV.Views.ChucVu
                     label = "Danh sách";
                     break;
                 case "ChucVuAdd":
-                    label = "Thêm bộ môn";
+                    label = "Thêm";
                     break;
                 case "ChucVuEdit":
                     label = "Chỉnh sửa";

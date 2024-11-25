@@ -19,7 +19,7 @@ namespace QLGV.Presenters.GiaoVien
             _view = view;
             _service = new GiaoVienService();
             _bomonService = new BoMonService();
-            int id = _view.GetIdModel();           
+            int id = _view.InitId;           
             _view.InitData(_service.GetOne(id), _bomonService.GetAll());
             _view.OnUpdate += UpdateGiaoVien;
         }

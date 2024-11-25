@@ -16,7 +16,7 @@ namespace QLGV.Views.ChuNhiem
         public ChuNhiemContainer()
         {
             InitializeComponent();
-            SetChildren(new ChuNhiemIndex());
+            SetChildren(new ChuNhiemIndex(this));
         }
         public void SetChildren(Form form)
         {

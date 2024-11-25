@@ -30,7 +30,6 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnView = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -59,7 +58,6 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btnView);
             this.flowLayoutPanel1.Controls.Add(this.btnEdit);
             this.flowLayoutPanel1.Controls.Add(this.btnDelete);
             this.flowLayoutPanel1.Controls.Add(this.btnAdd);
@@ -70,21 +68,6 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(543, 38);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // btnView
-            // 
-            this.btnView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(148)))), ((int)(((byte)(38)))));
-            this.btnView.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnView.FlatAppearance.BorderSize = 0;
-            this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnView.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnView.Image = global::QLGV.Properties.Resources.eye;
-            this.btnView.Location = new System.Drawing.Point(510, 3);
-            this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(30, 30);
-            this.btnView.TabIndex = 8;
-            this.btnView.UseVisualStyleBackColor = false;
-            // 
             // btnEdit
             // 
             this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(155)))), ((int)(((byte)(56)))));
@@ -94,11 +77,12 @@
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnEdit.Image = global::QLGV.Properties.Resources.pencil;
-            this.btnEdit.Location = new System.Drawing.Point(474, 3);
+            this.btnEdit.Location = new System.Drawing.Point(510, 3);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(30, 30);
             this.btnEdit.TabIndex = 7;
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -109,11 +93,12 @@
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnDelete.Image = global::QLGV.Properties.Resources.trash;
-            this.btnDelete.Location = new System.Drawing.Point(438, 3);
+            this.btnDelete.Location = new System.Drawing.Point(474, 3);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(30, 30);
             this.btnDelete.TabIndex = 6;
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
@@ -125,7 +110,7 @@
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAdd.Image = global::QLGV.Properties.Resources.plus;
-            this.btnAdd.Location = new System.Drawing.Point(401, 3);
+            this.btnAdd.Location = new System.Drawing.Point(437, 3);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(31, 30);
             this.btnAdd.TabIndex = 5;
@@ -181,7 +166,6 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;

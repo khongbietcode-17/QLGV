@@ -38,6 +38,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,29 +52,44 @@
   <ItemGroup>
     <Compile Include="Dtos\BoMon\BoMonAddDto.cs" />
     <Compile Include="Dtos\BoMon\BoMonTableDto.cs" />
+    <Compile Include="Dtos\BoMon\BoMonUpdateDto.cs" />
     <Compile Include="Dtos\ChucVu\ChucVuAddDto.cs" />
     <Compile Include="Dtos\ChucVu\ChucVuTableDto.cs" />
+    <Compile Include="Dtos\ChucVu\ChucVuUpdateDto.cs" />
+    <Compile Include="Dtos\ChuNhiem\ChuNhiemAddDto.cs" />
     <Compile Include="Dtos\ChuNhiem\ChuNhiemTableDto.cs" />
+    <Compile Include="Dtos\ChuNhiem\ChuNhiemUpdateDto.cs" />
     <Compile Include="Dtos\GiaoVien\GiaoVienAddDto.cs" />
+    <Compile Include="Dtos\GiaoVien\GiaoVienSearchDto.cs" />
     <Compile Include="Dtos\GiaoVien\GiaoVienTableDto.cs" />
     <Compile Include="Dtos\GiaoVien\GiaoVienUpdateDto.cs" />
+    <Compile Include="Dtos\Luong\LuongCoSoUpdateDto.cs" />
     <Compile Include="Dtos\Luong\LuongTableDto.cs" />
+    <Compile Include="Dtos\Luong\LuongUpdateDto.cs" />
     <Compile Include="Factories\RepositoryFactory.cs" />
     <Compile Include="Factories\DashBoardChildrenFactory.cs" />
     <Compile Include="Factories\IFactory.cs" />
+    <Compile Include="Helpers\VietnameseConverter.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\LuongCoSoModel.cs" />
     <Compile Include="Models\PhanCongModel.cs" />
     <Compile Include="Presenters\BoMon\BoMonAddPresenter.cs" />
+    <Compile Include="Presenters\BoMon\BoMonEditPresenter.cs" />
     <Compile Include="Presenters\BoMon\BoMonIndexPresenter.cs" />
     <Compile Include="Presenters\ChucVu\ChucVuAddPresenter.cs" />
+    <Compile Include="Presenters\ChucVu\ChucVuEditPresenter.cs" />
     <Compile Include="Presenters\ChucVu\ChucVuIndexPresenter.cs" />
+    <Compile Include="Presenters\ChuNhiem\ChuNhiemAddPresenter.cs" />
+    <Compile Include="Presenters\ChuNhiem\ChuNhiemEditPresenter.cs" />
     <Compile Include="Presenters\ChuNhiem\ChuNhiemIndexPresenter.cs" />
     <Compile Include="Presenters\DashBoardPresenter.cs" />
     <Compile Include="Presenters\GiaoVien\GiaoVienAddPresenter.cs" />
     <Compile Include="Presenters\GiaoVien\GiaoVienEditPresenter.cs" />
     <Compile Include="Presenters\GiaoVien\GiaoVienIndexPresenter.cs" />
     <Compile Include="Presenters\GiaoVien\GiaoVienViewPresenter.cs" />
+    <Compile Include="Presenters\HomePresenter.cs" />
+    <Compile Include="Presenters\Luong\LuongCoSoEditPresenter.cs" />
+    <Compile Include="Presenters\Luong\LuongEditPresenter.cs" />
     <Compile Include="Presenters\Luong\LuongIndexPresenter.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -87,6 +103,7 @@
     <Compile Include="Repositories\IChucVuRepository.cs" />
     <Compile Include="Repositories\IChuNhiemRepository.cs" />
     <Compile Include="Repositories\IGiaoVienRepository.cs" />
+    <Compile Include="Repositories\ILuongCoSoRepository.cs" />
     <Compile Include="Repositories\InMemory\GiaoVienRepository.cs" />
     <Compile Include="Repositories\IPhanCongRepository.cs" />
     <Compile Include="Repositories\SqlServer\BangLuongRepository.cs" />
@@ -99,16 +116,32 @@
     <Compile Include="Repositories\SqlServer\LuongCoSoRepository.cs" />
     <Compile Include="Repositories\SqlServer\PhanCongRepository.cs" />
     <Compile Include="Repositories\UnitOfWork\CreateGiaoVienUnitOfWork.cs" />
+    <Compile Include="Repositories\UnitOfWork\DeleteChucVuUnitOfWork.cs" />
     <Compile Include="Repositories\UnitOfWork\DeleteGiaoVienUnitOfWork.cs" />
     <Compile Include="Services\BangLuongService.cs" />
     <Compile Include="Services\BoMonService.cs" />
     <Compile Include="Services\ChucVuService.cs" />
     <Compile Include="Services\ChuNhiemService.cs" />
     <Compile Include="Services\GiaoVienService.cs" />
-    <Compile Include="Validations\BoMon\BoMonAddValidation.cs" />
-    <Compile Include="Validations\ChucVu\ChucVuAddValidation.cs" />
+    <Compile Include="Services\LuongCoSoService.cs" />
+    <Compile Include="Validations\BoMonValidation.cs" />
+    <Compile Include="Validations\ChucVuValidation.cs" />
+    <Compile Include="Validations\ChuNhiemValidation.cs" />
     <Compile Include="Validations\Common\BaseValidation.cs" />
-    <Compile Include="Validations\GiaoVien\GiaoVienAddValidation.cs" />
+    <Compile Include="Validations\GiaoVienValidation.cs" />
+    <Compile Include="Validations\LuongValidation.cs" />
+    <Compile Include="Views\BangLuong\LuongCoSoEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BangLuong\LuongCoSoEdit.Designer.cs">
+      <DependentUpon>LuongCoSoEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BangLuong\LuongEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BangLuong\LuongEdit.Designer.cs">
+      <DependentUpon>LuongEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\BoMon\BoMonAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,7 +155,6 @@
       <DependentUpon>BoMonContainer.cs</DependentUpon>
     </Compile>
     <Compile Include="Validations\Common\EmailValidation.cs" />
-    <Compile Include="Validations\GiaoVien\GiaoVienUpdateValidation.cs" />
     <Compile Include="Validations\Common\PhoneNumberValidation.cs" />
     <Compile Include="Views\BoMon\BoMonEdit.cs">
       <SubType>Form</SubType>
@@ -148,17 +180,35 @@
     <Compile Include="Views\ChucVu\ChucVuContainer.Designer.cs">
       <DependentUpon>ChucVuContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ChucVu\ChucVuEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ChucVu\ChucVuEdit.Designer.cs">
+      <DependentUpon>ChucVuEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChucVu\ChucVuIndex.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\ChucVu\ChucVuIndex.Designer.cs">
       <DependentUpon>ChucVuIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ChuNhiem\ChuNhiemAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ChuNhiem\ChuNhiemAdd.Designer.cs">
+      <DependentUpon>ChuNhiemAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChuNhiem\ChuNhiemContainer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\ChuNhiem\ChuNhiemContainer.Designer.cs">
       <DependentUpon>ChuNhiemContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChuNhiem\ChuNhiemEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ChuNhiem\ChuNhiemEdit.Designer.cs">
+      <DependentUpon>ChuNhiemEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ChuNhiem\ChuNhiemIndex.cs">
       <SubType>Form</SubType>
@@ -228,11 +278,20 @@
     <Compile Include="Views\BangLuong\LuongIndex.Designer.cs">
       <DependentUpon>LuongIndex.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\BangLuong\LuongCoSoEdit.resx">
+      <DependentUpon>LuongCoSoEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BangLuong\LuongEdit.resx">
+      <DependentUpon>LuongEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\BoMon\BoMonAdd.resx">
       <DependentUpon>BoMonAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\BoMon\BoMonContainer.resx">
       <DependentUpon>BoMonContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BoMon\BoMonEdit.resx">
+      <DependentUpon>BoMonEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\BoMon\BoMonIndex.resx">
       <DependentUpon>BoMonIndex.cs</DependentUpon>
@@ -243,11 +302,20 @@
     <EmbeddedResource Include="Views\ChucVu\ChucVuContainer.resx">
       <DependentUpon>ChucVuContainer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ChucVu\ChucVuEdit.resx">
+      <DependentUpon>ChucVuEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ChucVu\ChucVuIndex.resx">
       <DependentUpon>ChucVuIndex.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ChuNhiem\ChuNhiemAdd.resx">
+      <DependentUpon>ChuNhiemAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ChuNhiem\ChuNhiemContainer.resx">
       <DependentUpon>ChuNhiemContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ChuNhiem\ChuNhiemEdit.resx">
+      <DependentUpon>ChuNhiemEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ChuNhiem\ChuNhiemIndex.resx">
       <DependentUpon>ChuNhiemIndex.cs</DependentUpon>
@@ -277,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\BangLuong\LuongIndex.resx">
       <DependentUpon>LuongIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

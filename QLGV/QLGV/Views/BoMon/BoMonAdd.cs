@@ -25,8 +25,7 @@ namespace QLGV.Views.BoMon
         }
 
         private void InitEvents()
-        {
-            btnAdd.Click += (o, e) => { Add?.Invoke(this, EventArgs.Empty); };            
+        {          
             txtTenBoMon.KeyDown += (o, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
@@ -46,6 +45,12 @@ namespace QLGV.Views.BoMon
         public void ResetForm()
         {
             txtTenBoMon.Clear();
+            txtTenBoMon.Focus();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Add?.Invoke(this, EventArgs.Empty);
         }
     }
 }

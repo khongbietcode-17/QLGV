@@ -10,13 +10,15 @@ namespace QLGV.Views.ChuNhiem
 {
     public partial class ChuNhiemIndex : Form
     {
+        private ChuNhiemContainer _parent;
+        public event EventHandler OnDelete;
         
-        public ChuNhiemIndex()
+        public ChuNhiemIndex(ChuNhiemContainer parent)
         {
             InitializeComponent();
+            _parent = parent;   
             new ChuNhiemIndexPresenter(this);
             DisableEditBtn();
-            DisableViewBtn();
             DisableDeleteBtn();
         }
 
@@ -38,11 +40,12 @@ namespace QLGV.Views.ChuNhiem
         {
             return dataGridView1.SelectedRows;
         }
-
-        //private void btnAdd_Click(object sender, EventArgs e)
-        //{
-        //    _parentView.SetChildren(new GiaoVienAdd(_parentView));
-        //}
+      
+        public int GetSelectedRowId()
+        {
+            var row = dataGridView1.SelectedRows;
+            return int.Parse(row[0].Cells[0].Value.ToString());
+        }
 
         public void clearSelection()
         {
@@ -71,17 +74,6 @@ namespace QLGV.Views.ChuNhiem
             btnEdit.BackColor = Color.FromArgb(247, 155, 56);
         }
 
-        private void DisableViewBtn()
-        {
-            btnView.Enabled = false;
-            btnView.BackColor = Color.FromArgb(40, 34, 148, 38);
-        }
-        private void EnableViewBtn()
-        {
-            btnView.Enabled = true;
-            btnView.BackColor = Color.FromArgb(34, 148, 38);
-        }
-
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             int numOfRowSelected = dataGridView1.SelectedRows.Count;
@@ -89,20 +81,32 @@ namespace QLGV.Views.ChuNhiem
             {
                 EnableDeleteBtn();
                 DisableEditBtn();
-                DisableViewBtn();
             }
             else if (numOfRowSelected == 1)
             {
                 EnableDeleteBtn();
                 EnableEditBtn();
-                EnableViewBtn();
             }
             else
             {
-                DisableViewBtn();
                 DisableEditBtn();
                 DisableDeleteBtn();
             }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            _parent.SetChildren(new ChuNhiemAdd(_parent));
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            _parent.SetChildren(new ChuNhiemEdit(GetSelectedRowId(), _parent));
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            OnDelete?.Invoke(this, EventArgs.Empty);
         }
     }
 }

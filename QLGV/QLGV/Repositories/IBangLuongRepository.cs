@@ -12,8 +12,11 @@ namespace QLGV.Repositories
     {
         IEnumerable<BangLuongModel> Find(BaseFindCreterias creterias);
         IEnumerable<BangLuongModel> IncludeGiaoVien(IEnumerable<BangLuongModel>  bangLuongs);
+        BangLuongModel IncludeGiaoVien(BangLuongModel bangLuongs);
         BangLuongModel AddEmpty(int id);
         int Delete(int[] ids);
+        BangLuongModel FindById(int id);
+        int Update(BangLuongModel model);
     }
 }
 

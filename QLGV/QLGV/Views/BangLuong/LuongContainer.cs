@@ -16,7 +16,7 @@ namespace QLGV.Views.BangLuong
         public LuongContainer()
         {
             InitializeComponent();
-            SetChildren(new LuongIndex());
+            SetChildren(new LuongIndex(this));
         }
         public void SetChildren(Form form)
         {

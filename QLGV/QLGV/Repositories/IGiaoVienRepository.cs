@@ -17,6 +17,8 @@ namespace QLGV.Repositories
         int Delete(int id);
         int Delete(int[] id);
         int Update(GiaoVienModel model);
+        int Count();
+        int Count(string column, string value);
 
         GiaoVienModel FindById(int id);
         GiaoVienModel FindByIdIncludeOne<BoMonModel>(int id);

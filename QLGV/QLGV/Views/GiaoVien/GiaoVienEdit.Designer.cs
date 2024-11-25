@@ -47,7 +47,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -219,20 +218,11 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Họ lót :";
             // 
-            // txtId
-            // 
-            this.txtId.Location = new System.Drawing.Point(313, 139);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(30, 20);
-            this.txtId.TabIndex = 35;
-            this.txtId.Visible = false;
-            // 
             // GiaoVienEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(493, 246);
-            this.Controls.Add(this.txtId);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBoxBoMon);
@@ -281,6 +271,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtId;
     }
 }

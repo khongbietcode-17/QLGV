@@ -10,6 +10,7 @@ namespace QLGV.Repositories
     internal interface IPhanCongRepository
     {
         int Delete(int[] ids);
+        int Delete(int[] ids, string byColumn);
         int Add(PhanCongModel model);
     }
 }

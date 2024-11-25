@@ -15,13 +15,17 @@ namespace QLGV.Views.BangLuong
 {
     public partial class LuongIndex : Form
     {
-        public LuongIndex()
+        private readonly LuongContainer _parent;
+        public event EventHandler OnSearch; 
+        public string SearchKey { get => textBox1.Text; }
+        public string LuongCoSo { get => label2.Text; set => label2.Text = value; }
+
+        public LuongIndex(LuongContainer parent)
         {
             InitializeComponent();
+            _parent = parent;
             new LuongIndexPresenter(this); 
             DisableEditBtn();
-            DisableViewBtn();
-            DisableDeleteBtn();
         }
 
         public void LoadData(IEnumerable<LuongTableDto> bangLuong)
@@ -54,17 +58,6 @@ namespace QLGV.Views.BangLuong
             dataGridView1.ClearSelection();
         }
 
-        private void DisableDeleteBtn()
-        {
-            btnDelete.Enabled = false;
-            btnDelete.BackColor = Color.FromArgb(40, 247, 56, 56);
-        }
-        private void EnableDeleteBtn()
-        {
-            btnDelete.Enabled = true;
-            btnDelete.BackColor = Color.FromArgb(247, 56, 56);
-        }
-
         private void DisableEditBtn()
         {
             btnEdit.Enabled = false;
@@ -76,38 +69,49 @@ namespace QLGV.Views.BangLuong
             btnEdit.BackColor = Color.FromArgb(247, 155, 56);
         }
 
-        private void DisableViewBtn()
-        {
-            btnView.Enabled = false;
-            btnView.BackColor = Color.FromArgb(40, 34, 148, 38);
-        }
-        private void EnableViewBtn()
-        {
-            btnView.Enabled = true;
-            btnView.BackColor = Color.FromArgb(34, 148, 38);
-        }
-
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             int numOfRowSelected = dataGridView1.SelectedRows.Count;
             if (numOfRowSelected > 1)
-            {
-                EnableDeleteBtn();
+            {              
                 DisableEditBtn();
-                DisableViewBtn();
             }
             else if (numOfRowSelected == 1)
             {
-                EnableDeleteBtn();
                 EnableEditBtn();
-                EnableViewBtn();
             }
             else
             {
-                DisableViewBtn();
                 DisableEditBtn();
-                DisableDeleteBtn();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OnSearch?.Invoke(this, EventArgs.Empty);
+        }
+        public int GetSelectedRowId()
+        {
+            var row = dataGridView1.SelectedRows;
+            return int.Parse(row[0].Cells[0].Value.ToString());
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            _parent.SetChildren(new LuongEdit(GetSelectedRowId(), _parent));
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                OnSearch?.Invoke(sender, EventArgs.Empty);
+            }
+        }
+
+        private void btnEditLuongCS_Click(object sender, EventArgs e)
+        {
+            _parent.SetChildren(new LuongCoSoEdit(_parent));
         }
     }
 }

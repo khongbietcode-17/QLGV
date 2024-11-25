@@ -51,5 +51,10 @@ namespace QLGV.Views.GiaoVien
             } 
             label3.Text = label;
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            SetChildren(new GiaoVienIndex(this));
+        }
     }
 }
