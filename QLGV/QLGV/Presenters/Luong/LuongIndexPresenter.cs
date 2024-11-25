@@ -16,15 +16,18 @@ namespace QLGV.Presenters.Luong
     {
         private readonly LuongIndex _view;
         private readonly BangLuongService _service;
+        private readonly LuongCoSoService _luongCoSoService;
         private List<LuongTableDto> _tables;
 
         public LuongIndexPresenter(LuongIndex view)
         {
             _view = view;
             _service = new BangLuongService();
+            _luongCoSoService = new LuongCoSoService();
             _view.OnSearch += HandleSearch;
             _tables = GetDataFromService();
             _view.LoadData(_tables);
+            _view.LuongCoSo = _luongCoSoService.GetLuongCoSo().ToString();
         }
 
         private List<LuongTableDto> GetDataFromService()

@@ -39,6 +39,9 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnEditLuongCS = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnEdit = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
@@ -121,10 +124,13 @@
             // 
             this.flowLayoutPanel2.Controls.Add(this.textBox1);
             this.flowLayoutPanel2.Controls.Add(this.button1);
+            this.flowLayoutPanel2.Controls.Add(this.label1);
+            this.flowLayoutPanel2.Controls.Add(this.label2);
+            this.flowLayoutPanel2.Controls.Add(this.btnEditLuongCS);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(368, 29);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(594, 29);
             this.flowLayoutPanel2.TabIndex = 1;
             // 
             // textBox1
@@ -147,6 +153,39 @@
             this.button1.Text = "Tìm kiếm theo tên";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(258, 2);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 16);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Lương Cơ Sở: ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(354, 2);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "00000";
+            // 
+            // btnEditLuongCS
+            // 
+            this.btnEditLuongCS.Location = new System.Drawing.Point(404, 0);
+            this.btnEditLuongCS.Margin = new System.Windows.Forms.Padding(0);
+            this.btnEditLuongCS.Name = "btnEditLuongCS";
+            this.btnEditLuongCS.Size = new System.Drawing.Size(123, 23);
+            this.btnEditLuongCS.TabIndex = 4;
+            this.btnEditLuongCS.Text = "Chỉnh sửa Lương CS";
+            this.btnEditLuongCS.UseVisualStyleBackColor = true;
+            this.btnEditLuongCS.Click += new System.EventHandler(this.btnEditLuongCS_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -209,5 +248,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnEditLuongCS;
     }
 }

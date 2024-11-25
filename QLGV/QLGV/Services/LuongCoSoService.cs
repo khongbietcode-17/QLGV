@@ -1,4 +1,5 @@
-﻿using QLGV.Models;
+﻿using QLGV.Dtos.Luong;
+using QLGV.Models;
 using QLGV.Repositories;
 using QLGV.Repositories.SqlServer;
 
@@ -17,6 +18,14 @@ namespace QLGV.Services
             LuongCoSoModel model = _repository.FindById(1);
             int luongCoSo = model.LuongCoSo;
             return luongCoSo;
+        }
+
+        public int UpdateLuongCoSo(LuongCoSoUpdateDto dtos)
+        {
+            LuongCoSoModel model = dtos.ToModel();
+            model.LuongCoSoId = 1;
+            model.UpdateAt = System.DateTime.Now;
+            return _repository.Update(model);
         }
     }
 }

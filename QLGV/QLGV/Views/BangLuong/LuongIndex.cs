@@ -18,6 +18,8 @@ namespace QLGV.Views.BangLuong
         private readonly LuongContainer _parent;
         public event EventHandler OnSearch; 
         public string SearchKey { get => textBox1.Text; }
+        public string LuongCoSo { get => label2.Text; set => label2.Text = value; }
+
         public LuongIndex(LuongContainer parent)
         {
             InitializeComponent();
@@ -105,6 +107,11 @@ namespace QLGV.Views.BangLuong
             {
                 OnSearch?.Invoke(sender, EventArgs.Empty);
             }
+        }
+
+        private void btnEditLuongCS_Click(object sender, EventArgs e)
+        {
+            _parent.SetChildren(new LuongCoSoEdit(_parent));
         }
     }
 }

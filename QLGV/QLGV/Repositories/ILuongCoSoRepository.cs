@@ -10,5 +10,6 @@ namespace QLGV.Repositories
     public interface ILuongCoSoRepository
     {
         LuongCoSoModel FindById(int id);
+        int Update(LuongCoSoModel model);
     }
 }

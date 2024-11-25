@@ -32,5 +32,22 @@ namespace QLGV.Validations
             }
             return true;
         }
+        public bool Validate(LuongCoSoUpdateDto dto)
+        {
+
+            if (string.IsNullOrEmpty(dto.LuongCoSo))
+            {
+                return HandleError("Vui lòng nhập Lương Cơ Sở");
+            }
+            try
+            {
+                var luongCoSo = int.Parse(dto.LuongCoSo);
+            }
+            catch (FormatException)
+            {
+                return HandleError("chưa đúng định dạng số");
+            }
+            return true;
+        }
     }
 }

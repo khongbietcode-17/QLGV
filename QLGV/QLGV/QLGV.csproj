@@ -60,6 +60,7 @@
     <Compile Include="Dtos\GiaoVien\GiaoVienSearchDto.cs" />
     <Compile Include="Dtos\GiaoVien\GiaoVienTableDto.cs" />
     <Compile Include="Dtos\GiaoVien\GiaoVienUpdateDto.cs" />
+    <Compile Include="Dtos\Luong\LuongCoSoUpdateDto.cs" />
     <Compile Include="Dtos\Luong\LuongTableDto.cs" />
     <Compile Include="Dtos\Luong\LuongUpdateDto.cs" />
     <Compile Include="Factories\RepositoryFactory.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Presenters\GiaoVien\GiaoVienEditPresenter.cs" />
     <Compile Include="Presenters\GiaoVien\GiaoVienIndexPresenter.cs" />
     <Compile Include="Presenters\GiaoVien\GiaoVienViewPresenter.cs" />
+    <Compile Include="Presenters\Luong\LuongCoSoEditPresenter.cs" />
     <Compile Include="Presenters\Luong\LuongEditPresenter.cs" />
     <Compile Include="Presenters\Luong\LuongIndexPresenter.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -121,6 +123,12 @@
     <Compile Include="Validations\Common\BaseValidation.cs" />
     <Compile Include="Validations\GiaoVienValidation.cs" />
     <Compile Include="Validations\LuongValidation.cs" />
+    <Compile Include="Views\BangLuong\LuongCoSoEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BangLuong\LuongCoSoEdit.Designer.cs">
+      <DependentUpon>LuongCoSoEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\BangLuong\LuongEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +259,9 @@
     <Compile Include="Views\BangLuong\LuongIndex.Designer.cs">
       <DependentUpon>LuongIndex.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\BangLuong\LuongCoSoEdit.resx">
+      <DependentUpon>LuongCoSoEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\BangLuong\LuongEdit.resx">
       <DependentUpon>LuongEdit.cs</DependentUpon>
     </EmbeddedResource>
