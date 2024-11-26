@@ -86,5 +86,13 @@ namespace QLGV.Repositories.SqlServer
         {
             return IncludeManyWithPivot<ChucVuModel>(model, model.GiaoVienId);
         }
+        public GiaoVienModel IncludeBangLuong(GiaoVienModel model)
+        {
+            return IncludeOne<BangLuongModel>(model, model.GiaoVienId);
+        }
+        public IEnumerable<GiaoVienModel> IncludeBangLuong(IEnumerable<GiaoVienModel> giaoVien)
+        {
+            return IncludeOne<BangLuongModel>(giaoVien, giaoVien.Select(item => item.GiaoVienId).ToArray());
+        }
     }
 }

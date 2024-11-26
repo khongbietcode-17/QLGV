@@ -262,6 +262,12 @@
     <Compile Include="Views\GiaoVien\GiaoVienIndex.Designer.cs">
       <DependentUpon>GiaoVienIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\GiaoVien\GiaoVienSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\GiaoVien\GiaoVienSearchForm.Designer.cs">
+      <DependentUpon>GiaoVienSearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\GiaoVien\GiaoVienView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -360,6 +366,9 @@
     <EmbeddedResource Include="Views\BangLuong\LuongIndex.resx">
       <DependentUpon>LuongIndex.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\GiaoVien\GiaoVienSearchForm.resx">
+      <DependentUpon>GiaoVienSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -387,6 +396,8 @@
     <Content Include="DBScript\create_db.sql" />
     <Content Include="DBScript\create_table.sql" />
     <Content Include="DBScript\insert_data.sql" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\redo.png" />
     <None Include="Resources\background.jpg" />
     <None Include="Resources\home.png" />
     <None Include="Resources\eye.png" />

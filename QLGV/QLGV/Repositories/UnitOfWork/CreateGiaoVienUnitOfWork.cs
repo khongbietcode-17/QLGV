@@ -1,5 +1,6 @@
 ﻿using QLGV.Models;
 using QLGV.Repositories.SqlServer;
+using QLGV.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,14 @@ namespace QLGV.Repositories.UnitOfWork
         private readonly IBangLuongRepository _bangLuongRepository;
         private readonly IGiaoVienRepository _giaoVienRepository;
         private readonly IPhanCongRepository _phanCongRepository;
+        private readonly BangLuongService _luongService;
 
         public CreateGiaoVienUnitOfWork()
         {
             _bangLuongRepository = new BangLuongRepository();
             _giaoVienRepository = new GiaoVienRepository();
             _phanCongRepository = new PhanCongRepository();
+            _luongService = new BangLuongService();
         }
 
         public GiaoVienModel Create(GiaoVienModel model)
@@ -36,8 +39,13 @@ namespace QLGV.Repositories.UnitOfWork
                 };
                 _phanCongRepository.Add(phanCongModel);
             };
-
-            _bangLuongRepository.AddEmpty(id);
+            _luongService.AddOne(new BangLuongModel()
+            {
+                GiaoVienId = id,
+                HeSoLuong = model.BangLuong.HeSoLuong,
+                HeSoPhuCap = model.BangLuong.HeSoPhuCap
+            });
+           
             return model;
         }
 

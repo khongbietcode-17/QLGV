@@ -657,7 +657,7 @@ namespace QLGV.Repositories.SqlServer
             {
                 if (e.Number == 547)
                 {
-                    MessageBox.Show("Không thể xoá do liên kết với bảng khác", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this.GetType().Name + " Không thể xoá do liên kết với bảng khác " +e.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return 0;
                 }
                 MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!" + e.Message, "Error");
@@ -693,7 +693,7 @@ namespace QLGV.Repositories.SqlServer
             {
                 if(e.Number == 547)
                 {
-                    MessageBox.Show("Không thể xoá do liên kết với bảng khác", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this.GetType().Name + " Không thể xoá do liên kết với bảng khác " + e.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return 0;
                 }
                 MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!" + e.Message, "Error");

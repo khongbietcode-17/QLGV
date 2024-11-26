@@ -51,5 +51,20 @@ namespace QLGV.Services
                 return false;
             };
         }
+
+        public bool UpdateOne(BangLuongModel model)
+        {
+            int luongCoSo = _luongService.GetLuongCoSo();
+            model.Luong = (int)(model.HeSoLuong * luongCoSo) + (int)(model.HeSoPhuCap * luongCoSo);
+            _repository.Update(model);
+            return true;
+        }
+
+        public void AddOne(BangLuongModel model)
+        {
+            int luongCoSo = _luongService.GetLuongCoSo();
+            model.Luong = (int)(model.HeSoLuong * luongCoSo) + (int)(model.HeSoPhuCap * luongCoSo);
+            _repository.Add(model);
+        }
     }
 }

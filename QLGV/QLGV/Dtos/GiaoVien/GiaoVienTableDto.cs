@@ -18,8 +18,9 @@ namespace QLGV.Dtos.GiaoVien
         public string Email { get; set; }
         public string SoDienThoai { get; set; }
         public string TenBoMon { get; set; }
-
         public string ChucVu { get; set; }
+        public string HeSoLuong { get; set; }
+        public string HeSoPhuCap {  get; set; }
 
         public static GiaoVienTableDto FromModel(GiaoVienModel model)
         {
@@ -34,7 +35,9 @@ namespace QLGV.Dtos.GiaoVien
                 Email = model.Email,
                 SoDienThoai = model.SoDienThoai,
                 TenBoMon = model.BoMon != null ? model.BoMon.TenBoMon : "",
-                ChucVu = model.ChucVu != null ? string.Join(", ", model.ChucVu.ConvertAll(item => item.TenChucVu)) : ""
+                ChucVu = model.ChucVu != null ? string.Join(", ", model.ChucVu.ConvertAll(item => item.TenChucVu)) : "",
+                HeSoLuong = model.BangLuong != null ? model.BangLuong.HeSoLuong.ToString() : "",
+                HeSoPhuCap = model.BangLuong!= null ? model.BangLuong.HeSoPhuCap.ToString() : "",
             };
         }
 

@@ -70,6 +70,8 @@ namespace QLGV.Views.GiaoVien
                     checkedListBox1.SetItemChecked(i, true);
                 }
             }
+            txtHeSoLuong.Text = model.BangLuong.HeSoLuong.ToString();
+            txtHeSoPhuCap.Text = model.BangLuong.HeSoPhuCap.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -90,6 +92,8 @@ namespace QLGV.Views.GiaoVien
         public string DiaChi { get => txtDiachi.Text; }
         public string Email { get => txtEmail.Text; }
         public string SoDienThoai { get => txtSdt.Text; }
+        public string HeSoLuong { get => txtHeSoLuong.Text; }
+        public string HeSoPhuCap { get => txtHeSoPhuCap.Text; }
         public List<ChucVuModel> ChucVu
         {
             get

@@ -20,5 +20,6 @@ namespace QLGV.Models
         public int BoMonId { get; set; }
         public BoMonModel BoMon { get; set; }
         public List<ChucVuModel> ChucVu { get; set; }
+        public BangLuongModel BangLuong { get; set; }
     }
 }

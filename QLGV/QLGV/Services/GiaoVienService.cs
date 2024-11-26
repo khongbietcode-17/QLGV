@@ -33,6 +33,7 @@ namespace QLGV.Services
             IEnumerable<GiaoVienModel> giaoVien = _repository.Find(BaseFindCreterias.Empty());
             _repository.IncludeBoMon(giaoVien);
             _repository.IncludeChucVu(giaoVien);
+            _repository.IncludeBangLuong(giaoVien);
             return giaoVien;    
         }
 
@@ -41,6 +42,7 @@ namespace QLGV.Services
             GiaoVienModel model = _repository.FindById(id);
             _repository.IncludeBoMon(model);
             _repository.IncludeChucVu(model);
+            _repository.IncludeBangLuong(model);
             if(model.ChucVu == null)
             {
                 model.ChucVu = new List<ChucVuModel>();

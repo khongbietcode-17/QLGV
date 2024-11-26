@@ -50,5 +50,10 @@ namespace QLGV.Views.ChuNhiem
             }
             label3.Text = label;
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            SetChildren(new ChuNhiemIndex(this));
+        }
     }
 }

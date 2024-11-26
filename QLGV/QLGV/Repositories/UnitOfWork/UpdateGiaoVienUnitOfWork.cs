@@ -3,6 +3,8 @@ using QLGV.Repositories.SqlServer;
 using QLGV.Repositories.Creterias;
 using System.Collections.Generic;
 using System.Linq;
+using QLGV.Services;
+using QLGV.Dtos.Luong;
 
 namespace QLGV.Repositories.UnitOfWork
 {
@@ -10,11 +12,13 @@ namespace QLGV.Repositories.UnitOfWork
     {
         private readonly IGiaoVienRepository _giaoVienRepository;
         private readonly IPhanCongRepository _phanCongRepository;
+        private readonly BangLuongService _bangLuongService;
 
         public UpdateGiaoVienUnitOfWork()
         {
             _giaoVienRepository = new GiaoVienRepository();
             _phanCongRepository = new PhanCongRepository();
+            _bangLuongService = new BangLuongService();
         }
 
         public bool Update(GiaoVienModel model)
@@ -51,19 +55,27 @@ namespace QLGV.Repositories.UnitOfWork
 
                 if (listDiffDelete.Count > 0)
                 {
-                    foreach(var chucVu in listDiffDelete)
+                    foreach (var chucVu in listDiffDelete)
                     {
-                    _phanCongRepository.Delete(new BaseFindCreterias()
-                    {
-                        Column = new List<(string, string)>()
+                        _phanCongRepository.Delete(new BaseFindCreterias()
+                        {
+                            Column = new List<(string, string)>()
                         {
                             ("GiaoVienId", model.GiaoVienId.ToString()),
                             ("ChucVuId", chucVu.ChucVuId.ToString())
                         }
-                    });
+                        });
                     }
                 }
             }
+            _bangLuongService.UpdateOne(new BangLuongModel()
+            {
+                GiaoVienId = model.GiaoVienId,
+                HeSoLuong = model.BangLuong.HeSoLuong,
+                HeSoPhuCap = model.BangLuong.HeSoPhuCap
+            });
+
+            _giaoVienRepository.Update(model);
             return true;
         }
     }

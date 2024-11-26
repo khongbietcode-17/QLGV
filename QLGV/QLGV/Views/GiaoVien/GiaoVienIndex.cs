@@ -12,6 +12,7 @@ namespace QLGV.Views.GiaoVien
     {
         private GiaoVienContainer _parentView;
         public event EventHandler OnDelete;
+        private IEnumerable<GiaoVienTableDto> giaoViens;
 
         public GiaoVienIndex(GiaoVienContainer parentView)
         {
@@ -22,11 +23,13 @@ namespace QLGV.Views.GiaoVien
             DisableDeleteBtn();
             DisableEditBtn();
             DisableViewBtn();
+            //DisableRedoBtn();
         }
 
         public void LoadData(IEnumerable<GiaoVienTableDto> giaoViens)
         {
             dataGridView1.Rows.Clear();
+            this.giaoViens = giaoViens;
             foreach (GiaoVienTableDto giaoVien in giaoViens)
             {
                 dataGridView1.Rows.Add(
@@ -39,7 +42,9 @@ namespace QLGV.Views.GiaoVien
                     giaoVien.Email,
                     giaoVien.SoDienThoai,
                     giaoVien.TenBoMon,
-                    giaoVien.ChucVu
+                    giaoVien.ChucVu,
+                    giaoVien.HeSoLuong,
+                    giaoVien.HeSoPhuCap
                 );
             }
         }
@@ -62,6 +67,17 @@ namespace QLGV.Views.GiaoVien
         {
             dataGridView1.ClearSelection();
         }
+
+        //private void DisableRedoBtn()
+        //{
+        //    btnRedo.Enabled = false;
+        //    btnRedo.BackColor = Color.FromArgb(40, 56, 140, 247);
+        //}
+        //private void EnableRedoBtn()
+        //{
+        //    btnRedo.Enabled = true;
+        //    btnRedo.BackColor = Color.FromArgb(56, 140, 247);
+        //}
 
         private void DisableDeleteBtn()
         {
@@ -127,5 +143,15 @@ namespace QLGV.Views.GiaoVien
             _parentView.SetChildren(new GiaoVienEdit(GetSelectedRowId(), _parentView));
         }
 
+        private void btnRedo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //private void btnSearch_Click(object sender, EventArgs e)
+        //{
+        //    GiaoVienSearchForm searchForm = new GiaoVienSearchForm();   
+        //    searchForm.ShowDialog();
+        //}
     }
 }

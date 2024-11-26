@@ -21,6 +21,8 @@ namespace QLGV.Factories
                     return new BoMonRepository();
                 case "ChucVuModel":
                     return new ChucVuRepository();
+                case "BangLuongModel":
+                    return new BangLuongRepository();
                 default:
                     throw new NotImplementedException();
             }

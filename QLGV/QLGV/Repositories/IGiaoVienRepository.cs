@@ -26,6 +26,8 @@ namespace QLGV.Repositories
         IEnumerable<GiaoVienModel> IncludeBoMon(IEnumerable<GiaoVienModel> giaoVien);
         GiaoVienModel IncludeBoMon(GiaoVienModel model);
         GiaoVienModel IncludeChucVu(GiaoVienModel model);
+        GiaoVienModel IncludeBangLuong(GiaoVienModel model);
+        IEnumerable<GiaoVienModel> IncludeBangLuong(IEnumerable<GiaoVienModel> model);
         IEnumerable<GiaoVienModel> IncludeChucVu(IEnumerable<GiaoVienModel> giaoVien);
     }
 }

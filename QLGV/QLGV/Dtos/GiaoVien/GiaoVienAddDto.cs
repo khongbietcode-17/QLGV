@@ -3,6 +3,7 @@ using QLGV.Views.GiaoVien;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +20,8 @@ namespace QLGV.Dtos.GiaoVien
         public string SoDienThoai { get; set; }
         public BoMonModel BoMon { get; set; }
         public List<ChucVuModel> ChucVu { get; set; }
+        public string HeSoLuong { get; set; }
+        public string HeSoPhuCap { get; set; }
 
         public static GiaoVienAddDto FromView(GiaoVienAdd view)
         {
@@ -33,6 +36,8 @@ namespace QLGV.Dtos.GiaoVien
                 SoDienThoai = view.SoDienThoai.Trim(),
                 BoMon = view.BoMon,
                 ChucVu = view.ChucVu,
+                HeSoLuong = view.HeSoLuong.Trim(),
+                HeSoPhuCap = view.HeSoPhuCap.Trim(),
             };
         }
 
@@ -48,7 +53,12 @@ namespace QLGV.Dtos.GiaoVien
                 Email = Email,
                 SoDienThoai = SoDienThoai,
                 BoMonId = BoMon.BoMonId,
-                ChucVu = ChucVu
+                ChucVu = ChucVu,
+                BangLuong = new BangLuongModel()
+                {
+                    HeSoLuong = decimal.Parse(HeSoLuong),
+                    HeSoPhuCap = decimal.Parse(HeSoPhuCap)
+                },
             };
         }
     }

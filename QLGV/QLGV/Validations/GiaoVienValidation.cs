@@ -42,6 +42,15 @@ namespace QLGV.Validations
             {
                 return HandleError("Số điện thoại không hợp lệ");
             }
+            try
+            {
+                var heSoLuong = decimal.Parse(dto.HeSoLuong);
+                var heSoPhuCap = decimal.Parse(dto.HeSoPhuCap);
+            }
+            catch (FormatException)
+            {
+                return HandleError("Hệ số chưa đúng định dạng số");
+            }
 
             return true;
         }
@@ -76,7 +85,15 @@ namespace QLGV.Validations
             {
                 return HandleError("Số điện thoại không hợp lệ");
             }
-
+            try
+            {
+                var heSoLuong = decimal.Parse(dto.HeSoLuong);
+                var heSoPhuCap = decimal.Parse(dto.HeSoPhuCap);
+            }
+            catch (FormatException)
+            {
+                return HandleError("Hệ số chưa đúng định dạng số");
+            }
             return true;
         }
 

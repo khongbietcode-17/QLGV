@@ -53,5 +53,10 @@ namespace QLGV.Views.BoMon
             }
             label3.Text = label;
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            SetChildren(new BoMonIndex(this));
+        }
     }
 }
