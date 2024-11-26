@@ -47,8 +47,16 @@ namespace QLGV.Views.BangLuong
                 case "LuongEdit":
                     label = "Chỉnh sửa";
                     break;
+                case "LuongCoSoEdit":
+                    label = "Chỉnh sửa lương cơ sở";
+                    break;
             }
             label3.Text = label;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            SetChildren(new LuongIndex(this));
         }
     }
 }

@@ -22,6 +22,8 @@ namespace QLGV.Views.GiaoVien
             _parentView = parentView;
             new GiaoVienAddPresenter(this);
             InitEvents();
+            txtHeSoLuong.Text = "0,0";
+            txtHeSoPhuCap.Text = "0,0";
         }
 
         private void InitEvents()
@@ -101,6 +103,9 @@ namespace QLGV.Views.GiaoVien
         public string DiaChi { get => txtDiachi.Text; }
         public string Email { get => txtEmail.Text; }
         public string SoDienThoai { get => txtSdt.Text; }
+
+        public string HeSoLuong { get => txtHeSoLuong.Text; }
+        public string HeSoPhuCap { get => txtHeSoPhuCap.Text; } 
 
         public List<ChucVuModel> ChucVu  { 
             get {

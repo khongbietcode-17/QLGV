@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using QLGV.Dtos.GiaoVien;
+using Microsoft.Office.Interop.Excel; 
 
 namespace QLGV.Views.GiaoVien
 {
@@ -12,6 +13,7 @@ namespace QLGV.Views.GiaoVien
     {
         private GiaoVienContainer _parentView;
         public event EventHandler OnDelete;
+        private IEnumerable<GiaoVienTableDto> giaoViens;
 
         public GiaoVienIndex(GiaoVienContainer parentView)
         {
@@ -21,12 +23,13 @@ namespace QLGV.Views.GiaoVien
             btnDelete.Click += (sender, e) => { OnDelete?.Invoke(sender, e); };
             DisableDeleteBtn();
             DisableEditBtn();
-            DisableViewBtn();
+            //DisableRedoBtn();
         }
 
         public void LoadData(IEnumerable<GiaoVienTableDto> giaoViens)
         {
             dataGridView1.Rows.Clear();
+            this.giaoViens = giaoViens;
             foreach (GiaoVienTableDto giaoVien in giaoViens)
             {
                 dataGridView1.Rows.Add(
@@ -39,7 +42,9 @@ namespace QLGV.Views.GiaoVien
                     giaoVien.Email,
                     giaoVien.SoDienThoai,
                     giaoVien.TenBoMon,
-                    giaoVien.ChucVu
+                    giaoVien.ChucVu,
+                    giaoVien.HeSoLuong,
+                    giaoVien.HeSoPhuCap
                 );
             }
         }
@@ -63,6 +68,17 @@ namespace QLGV.Views.GiaoVien
             dataGridView1.ClearSelection();
         }
 
+        //private void DisableRedoBtn()
+        //{
+        //    btnRedo.Enabled = false;
+        //    btnRedo.BackColor = Color.FromArgb(40, 56, 140, 247);
+        //}
+        //private void EnableRedoBtn()
+        //{
+        //    btnRedo.Enabled = true;
+        //    btnRedo.BackColor = Color.FromArgb(56, 140, 247);
+        //}
+
         private void DisableDeleteBtn()
         {
             btnDelete.Enabled = false;
@@ -85,17 +101,6 @@ namespace QLGV.Views.GiaoVien
             btnEdit.BackColor = Color.FromArgb(247, 155, 56);
         }
 
-        private void DisableViewBtn()
-        {
-            btnView.Enabled = false;
-            btnView.BackColor = Color.FromArgb(40, 34, 148, 38);
-        }
-        private void EnableViewBtn()
-        {
-            btnView.Enabled = true;
-            btnView.BackColor = Color.FromArgb(34, 148, 38);
-        }
-
 
 
 
@@ -106,17 +111,14 @@ namespace QLGV.Views.GiaoVien
             {
                 EnableDeleteBtn();
                 DisableEditBtn();
-                DisableViewBtn();
             }
             else if (numOfRowSelected == 1)
             {
                 EnableDeleteBtn();
                 EnableEditBtn();
-                EnableViewBtn();
             }
             else
             {
-                DisableViewBtn();
                 DisableEditBtn();
                 DisableDeleteBtn();
             }
@@ -127,5 +129,69 @@ namespace QLGV.Views.GiaoVien
             _parentView.SetChildren(new GiaoVienEdit(GetSelectedRowId(), _parentView));
         }
 
+        private void btnRedo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+            try
+            {
+
+                Workbook workbook = app.Workbooks.Add(Type.Missing);
+
+                Worksheet worksheet = null;
+
+                app.Visible = false;
+
+                worksheet = workbook.Sheets["Sheet1"];
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "Exported from DigiEdu";
+                // Header
+                for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
+                {
+                    worksheet.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
+                }
+                // Each Row
+                for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                    {
+                        worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Excel Workbook (*.xlsx)|*.xlsx|Excel 97-2003 Workbook (*.xls)|*.xls|CSV File (*.csv)|*.csv";
+                    saveFileDialog.Title = "Save Excel File";
+                    saveFileDialog.FileName = "DanhSachGiaoVien";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        workbook.SaveAs(
+                            saveFileDialog.FileName,
+                            XlFileFormat.xlOpenXMLWorkbook
+                        );
+
+                    }
+                }
+
+            } catch(Exception ex) 
+            {
+                MessageBox.Show(ex.Message,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+
+            } finally
+            {
+                app.Quit();
+            }
+        }
+
+        //private void btnSearch_Click(object sender, EventArgs e)
+        //{
+        //    GiaoVienSearchForm searchForm = new GiaoVienSearchForm();   
+        //    searchForm.ShowDialog();
+        //}
     }
 }

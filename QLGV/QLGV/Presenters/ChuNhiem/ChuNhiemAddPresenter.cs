@@ -32,6 +32,7 @@ namespace QLGV.Presenters.ChuNhiem
         {
             ChuNhiemAddDto chuNhiem = ChuNhiemAddDto.FromView(_view);
             _service.AddOne(chuNhiem);
+            _view.ResetForm();
         }
     }
 }

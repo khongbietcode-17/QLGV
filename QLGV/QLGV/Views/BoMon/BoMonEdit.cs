@@ -29,5 +29,10 @@ namespace QLGV.Views.BoMon
         {
             OnUpdate?.Invoke(this, EventArgs.Empty);
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            _parent.SetChildren(new BoMonIndex(_parent));
+        }
     }
 }

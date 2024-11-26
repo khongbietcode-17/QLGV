@@ -35,6 +35,7 @@
             this.menu = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.home = new System.Windows.Forms.Button();
             this.giaovien = new System.Windows.Forms.Button();
             this.chucvu = new System.Windows.Forms.Button();
             this.bomon = new System.Windows.Forms.Button();
@@ -43,7 +44,6 @@
             this.menuTransition = new System.Windows.Forms.Timer(this.components);
             this.rightPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.home = new System.Windows.Forms.Button();
             this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
             this.menu.SuspendLayout();
@@ -112,6 +112,28 @@
             this.label1.Size = new System.Drawing.Size(90, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Digi Edu";
+            // 
+            // home
+            // 
+            this.home.BackColor = System.Drawing.Color.Transparent;
+            this.home.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.home.FlatAppearance.BorderSize = 0;
+            this.home.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(140)))), ((int)(((byte)(247)))));
+            this.home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.home.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.home.ForeColor = System.Drawing.Color.White;
+            this.home.Image = global::QLGV.Properties.Resources.home1;
+            this.home.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.home.Location = new System.Drawing.Point(0, 50);
+            this.home.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.home.Name = "home";
+            this.home.Padding = new System.Windows.Forms.Padding(10, 2, 10, 2);
+            this.home.Size = new System.Drawing.Size(170, 37);
+            this.home.TabIndex = 4;
+            this.home.Text = "  HOME";
+            this.home.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.home.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.home.UseVisualStyleBackColor = false;
             // 
             // giaovien
             // 
@@ -245,28 +267,6 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(570, 440);
             this.mainPanel.TabIndex = 1;
-            // 
-            // home
-            // 
-            this.home.BackColor = System.Drawing.Color.Transparent;
-            this.home.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.home.FlatAppearance.BorderSize = 0;
-            this.home.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(140)))), ((int)(((byte)(247)))));
-            this.home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.home.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.home.ForeColor = System.Drawing.Color.White;
-            this.home.Image = global::QLGV.Properties.Resources.money;
-            this.home.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.home.Location = new System.Drawing.Point(0, 50);
-            this.home.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.home.Name = "home";
-            this.home.Padding = new System.Windows.Forms.Padding(10, 2, 10, 2);
-            this.home.Size = new System.Drawing.Size(170, 37);
-            this.home.TabIndex = 4;
-            this.home.Text = "  HOME";
-            this.home.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.home.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.home.UseVisualStyleBackColor = false;
             // 
             // Dashboard
             // 

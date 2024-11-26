@@ -16,6 +16,7 @@ namespace QLGV.Repositories
         ChuNhiemModel IncludeGiaoVien(ChuNhiemModel chuNhiem);
         int Add(ChuNhiemModel model);
         int Delete(int[] id);
+        int Delete(int[] id, string byColumn);
         int Update(ChuNhiemModel model);
     }
 }

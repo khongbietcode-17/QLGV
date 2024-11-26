@@ -62,6 +62,13 @@ namespace QLGV.Views.ChuNhiem
             txtTenGiaoVien.Text = giaoVienSelected.HoTen;
         }
 
+        public void ResetForm()
+        {
+            txtTenGiaoVien.Text = "";
+            txtTenLop.Text = "";
+            txtNamHoc.Text = "";
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             OnAdd?.Invoke(sender, e);

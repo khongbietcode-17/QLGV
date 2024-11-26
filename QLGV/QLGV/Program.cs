@@ -18,7 +18,13 @@ namespace QLGV
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dashboard());
+            //Application.Run(new Dashboard());
+            LoginForm loginForm = new LoginForm();
+            Application.Run(loginForm);
+            if(loginForm.AuthenticatedSuccess)
+            {
+               Application.Run(new Dashboard());
+            }
         }
     }
 }
