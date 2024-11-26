@@ -37,6 +37,13 @@ namespace QLGV.Views.GiaoVien
             comboBoxBoMon.DataSource = bomon;
         }
 
+        public void SetDataSourceChucVu(IEnumerable<ChucVuModel> chucVu)
+        {
+            checkedListBox1.ValueMember = null;
+            checkedListBox1.DataSource = chucVu;
+            checkedListBox1.DisplayMember = "TenChucVu";
+        }
+
         public void InitData(GiaoVienModel model, IEnumerable<BoMonModel> bomon)
         {
             txtHolot.Text = model.HoLot;
@@ -54,6 +61,14 @@ namespace QLGV.Views.GiaoVien
             } else
             {
                 radioNu.Checked = true;
+            }
+            for (int i = 0; i < checkedListBox1.Items.Count; i++)
+            {
+                ChucVuModel item = (ChucVuModel) checkedListBox1.Items[i];
+                if (model.ChucVu.Contains(item))
+                {
+                    checkedListBox1.SetItemChecked(i, true);
+                }
             }
         }
 
@@ -75,5 +90,19 @@ namespace QLGV.Views.GiaoVien
         public string DiaChi { get => txtDiachi.Text; }
         public string Email { get => txtEmail.Text; }
         public string SoDienThoai { get => txtSdt.Text; }
+        public List<ChucVuModel> ChucVu
+        {
+            get
+            {
+                List<ChucVuModel> chucVu = new List<ChucVuModel>();
+
+                foreach (var item in checkedListBox1.CheckedItems)
+                {
+                    chucVu.Add((ChucVuModel)item);
+                }
+
+                return chucVu;
+            }
+        }
     }
 }

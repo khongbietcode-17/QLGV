@@ -47,6 +47,9 @@ namespace QLGV.Views.BangLuong
                 case "LuongEdit":
                     label = "Chỉnh sửa";
                     break;
+                case "LuongCoSoEdit":
+                    label = "Chỉnh sửa lương cơ bản";
+                    break;
             }
             label3.Text = label;
         }

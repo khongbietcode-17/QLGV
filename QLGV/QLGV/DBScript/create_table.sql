@@ -56,3 +56,9 @@ CREATE TABLE LuongCoSo
   UpdateAt datetime
 )
 
+CREATE TABLE UserTbl
+(
+  UserId int IDENTITY(1,1) primary key,
+  UserName varchar(20),
+  Password varchar(20)
+)

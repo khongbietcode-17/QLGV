@@ -16,6 +16,7 @@ namespace QLGV.Services
         private readonly IGiaoVienRepository _repository;
         private readonly DeleteGiaoVienUnitOfWork _deleteUnitOfWork;
         private readonly CreateGiaoVienUnitOfWork _createGiaoVienUnitOfWork;
+        private readonly UpdateGiaoVienUnitOfWork _updateGiaoVienUnitOfWork;
         private readonly GiaoVienValidation _validation;
        
         public GiaoVienService()
@@ -24,6 +25,7 @@ namespace QLGV.Services
             _validation = new GiaoVienValidation();  
             _deleteUnitOfWork = new DeleteGiaoVienUnitOfWork();
             _createGiaoVienUnitOfWork = new CreateGiaoVienUnitOfWork();
+            _updateGiaoVienUnitOfWork = new UpdateGiaoVienUnitOfWork();
         }
 
         public IEnumerable<GiaoVienModel> GetAll()
@@ -38,6 +40,11 @@ namespace QLGV.Services
         {
             GiaoVienModel model = _repository.FindById(id);
             _repository.IncludeBoMon(model);
+            _repository.IncludeChucVu(model);
+            if(model.ChucVu == null)
+            {
+                model.ChucVu = new List<ChucVuModel>();
+            }
             return model;
         }
 
@@ -74,7 +81,8 @@ namespace QLGV.Services
         {
             if (_validation.Validate(dto))
             {
-                _repository.Update(dto.ToModel());
+                //_repository.Update(dto.ToModel());
+                _updateGiaoVienUnitOfWork.Update(dto.ToModel());
                 return true;
             }
             else

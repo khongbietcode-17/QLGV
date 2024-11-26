@@ -1,4 +1,5 @@
 ﻿using QLGV.Models;
+using QLGV.Repositories.Creterias;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace QLGV.Repositories
         int Delete(int[] ids);
         int Delete(int[] ids, string byColumn);
         int Add(PhanCongModel model);
+        PhanCongModel FindFirst(BaseFindCreterias creterias);
+        int Delete(BaseFindCreterias creterias);
     }
 }

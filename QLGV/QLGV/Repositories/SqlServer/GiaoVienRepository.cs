@@ -82,5 +82,9 @@ namespace QLGV.Repositories.SqlServer
         {
            return IncludeOne<BoMonModel>(model, model.GiaoVienId);
         }
+        public GiaoVienModel IncludeChucVu(GiaoVienModel model)
+        {
+            return IncludeManyWithPivot<ChucVuModel>(model, model.GiaoVienId);
+        }
     }
 }

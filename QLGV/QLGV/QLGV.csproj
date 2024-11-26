@@ -63,6 +63,7 @@
     <Compile Include="Dtos\GiaoVien\GiaoVienSearchDto.cs" />
     <Compile Include="Dtos\GiaoVien\GiaoVienTableDto.cs" />
     <Compile Include="Dtos\GiaoVien\GiaoVienUpdateDto.cs" />
+    <Compile Include="Dtos\LoginDto.cs" />
     <Compile Include="Dtos\Luong\LuongCoSoUpdateDto.cs" />
     <Compile Include="Dtos\Luong\LuongTableDto.cs" />
     <Compile Include="Dtos\Luong\LuongUpdateDto.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\LuongCoSoModel.cs" />
     <Compile Include="Models\PhanCongModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Presenters\BoMon\BoMonAddPresenter.cs" />
     <Compile Include="Presenters\BoMon\BoMonEditPresenter.cs" />
     <Compile Include="Presenters\BoMon\BoMonIndexPresenter.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="Presenters\GiaoVien\GiaoVienIndexPresenter.cs" />
     <Compile Include="Presenters\GiaoVien\GiaoVienViewPresenter.cs" />
     <Compile Include="Presenters\HomePresenter.cs" />
+    <Compile Include="Presenters\LoginPresenter.cs" />
     <Compile Include="Presenters\Luong\LuongCoSoEditPresenter.cs" />
     <Compile Include="Presenters\Luong\LuongEditPresenter.cs" />
     <Compile Include="Presenters\Luong\LuongIndexPresenter.cs" />
@@ -106,6 +109,7 @@
     <Compile Include="Repositories\ILuongCoSoRepository.cs" />
     <Compile Include="Repositories\InMemory\GiaoVienRepository.cs" />
     <Compile Include="Repositories\IPhanCongRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\SqlServer\BangLuongRepository.cs" />
     <Compile Include="Repositories\SqlServer\BaseRepository.cs" />
     <Compile Include="Repositories\SqlServer\BoMonRepository.cs" />
@@ -115,20 +119,24 @@
     <Compile Include="Repositories\SqlServer\ITable.cs" />
     <Compile Include="Repositories\SqlServer\LuongCoSoRepository.cs" />
     <Compile Include="Repositories\SqlServer\PhanCongRepository.cs" />
+    <Compile Include="Repositories\SqlServer\UserRepository.cs" />
     <Compile Include="Repositories\UnitOfWork\CreateGiaoVienUnitOfWork.cs" />
     <Compile Include="Repositories\UnitOfWork\DeleteChucVuUnitOfWork.cs" />
     <Compile Include="Repositories\UnitOfWork\DeleteGiaoVienUnitOfWork.cs" />
+    <Compile Include="Repositories\UnitOfWork\UpdateGiaoVienUnitOfWork.cs" />
     <Compile Include="Services\BangLuongService.cs" />
     <Compile Include="Services\BoMonService.cs" />
     <Compile Include="Services\ChucVuService.cs" />
     <Compile Include="Services\ChuNhiemService.cs" />
     <Compile Include="Services\GiaoVienService.cs" />
     <Compile Include="Services\LuongCoSoService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="Validations\BoMonValidation.cs" />
     <Compile Include="Validations\ChucVuValidation.cs" />
     <Compile Include="Validations\ChuNhiemValidation.cs" />
     <Compile Include="Validations\Common\BaseValidation.cs" />
     <Compile Include="Validations\GiaoVienValidation.cs" />
+    <Compile Include="Validations\LoginValidation.cs" />
     <Compile Include="Validations\LuongValidation.cs" />
     <Compile Include="Views\BangLuong\LuongCoSoEdit.cs">
       <SubType>Form</SubType>
@@ -278,6 +286,12 @@
     <Compile Include="Views\BangLuong\LuongIndex.Designer.cs">
       <DependentUpon>LuongIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\BangLuong\LuongCoSoEdit.resx">
       <DependentUpon>LuongCoSoEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -349,6 +363,9 @@
     <EmbeddedResource Include="Views\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -370,6 +387,8 @@
     <Content Include="DBScript\create_db.sql" />
     <Content Include="DBScript\create_table.sql" />
     <Content Include="DBScript\insert_data.sql" />
+    <None Include="Resources\background.jpg" />
+    <None Include="Resources\home.png" />
     <None Include="Resources\eye.png" />
     <None Include="Resources\pencil.png" />
     <None Include="Resources\trash.png" />

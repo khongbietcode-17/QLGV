@@ -208,3 +208,5 @@ VALUES (18, 4.4, 0, 10296000)
 INSERT INTO LuongCoSo(LuongCoSo, UpdateAt)
 VALUES (2340000, '2024-11-26 20:30:00')
 
+INSERT INTO UserTbl(UserName, Password) 
+VALUES('admin', 'admin123')

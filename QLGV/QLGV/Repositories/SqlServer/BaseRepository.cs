@@ -3,8 +3,10 @@ using QLGV.Models;
 using QLGV.Repositories.Creterias;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -123,11 +125,15 @@ namespace QLGV.Repositories.SqlServer
 
                     sql.Append(" WHERE (1=1)");
 
-                    if (creterias.Ids.Length != 0)
+                    if(creterias.Column.Count > 0)
                     {
-                        sql.Append($" AND {PrimaryKey} IN (");
-                        sql.Append(string.Join(", ", creterias.Ids.Select(id => $"'{id}'")));
-                        sql.Append(')');
+                        foreach(var item in creterias.Column)
+                        {
+                            sql.Append(" AND ");
+                            sql.Append(item.Item1);
+                            sql.Append(" = ");
+                            sql.Append(item.Item2);
+                        };
                     }
 
                     cmd.CommandText = sql.ToString();
@@ -157,6 +163,51 @@ namespace QLGV.Repositories.SqlServer
                 return null;
             }
         }
+
+        public T FindFirst(string column, string value)
+        {
+            try
+            {
+
+                using (SqlConnection conn = Connection.CreateConnection())
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = conn.CreateCommand();
+                    
+                    string sql = $"SELECT {AllColumnString} FROM {TableName} WHERE {column} = @Value";
+                    
+                    cmd.CommandText = sql;
+
+                    cmd.Parameters.Add(new SqlParameter("@Value", SqlDbType.VarChar)).Value = value;
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader != null && reader.Read())
+                        {
+
+                            {
+                                return (T)ReaderMapper(reader, 0);
+                            }
+                        }
+                    }
+                };
+                return null;
+
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!" + e.ToString(), "Error");
+                return null;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.ToString());
+                return null;
+            }
+        }
+
+       
 
         public T FindById(int id)
         {   
@@ -451,6 +502,66 @@ namespace QLGV.Repositories.SqlServer
             }
 
         }
+
+        public T IncludeManyWithPivot<M>(T model, int id) where M : BaseModel
+        {
+            ITable relationshipRepo = _factory.GetInstance(typeof(M).Name);
+            List<M> list = new List<M>();
+            try
+            {
+
+                using (SqlConnection conn = Connection.CreateConnection())
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = conn.CreateCommand();
+
+                    // select top
+
+                    string sql = $"SELECT {relationshipRepo.AllColumnString} FROM {PivotTable} " +
+                        $"JOIN {relationshipRepo.TableName} ON {relationshipRepo.TableName}.{relationshipRepo.PrimaryKey} = {PivotTable}.{relationshipRepo.PrimaryKey} " +
+                        $"RIGHT JOIN {TableName} ON {TableName}.{PrimaryKey} = {PivotTable}.{PrimaryKey} " +
+                        $"WHERE {TableName}.{PrimaryKey} = @Value";
+
+                    //Console.WriteLine(sql);
+                    cmd.CommandText = sql;
+                    cmd.Parameters.Add(new SqlParameter("@Value", SqlDbType.VarChar)).Value = id;
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader != null)
+                        {
+                            while (reader.Read())
+                            {
+                                if (reader.IsDBNull(0))
+                                {
+                                    return model;
+                                }
+                                M relaModel = (M) relationshipRepo.ReaderMapper(reader, 0);                           
+                                list.Add(relaModel);
+                            }
+                        }
+                    }
+                };
+
+                model.GetType().GetProperty(relationshipRepo.TableName).SetValue(model, list);
+
+                return model;
+
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!" + e.ToString(), "Error");
+                return model;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.ToString());
+                return model;
+            }
+
+        }
+
         public int Add(T model)
         {
             try
@@ -621,6 +732,48 @@ namespace QLGV.Repositories.SqlServer
                     return 0;
                 }
                 MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!", "Error");
+                return 0;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something wrong in " + this.GetType().Name + ": " + e.ToString());
+                return 0;
+            }
+        }
+
+        public int Delete(BaseFindCreterias creterias)
+        {
+            try
+            {
+                using (SqlConnection conn = Connection.CreateConnection())
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = conn.CreateCommand();
+                    StringBuilder sql = new StringBuilder("DELETE");
+                    sql.Append($" FROM {TableName}");
+
+                    sql.Append(" WHERE (1=1)");
+
+                    if (creterias.Column.Count > 0)
+                    {
+                        foreach (var item in creterias.Column)
+                        {
+                            sql.Append(" AND ");
+                            sql.Append(item.Item1);
+                            sql.Append(" = ");
+                            sql.Append(item.Item2);
+                        };
+                    }
+
+                    cmd.CommandText = sql.ToString();
+
+                    return cmd.ExecuteNonQuery();
+                };
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show(this.GetType().Name + ": Cannot connect to database or sql statement wrong!" + e.ToString(), "Error");
                 return 0;
             }
             catch (Exception e)

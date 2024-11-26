@@ -34,7 +34,11 @@ namespace QLGV.Repositories.SqlServer
 
         public override BaseModel ReaderMapper(SqlDataReader reader, int offset)
         {
-            throw new NotImplementedException();
+            return new PhanCongModel
+            {
+                GiaoVienId = reader.GetInt32(offset++),
+                ChucVuId = reader.GetInt32(offset),
+            };
         }
     }
 }
