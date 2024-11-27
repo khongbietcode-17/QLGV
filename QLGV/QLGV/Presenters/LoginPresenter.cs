@@ -34,6 +34,7 @@ namespace QLGV.Presenters
                 _view.Message = "Username hoặc mật khẩu sai";
                 return;
             };
+            _view.UserInfo = dto.UserName;
             _view.AuthenticatedSuccess = true;
             _view.Close();
         }

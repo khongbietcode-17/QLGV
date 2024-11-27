@@ -18,9 +18,10 @@ namespace QLGV.Views
         Form childrenView;
         bool menuExpand = true;
 
-        public Dashboard()
+        public Dashboard(string userInfo)
         {
             InitializeComponent();
+            SetUserName(userInfo);
             new DashBoardPresenter(this);
             SetChildren(new Home());
         }
@@ -98,5 +99,19 @@ namespace QLGV.Views
             return menu.Controls.OfType<Button>();
         }
 
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
+
+        private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void SetUserName(string name)
+        {
+            label2.Text = $"Welcome {name}";
+        }
     }
 }
