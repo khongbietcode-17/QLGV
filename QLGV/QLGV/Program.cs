@@ -21,9 +21,9 @@ namespace QLGV
             //Application.Run(new Dashboard());
             LoginForm loginForm = new LoginForm();
             Application.Run(loginForm);
-            if(loginForm.AuthenticatedSuccess)
+            if (loginForm.AuthenticatedSuccess)
             {
-               Application.Run(new Dashboard());
+                Application.Run(new Dashboard(loginForm.UserInfo));
             }
         }
     }
