@@ -9,7 +9,7 @@ namespace QLGV.Presenters.ChuNhiem
 {
     public class ChuNhiemIndexPresenter
     {
-        private readonly ChuNhiemIndex _view;
+        private readonly IChuNhiemIndex _view;
         private readonly ChuNhiemService _service;
         public ChuNhiemIndexPresenter(ChuNhiemIndex view) 
         {

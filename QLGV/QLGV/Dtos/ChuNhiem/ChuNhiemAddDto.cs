@@ -14,7 +14,7 @@ namespace QLGV.Dtos.ChuNhiem
         public string TenLop { get; set; }
         public string NamHoc { get; set; }
 
-        public static ChuNhiemAddDto FromView(ChuNhiemAdd view)
+        public static ChuNhiemAddDto FromView(IChuNhiemAdd view)
         {
             return new ChuNhiemAddDto()
             {

@@ -157,6 +157,9 @@
     <Compile Include="Validations\GiaoVienValidation.cs" />
     <Compile Include="Validations\LoginValidation.cs" />
     <Compile Include="Validations\LuongValidation.cs" />
+    <Compile Include="Views\BangLuong\ILuongCoSoEdit.cs" />
+    <Compile Include="Views\BangLuong\ILuongEdit.cs" />
+    <Compile Include="Views\BangLuong\ILuongIndex.cs" />
     <Compile Include="Views\BangLuong\LuongCoSoEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +198,9 @@
     <Compile Include="Views\BoMon\BoMonIndex.Designer.cs">
       <DependentUpon>BoMonIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\BoMon\IBoMonAdd.cs" />
+    <Compile Include="Views\BoMon\IBoMonEdit.cs" />
+    <Compile Include="Views\BoMon\IBoMonIndex.cs" />
     <Compile Include="Views\ChucVu\ChucVuAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +225,9 @@
     <Compile Include="Views\ChucVu\ChucVuIndex.Designer.cs">
       <DependentUpon>ChucVuIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ChucVu\IChucVuAdd.cs" />
+    <Compile Include="Views\ChucVu\IChucVuEdit.cs" />
+    <Compile Include="Views\ChucVu\IChucVuIndex.cs" />
     <Compile Include="Views\ChuNhiem\ChuNhiemAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +252,9 @@
     <Compile Include="Views\ChuNhiem\ChuNhiemIndex.Designer.cs">
       <DependentUpon>ChuNhiemIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ChuNhiem\IChuNhiemAdd.cs" />
+    <Compile Include="Views\ChuNhiem\IChuNhiemEdit.cs" />
+    <Compile Include="Views\ChuNhiem\IChuNhiemIndex.cs" />
     <Compile Include="Views\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -293,6 +305,9 @@
     <Compile Include="Views\GiaoVien\GiaoVienView.Designer.cs">
       <DependentUpon>GiaoVienView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\GiaoVien\IGiaoVienAdd.cs" />
+    <Compile Include="Views\GiaoVien\IGiaoVienEdit.cs" />
+    <Compile Include="Views\GiaoVien\IGiaoVienIndex.cs" />
     <Compile Include="Views\Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -311,6 +326,9 @@
     <Compile Include="Views\BangLuong\LuongIndex.Designer.cs">
       <DependentUpon>LuongIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\IDashboard.cs" />
+    <Compile Include="Views\IHome.cs" />
+    <Compile Include="Views\ILoginForm.cs" />
     <Compile Include="Views\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

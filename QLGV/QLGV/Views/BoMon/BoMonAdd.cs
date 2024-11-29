@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace QLGV.Views.BoMon
 {
-    public partial class BoMonAdd : Form
+    public partial class BoMonAdd : Form, IBoMonAdd
     {
         public event EventHandler Add;
         private readonly BoMonContainer _parentView;

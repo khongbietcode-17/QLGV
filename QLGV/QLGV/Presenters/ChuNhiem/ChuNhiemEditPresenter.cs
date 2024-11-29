@@ -13,7 +13,7 @@ namespace QLGV.Presenters.ChuNhiem
 {
     public class ChuNhiemEditPresenter
     {
-        private readonly ChuNhiemEdit _view;
+        private readonly IChuNhiemEdit _view;
         private readonly GiaoVienService _giaoVienService;
         private readonly ChuNhiemService _service;
         public ChuNhiemEditPresenter(ChuNhiemEdit view)

@@ -11,7 +11,7 @@ namespace QLGV.Presenters.ChucVu
 {
     public class ChucVuAddPresenter
     {
-        private readonly ChucVuAdd _view;
+        private readonly IChucVuAdd _view;
         private readonly ChucVuService _service;
         public ChucVuAddPresenter(ChucVuAdd view)
         {

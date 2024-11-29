@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace QLGV.Views.ChuNhiem
 {
-    public partial class ChuNhiemEdit : Form
+    public partial class ChuNhiemEdit : Form, IChuNhiemEdit
     {
         private readonly ChuNhiemContainer _parent;
         public event EventHandler OnUpdate;

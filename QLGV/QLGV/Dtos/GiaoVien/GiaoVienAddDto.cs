@@ -23,7 +23,7 @@ namespace QLGV.Dtos.GiaoVien
         public string HeSoLuong { get; set; }
         public string HeSoPhuCap { get; set; }
 
-        public static GiaoVienAddDto FromView(GiaoVienAdd view)
+        public static GiaoVienAddDto FromView(IGiaoVienAdd view)
         {
             return new GiaoVienAddDto()
             {

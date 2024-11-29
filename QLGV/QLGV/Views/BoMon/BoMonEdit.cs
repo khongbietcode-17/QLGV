@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace QLGV.Views.BoMon
 {
-    public partial class BoMonEdit : Form
+    public partial class BoMonEdit : Form, IBoMonEdit
     {
         public event EventHandler OnUpdate;
         public int InitId { get; set; }

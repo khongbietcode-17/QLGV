@@ -11,7 +11,7 @@ namespace QLGV.Presenters.BoMon
 {
     public class BoMonAddPresenter
     {
-        private readonly BoMonAdd _view;
+        private readonly IBoMonAdd _view;
         private readonly BoMonService _service;
         public BoMonAddPresenter(BoMonAdd view) 
         {

@@ -11,7 +11,7 @@ namespace QLGV.Dtos.Luong
     public class LuongCoSoUpdateDto
     {
         public string LuongCoSo { get; set; }
-        public static LuongCoSoUpdateDto FromView(LuongCoSoEdit view)
+        public static LuongCoSoUpdateDto FromView(ILuongCoSoEdit view)
         {
             return new LuongCoSoUpdateDto
             {

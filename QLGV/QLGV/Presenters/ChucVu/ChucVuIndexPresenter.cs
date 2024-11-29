@@ -13,7 +13,7 @@ namespace QLGV.Presenters.ChucVu
 {
     public class ChucVuIndexPresenter
     {
-        private readonly ChucVuIndex _view;
+        private readonly IChucVuIndex _view;
         private readonly ChucVuService _service;
         public ChucVuIndexPresenter(ChucVuIndex view) 
         {

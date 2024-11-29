@@ -59,6 +59,6 @@ CREATE TABLE LuongCoSo
 CREATE TABLE UserTbl
 (
   UserId int IDENTITY(1,1) primary key,
-  UserName varchar(20),
+  UserName varchar(20) UNIQUE,
   Password varchar(20)
 )

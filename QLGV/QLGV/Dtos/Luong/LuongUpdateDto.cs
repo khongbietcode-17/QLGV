@@ -14,7 +14,7 @@ namespace QLGV.Dtos.Luong
         public string HeSoLuong { get; set; }
         public string HeSoPhuCap { get; set; }
         public int Luong { get; set; }
-        public static LuongUpdateDto FromView(LuongEdit view)
+        public static LuongUpdateDto FromView(ILuongEdit view)
         {
             return new LuongUpdateDto
             {

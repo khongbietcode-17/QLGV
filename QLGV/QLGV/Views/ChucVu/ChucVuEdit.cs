@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace QLGV.Views.ChucVu
 {
-    public partial class ChucVuEdit : Form
+    public partial class ChucVuEdit : Form,  IChucVuEdit
     {
         public event EventHandler OnUpdate;
         public int InitId { get; set; }

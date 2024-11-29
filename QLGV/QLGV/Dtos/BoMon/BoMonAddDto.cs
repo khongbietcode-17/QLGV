@@ -12,7 +12,7 @@ namespace QLGV.Dtos.BoMon
     {
         public string TenBoMon { get; set; }
 
-        public static BoMonAddDto FromView(BoMonAdd view)
+        public static BoMonAddDto FromView(IBoMonAdd view)
         {
             return new BoMonAddDto()
             {

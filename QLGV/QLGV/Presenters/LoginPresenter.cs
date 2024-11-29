@@ -11,7 +11,7 @@ namespace QLGV.Presenters
 {
     public class LoginPresenter
     {
-        private readonly LoginForm _view;
+        private readonly ILoginForm _view;
         private readonly UserService _service;
         public LoginPresenter(LoginForm view) 
         {
