@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace QLGV.Views.ChucVu
 {
-    public partial class ChucVuAdd : Form
+    public partial class ChucVuAdd : Form, IChucVuAdd
     {
         public event EventHandler Add;
         private readonly ChucVuContainer _parentView;

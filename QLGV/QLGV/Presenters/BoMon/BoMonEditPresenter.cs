@@ -11,7 +11,7 @@ namespace QLGV.Presenters.BoMon
 {
     public class BoMonEditPresenter
     {
-        private readonly BoMonEdit _view;
+        private readonly IBoMonEdit _view;
         private readonly BoMonService _service;
 
         public BoMonEditPresenter(BoMonEdit view)

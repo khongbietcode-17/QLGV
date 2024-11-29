@@ -14,7 +14,7 @@ namespace QLGV.Presenters.Luong
 {
     public class LuongIndexPresenter
     {
-        private readonly LuongIndex _view;
+        private readonly ILuongIndex _view;
         private readonly BangLuongService _service;
         private readonly LuongCoSoService _luongCoSoService;
         private List<LuongTableDto> _tables;

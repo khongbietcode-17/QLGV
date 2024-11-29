@@ -13,7 +13,7 @@ namespace QLGV.Presenters.GiaoVien
 {
     public class GiaoVienIndexPresenter
     {
-        private readonly GiaoVienIndex _view; 
+        private readonly IGiaoVienIndex _view; 
         private readonly GiaoVienService _service;
 
         public GiaoVienIndexPresenter(GiaoVienIndex view)

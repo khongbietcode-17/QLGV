@@ -11,7 +11,7 @@ namespace QLGV.Presenters.Luong
 {
     public class LuongEditPresenter
     {
-        private LuongEdit _view;
+        private readonly ILuongEdit _view;
         private readonly BangLuongService _service;
         public LuongEditPresenter(LuongEdit view)
         {

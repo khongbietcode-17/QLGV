@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace QLGV.Views.ChucVu
 {
-    public partial class ChucVuIndex : Form
+    public partial class ChucVuIndex : Form, IChucVuIndex
     {
         private ChucVuContainer _parentView;
         public event EventHandler OnDelete;

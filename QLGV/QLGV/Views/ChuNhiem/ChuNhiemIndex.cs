@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace QLGV.Views.ChuNhiem
 {
-    public partial class ChuNhiemIndex : Form
+    public partial class ChuNhiemIndex : Form, IChuNhiemIndex
     {
         private ChuNhiemContainer _parent;
         public event EventHandler OnDelete;

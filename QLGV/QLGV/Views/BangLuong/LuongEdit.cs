@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace QLGV.Views.BangLuong
 {
-    public partial class LuongEdit : Form
+    public partial class LuongEdit : Form, ILuongEdit
     {
         private LuongContainer _parent;
         public event EventHandler OnUpdate;

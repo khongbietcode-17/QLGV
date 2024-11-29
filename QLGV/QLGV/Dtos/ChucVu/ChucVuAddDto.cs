@@ -12,7 +12,7 @@ namespace QLGV.Dtos.ChucVu
     {
         public string TenChucVu { get; set; }
 
-        public static ChucVuAddDto FromView(ChucVuAdd view)
+        public static ChucVuAddDto FromView(IChucVuAdd view)
         {
             return new ChucVuAddDto()
             {

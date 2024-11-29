@@ -12,7 +12,7 @@ namespace QLGV.Presenters.GiaoVien
 {
     public class GiaoVienEditPresenter
     {
-        private readonly GiaoVienEdit _view;
+        private readonly IGiaoVienEdit _view;
         public readonly GiaoVienService _service;
         public readonly BoMonService _bomonService;
         public readonly ChucVuService _chucvuService;

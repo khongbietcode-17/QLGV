@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace QLGV.Views.BangLuong
 {
-    public partial class LuongCoSoEdit : Form
+    public partial class LuongCoSoEdit : Form, ILuongCoSoEdit
     {
         public string LuongCoSo { get => txtLuongCoSo.Text; set => txtLuongCoSo.Text = value; }
         public event EventHandler OnUpdate;

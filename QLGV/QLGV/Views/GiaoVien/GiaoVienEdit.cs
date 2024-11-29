@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace QLGV.Views.GiaoVien
 {
-    public partial class GiaoVienEdit : Form
+    public partial class GiaoVienEdit : Form, IGiaoVienEdit
     {
         private readonly GiaoVienContainer _containerView;
 

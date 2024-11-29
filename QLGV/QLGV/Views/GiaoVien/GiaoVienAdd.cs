@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace QLGV.Views.GiaoVien
 {
-    public partial class GiaoVienAdd : Form
+    public partial class GiaoVienAdd : Form, IGiaoVienAdd
     {
         public event EventHandler Add;
         private GiaoVienContainer _parentView;

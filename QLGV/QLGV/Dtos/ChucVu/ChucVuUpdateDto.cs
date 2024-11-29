@@ -13,7 +13,7 @@ namespace QLGV.Dtos.ChucVu
         public int Id { get; set; }
         public string TenChucVu { get; set; }
 
-        public static ChucVuUpdateDto FromView(ChucVuEdit view)
+        public static ChucVuUpdateDto FromView(IChucVuEdit view)
         {
             return new ChucVuUpdateDto()
             {

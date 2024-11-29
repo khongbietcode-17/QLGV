@@ -8,8 +8,8 @@ namespace QLGV.Presenters.ChucVu
 {
     public class ChucVuEditPresenter
     {
-        private ChucVuEdit _view;
-        private ChucVuService _service;
+        private readonly IChucVuEdit _view;
+        private readonly ChucVuService _service;
         public ChucVuEditPresenter(ChucVuEdit view) 
         {
             _view = view;

@@ -9,7 +9,7 @@ using Microsoft.Office.Interop.Excel;
 
 namespace QLGV.Views.GiaoVien
 {
-    public partial class GiaoVienIndex : Form
+    public partial class GiaoVienIndex : Form, IGiaoVienIndex
     {
         private GiaoVienContainer _parentView;
         public event EventHandler OnDelete;

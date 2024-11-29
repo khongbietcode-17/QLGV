@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace QLGV.Views.BangLuong
 {
-    public partial class LuongIndex : Form
+    public partial class LuongIndex : Form, ILuongIndex
     {
         private readonly LuongContainer _parent;
         public event EventHandler OnSearch; 
         public string SearchKey { get => textBox1.Text; }
-        public string LuongCoSo { get => label2.Text; set => label2.Text = value; }
+        public string LuongCoSo { set => label2.Text = value; }
 
         public LuongIndex(LuongContainer parent)
         {

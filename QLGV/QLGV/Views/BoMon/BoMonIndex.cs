@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace QLGV.Views.BoMon
 {
-    public partial class BoMonIndex : Form
+    public partial class BoMonIndex : Form, IBoMonIndex
     {
         private readonly BoMonContainer _parentView;
         public event EventHandler OnDelete;

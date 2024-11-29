@@ -14,7 +14,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QLGV.Views.ChuNhiem
 {
-    public partial class ChuNhiemAdd : Form
+    public partial class ChuNhiemAdd : Form, IChuNhiemAdd
     {
         public IEnumerable<GiaoVienSearchDto> giaoVienList { get; set; }
         public GiaoVienSearchDto giaoVienSelected { get; set; }       

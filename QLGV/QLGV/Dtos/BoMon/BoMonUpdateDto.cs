@@ -10,14 +10,14 @@ namespace QLGV.Dtos.BoMon
 {
     public class BoMonUpdateDto
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string TenBoMon { get; set; }
 
-        public static BoMonUpdateDto FromView(BoMonEdit view)
+        public static BoMonUpdateDto FromView(IBoMonEdit view)
         {
             return new BoMonUpdateDto
             {
-                Id = view.Id,
+                Id = view.InitId,
                 TenBoMon = view.TenBoMon,
             };
         }
@@ -26,7 +26,7 @@ namespace QLGV.Dtos.BoMon
         {
             return new BoMonModel
             {
-                BoMonId = int.Parse(Id),
+                BoMonId = Id,
                 TenBoMon = TenBoMon,
             };
         }

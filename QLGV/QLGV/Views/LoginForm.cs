@@ -11,15 +11,16 @@ using System.Windows.Forms;
 
 namespace QLGV.Views
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : Form, ILoginForm
     {
         public bool AuthenticatedSuccess { get; set; }
         public string UserInfo { get; set; }
         public string UserName { get => txtUserName.Text; }
         public string Password { get => txtPassword.Text; }
         public string Message { get => lbMessage.Text; set => lbMessage.Text = value; }
-
         public event EventHandler OnLogin;
+        
+
         public LoginForm()
         {
             InitializeComponent();
